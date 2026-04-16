@@ -5,9 +5,35 @@
 }
 
 nav{
-    background: linear-gradient(#953B00, #820A02);
+    display: flex;
+    background: #953B00;
+    background: linear-gradient(91deg,rgba(149, 59, 0, 1) 8%, rgba(130, 10, 2, 1) 90%);
+    padding: 15px;
 
-    .itens{
+    .nav-left{
+        width: 20%;
+        img{
+            width: 10%;
+        }
+    }
+
+    .nav-mid{
+        margin: auto;
         display: flex;
+        width: 80%; 
+
+        .itens{
+            
+            gap: 100px;
+            display: flex;
+
+            .nav-item{
+                margin: auto;
+                font-family: "Poppins";
+                font-weight: 300;
+                font-size: 20px;
+                color: #FFFBFE;
+            }
+        }
     }
 }
