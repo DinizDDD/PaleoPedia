@@ -29,6 +29,7 @@ nav{
 
             .nav-item{
                 margin: auto;
+                text-decoration: none;
                 font-family: "Poppins";
                 font-weight: 300;
                 font-size: 20px;
