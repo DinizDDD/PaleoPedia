@@ -3,15 +3,15 @@
 
     switch($page){
         case 'home':
-            $title = 'Paleopedia - Homepage'
+            $title = 'Paleopedia - Homepage';
             break;
 
         case 'species':
-            $title = 'Paleopedia - Espécies'
+            $title = 'Paleopedia - Espécies';
             break;
 
         case 'period':
-            $title = 'Paleopedia - Périodos'
+            $title = 'Paleopedia - Périodos';
             break;        
     }
 ?>
