@@ -1,7 +1,8 @@
 <nav>
     <div class="nav-left">
         <div class="nav-image">
-            <img src="assets/images/Dinopedia.webp" alt="Logo">
+            <!-- Logo temporária -->
+            <img src="assets/images/Dinopedia.webp" alt="Logo"> 
         </div>
     </div>
 
