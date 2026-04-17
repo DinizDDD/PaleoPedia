@@ -7,9 +7,9 @@
 
     <div class="nav-mid">
         <div class="itens">
-            <h1 class="nav-item">HOME</h1>
-            <h1 class="nav-item">ESPÉCIES</h1>
-            <h1 class="nav-item">PERÍODOS</h1>
+            <a href="index.php?page=home">HOME</a>
+            <a href="index.php?page=species">ESPÉCIES</a>
+            <a href="index.php?page=period">PERÍODOS</a>
         </div>
     </div>
 
