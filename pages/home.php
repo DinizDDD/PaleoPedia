@@ -14,7 +14,7 @@
 
     <div class="info_1">
         <div class="left">
-            <h3>Lorem</h3>
+            <h3>O que é Paleontologia?</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quidem dignissimos? Voluptatibus cupiditate iusto eligendi iste assumenda nobis harum. Repellat quaerat, dolor sint magni fuga voluptatum vero blanditiis rerum ad.</p>
         </div>
         <div class="right">
