@@ -35,13 +35,11 @@
             padding: 1px 15px;
             border-radius: 30px;
         }
-
         p{
             font-size:16px;
             margin-bottom:25px;
             width: 90%;
         }
-
         h4{
             font-size:20px;
         }
@@ -50,12 +48,20 @@
 
 .info-body{
     background-color: #FFF1E4;
-    align-items: center;    
-
+    align-items: center;
+      
     .separatio_img{
         width: 100%;
         height: 10vh;
         object-fit: cover;
+    }
+
+    h3{
+        font-size: 3.5vh;
+        background-color: #FFFBFE;
+    }
+    p{
+        font-size: 2.5vh;
     }
 
     .info_1{
@@ -71,12 +77,9 @@
 
             h3{
                 margin-bottom: 3%;
-                font-size: 2.5vh;
             }
-
             p{
                 width: 80%;
-                font-size: 2vh;
             }
         }
 
@@ -87,7 +90,45 @@
                 width: 100%;
             }
         }
-        
-        
+    }
+
+    .info_2{
+        width: 90%;
+        margin: auto;
+        margin-top: 15vh;
+
+        .up{
+            text-align: center;
+            margin-bottom: 10vh;
+        }
+
+        .down{
+            display: flex;
+            justify-content: space-around;
+
+            img{
+                width: 20%;
+                height: 70vh;
+            }
+        }
+    }
+
+    .info_3{
+        width: 90%;
+        margin: auto;
+        display: flex;
+
+        .left{
+            width: 40%;
+
+            img{
+                width: 100%;
+                height: 90vh;
+            }
+        }
+
+        .right{
+            width: 60%;
+        }
     }
 }

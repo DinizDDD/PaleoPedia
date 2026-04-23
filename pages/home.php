@@ -19,14 +19,35 @@
         </div>
         <div class="right">
             <img src="assets/images/banner_image.png" alt="">
-
         </div>
     </div>
 
-    
+    <div class="info_2">
+        <div class="up">
+            <h3>Estudo dos fósseis</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit cupiditate laborum dolorum libero doloribus! Iure</p>
+        </div>
+        <div class="down">
+            <img src="assets/images/banner_image.png" alt="">
+            <img src="assets/images/banner_image.png" alt="">
+            <img src="assets/images/banner_image.png" alt="">
+        </div>
+    </div>
+
+    <div class="info_3">
+        <div class="left">
+            <img src="assets/images/banner_image.png" alt="">
+        </div>
+        <div class="right">
+            <h3>O que é Paleontologia?</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quidem dignissimos? Voluptatibus cupiditate iusto eligendi iste assumenda nobis harum. Repellat quaerat, dolor sint magni fuga voluptatum vero blanditiis rerum ad.</p>
+        </div>
+
+    </div>
 
 
 </div>
+
 
 
 
