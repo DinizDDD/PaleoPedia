@@ -1,7 +1,7 @@
 <?php
 
 $host = "localhost";
-$db = "paleo_db";
+$db = "paleo_pb";
 $user = "root";
 $pass = "";
 
