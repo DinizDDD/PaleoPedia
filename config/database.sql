@@ -17,7 +17,6 @@ CREATE TABLE tax (
         'ordem',
         'familia',
         'genero',
-        'especie'
     ),
     parent_id INT,
     descricao TEXT,
@@ -74,3 +73,4 @@ CREATE TABLE species_images (
     FOREIGN KEY (species_id) REFERENCES species(id),
     FOREIGN KEY (image_id) REFERENCES images(id)
 );
+

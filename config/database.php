@@ -1,7 +1,7 @@
 <?php
 
 $host = "localhost";
-$db = "paleo_wiki";
+$db = "paleo_db";
 $user = "root";
 $pass = "";
 
