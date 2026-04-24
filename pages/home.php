@@ -39,13 +39,22 @@
             <img src="assets/images/banner_image.png" alt="">
         </div>
         <div class="right">
-            <h3>O que é Paleontologia?</h3>
+            <h3>Como cientistas descobrem espécies?</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quidem dignissimos? Voluptatibus cupiditate iusto eligendi iste assumenda nobis harum. Repellat quaerat, dolor sint magni fuga voluptatum vero blanditiis rerum ad.</p>
         </div>
-
     </div>
 
+    <div class="info_4">
+        <div class="left">
+            <img src="assets/images/banner_image.png" alt="">
+        </div>
+        <div class="right">
+            <h3>Importância para entender a Terra</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quidem dignissimos? Voluptatibus cupiditate iusto eligendi iste assumenda nobis harum. Repellat quaerat, dolor sint magni fuga voluptatum vero blanditiis rerum ad.</p>
+        </div>
+    </div>
 
+<img class="separatio_img" src="assets/images/separation_image2.png" alt="Imagem para separeção">
 </div>
 
 

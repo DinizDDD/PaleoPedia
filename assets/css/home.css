@@ -58,7 +58,6 @@
 
     h3{
         font-size: 3.5vh;
-        background-color: #FFFBFE;
     }
     p{
         font-size: 2.5vh;
@@ -66,9 +65,8 @@
 
     .info_1{
         width: 90%;
+        margin: auto;
         margin-top: 10vh;
-        margin-left: auto;
-        margin-right: auto;
         display: flex;
         align-items: center;
 
@@ -116,6 +114,7 @@
     .info_3{
         width: 90%;
         margin: auto;
+        margin-top: 15vh;
         display: flex;
 
         .left{
@@ -129,6 +128,46 @@
 
         .right{
             width: 60%;
+            background-color: #FFFBFE;
+            
+            h3{
+                margin-left: 5vh;
+                margin-top: 2vh;
+            }
+            p{
+                margin-left: 5vh;
+                margin-top: 2vh;
+            }
+
+        }
+    }
+
+    .info_4{
+        width: 90%;
+        margin: auto;
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+        display: flex;
+        align-items: center;
+
+        .left{
+            width: 50%;
+
+            img{
+                width: 100%;
+            }
+        }
+
+        .right{
+            width: 50%;
+            text-align: right;
+
+            h3{
+                margin-bottom: 3%;
+            }
+            p{
+                margin-left: 3vh;
+            }
         }
     }
 }
