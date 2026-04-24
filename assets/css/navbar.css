@@ -7,7 +7,7 @@
 }
 
 nav{
-    display:grid;
+    display: grid;
     grid-template-columns: 120px 1fr 120px;
     align-items:center;
     background: linear-gradient(91deg, rgba(149,59,0,1) 8%, rgba(130,10,2,1) 90%);
@@ -25,7 +25,7 @@ nav{
 
         .itens{
             display:flex;
-            gap:30px;
+            gap: 6vh;
 
             .nav-item{
                 text-decoration:none;
