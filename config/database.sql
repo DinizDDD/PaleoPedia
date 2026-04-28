@@ -1,5 +1,3 @@
--- Esse arquivo NÃO é funcional, existe apenas para guardar os códigos da database 
-
 DROP DATABASE paleo_db;
 
 CREATE DATABASE paleo_db;
@@ -16,7 +14,7 @@ CREATE TABLE tax (
         'classe',
         'ordem',
         'familia',
-        'genero',
+        'genero'
     ),
     parent_id INT,
     descricao TEXT,
@@ -25,7 +23,7 @@ CREATE TABLE tax (
 
 CREATE TABLE images (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    url VARCHAR(255) NOT NULL
+    url VARCHAR(255) NOT NULL,
     legenda TEXT
 );
 
@@ -37,12 +35,12 @@ CREATE TABLE geo_time (
         'periodo',
         'epoca',
         'idade'
-        ),
+    ),
     begin_year DECIMAL(8,2),
     end_year DECIMAL(8,2),
     parent_id INT,
     FOREIGN KEY (parent_id) REFERENCES geo_time(id)
-)
+);
 
 CREATE TABLE species (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -54,15 +52,16 @@ CREATE TABLE species (
     diet ENUM(
         'carnivore',
         'herbivore',
-        'omnivorous'  
+        'omnivorous'
     ),
     comprimento DECIMAL(6,2),
     peso INT,
     discovery_year INT,
     image_id INT,
     geotime_id INT,
+
     FOREIGN KEY (taxon_id) REFERENCES tax(id),
-    FOREIGN KEY (image_id) REFERENCES images(id)
+    FOREIGN KEY (image_id) REFERENCES images(id),
     FOREIGN KEY (geotime_id) REFERENCES geo_time(id)
 );
 
@@ -73,4 +72,3 @@ CREATE TABLE species_images (
     FOREIGN KEY (species_id) REFERENCES species(id),
     FOREIGN KEY (image_id) REFERENCES images(id)
 );
-
