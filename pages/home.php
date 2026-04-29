@@ -54,8 +54,10 @@
         </div>
     </div>
 
-<img class="separatio_img" src="assets/images/separation_image2.png" alt="Imagem para separeção">
+    <img class="separatio_img" src="assets/images/separation_image2.png" alt="Imagem para separeção">
 </div>
+
+<h2>ESPÉCIES EM DESTAQUE</h2>
 
 
 
