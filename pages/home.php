@@ -1,6 +1,6 @@
 <div class="banner">
     <!-- Banner temporário -->
-    <img src="assets/images/banner_image.png" alt="Imagem Banner">
+    <img src="assets/images/home/banner_image.png" alt="Imagem Banner">
 
     <div class="banner-info">
         <h2>PALEOPEDIA</h2>
@@ -10,7 +10,7 @@
 </div>
 
 <div class="info-body">
-    <img class="separatio_img" src="assets/images/separation_image.png" alt="Imagem para separeção">
+    <img class="separatio_img" src="assets/images/home/separation_image.png" alt="Imagem para separeção">
 
     <div class="info_1">
         <div class="left">
@@ -18,7 +18,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quidem dignissimos? Voluptatibus cupiditate iusto eligendi iste assumenda nobis harum. Repellat quaerat, dolor sint magni fuga voluptatum vero blanditiis rerum ad.</p>
         </div>
         <div class="right">
-            <img src="assets/images/banner_image.png" alt="">
+            <img src="assets/images/home/banner_image.png" alt="">
         </div>
     </div>
 
@@ -28,15 +28,15 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit cupiditate laborum dolorum libero doloribus! Iure</p>
         </div>
         <div class="down">
-            <img src="assets/images/banner_image.png" alt="">
-            <img src="assets/images/banner_image.png" alt="">
-            <img src="assets/images/banner_image.png" alt="">
+            <img src="assets/images/home/banner_image.png" alt="">
+            <img src="assets/images/home/banner_image.png" alt="">
+            <img src="assets/images/home/banner_image.png" alt="">
         </div>
     </div>
 
     <div class="info_3">
         <div class="left">
-            <img src="assets/images/banner_image.png" alt="">
+            <img src="assets/images/home/banner_image.png" alt="">
         </div>
         <div class="right">
             <h3>Como cientistas descobrem espécies?</h3>
@@ -46,7 +46,7 @@
 
     <div class="info_4">
         <div class="left">
-            <img src="assets/images/banner_image.png" alt="">
+            <img src="assets/images/home/banner_image.png" alt="">
         </div>
         <div class="right">
             <h3>Importância para entender a Terra</h3>
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <img class="separatio_img" src="assets/images/separation_image2.png" alt="Imagem para separeção">
+    <img class="separatio_img" src="assets/images/home/separation_image2.png" alt="Imagem para separeção">
 </div>
 
 <h2>ESPÉCIES EM DESTAQUE</h2>

@@ -11,7 +11,7 @@
             <a class="nav-item" href="index.php?page=home">HOME</a>
             <a class="nav-item" href="index.php?page=species">ESPÉCIES</a>
             <a class="nav-item" href="index.php?page=period">PERÍODOS</a>
-            <a class="nav-item" href="index.php?page=tax&id=1">TAXONOMIA</a>
+            <a class="nav-item" href="index.php?page=tax&id=1">TIRANOSSAURO</a>
         </div>
     </div>
 

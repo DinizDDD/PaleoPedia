@@ -23,7 +23,7 @@ CREATE TABLE tax (
 
 CREATE TABLE images (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    url VARCHAR(255) NOT NULL,
+    _path VARCHAR(150),
     legenda TEXT
 );
 
@@ -42,6 +42,15 @@ CREATE TABLE geo_time (
     FOREIGN KEY (parent_id) REFERENCES geo_time(id)
 );
 
+CREATE TABLE geotime_images (
+    geotime_id INT,
+    image_id INT,
+    PRIMARY KEY (geotime_id_id, image_id),
+    FOREIGN KEY (geotime_id_id) REFERENCES geo_time(id),
+    FOREIGN KEY (image_id) REFERENCES images(id)
+
+)
+
 CREATE TABLE species (
     id INT AUTO_INCREMENT PRIMARY KEY,
     taxon_id INT,
@@ -57,6 +66,7 @@ CREATE TABLE species (
     comprimento DECIMAL(6,2),
     peso INT,
     discovery_year INT,
+    discovery_local VARCHAR(150),
     image_id INT,
     geotime_id INT,
 

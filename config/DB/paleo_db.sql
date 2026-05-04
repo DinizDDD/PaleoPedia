@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28/04/2026 às 14:08
+-- Tempo de geração: 04/05/2026 às 22:03
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Versão do PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -47,6 +47,13 @@ CREATE TABLE `images` (
   `url` varchar(255) NOT NULL,
   `legenda` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `images`
+--
+
+INSERT INTO `images` (`id`, `url`, `legenda`) VALUES
+(1, 'assets/images/species/tiranosaur_rex01.png', 'Imagem da cabeça de um tiranossauro');
 
 -- --------------------------------------------------------
 
@@ -158,7 +165,7 @@ ALTER TABLE `geo_time`
 -- AUTO_INCREMENT de tabela `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `species`
