@@ -42,17 +42,11 @@ CREATE TABLE geo_time (
     FOREIGN KEY (parent_id) REFERENCES geo_time(id)
 );
 
-CREATE TABLE ecosystem (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    period_id INT,
-
-);
-
 CREATE TABLE geotime_images (
     geotime_id INT,
     image_id INT,
-    PRIMARY KEY (geotime_id_id, image_id),
-    FOREIGN KEY (geotime_id_id) REFERENCES geo_time(id),
+    PRIMARY KEY (geotime_id, image_id),
+    FOREIGN KEY (geotime_id) REFERENCES geo_time(id),
     FOREIGN KEY (image_id) REFERENCES images(id)
 
 )
@@ -76,13 +70,13 @@ CREATE TABLE species (
     discover VARCHAR(150),
     image_id INT,
     geotime_id INT,
-
     FOREIGN KEY (taxon_id) REFERENCES tax(id),
     FOREIGN KEY (image_id) REFERENCES images(id),
     FOREIGN KEY (geotime_id) REFERENCES geo_time(id)
 );
 
 CREATE TABLE species_images (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     species_id INT,
     image_id INT,
     PRIMARY KEY (species_id, image_id),
