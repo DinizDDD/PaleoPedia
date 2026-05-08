@@ -6,7 +6,7 @@ USE paleo_db;
 
 CREATE TABLE tax (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(150) NOT NULL,
+    name VARCHAR(150) NOT NULL,
     slug VARCHAR(150) UNIQUE,
     rank ENUM(
         'reino',
@@ -29,8 +29,8 @@ CREATE TABLE images (
 
 CREATE TABLE geo_time (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100),
-    tipo ENUM(
+    name VARCHAR(100),
+    type ENUM(
         'era',
         'periodo',
         'epoca',
@@ -40,6 +40,12 @@ CREATE TABLE geo_time (
     end_year DECIMAL(8,2),
     parent_id INT,
     FOREIGN KEY (parent_id) REFERENCES geo_time(id)
+);
+
+CREATE TABLE ecosystem (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    period_id INT,
+
 );
 
 CREATE TABLE geotime_images (
@@ -55,18 +61,19 @@ CREATE TABLE species (
     id INT AUTO_INCREMENT PRIMARY KEY,
     taxon_id INT,
     cientific_name VARCHAR(150) UNIQUE,
-    nome VARCHAR(150),
-    autor VARCHAR(150),
-    descricao TEXT,
-    diet ENUM(
-        'carnivore',
-        'herbivore',
-        'omnivorous'
-    ),
-    comprimento DECIMAL(6,2),
-    peso INT,
+    name VARCHAR(150),
+    sumary TEXT,
+    diet VARCHAR(150),
+    length DECIMAL(6,2),
+    height DECIMAL(6,2),
+    weight INT,
+    info1 TEXT,
+    info2 TEXT,
+    info3 TEXT,
     discovery_year INT,
     discovery_local VARCHAR(150),
+    formation VARCHAR(150),
+    discover VARCHAR(150),
     image_id INT,
     geotime_id INT,
 
