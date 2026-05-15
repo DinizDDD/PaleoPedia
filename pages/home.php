@@ -1,11 +1,17 @@
 <div class="banner">
-    <!-- Banner temporário -->
-    <img src="assets/images/home/banner_image.png" alt="Imagem Banner">
+    <img class="banner-image" src="assets/images/home/banner_image.png" alt="Imagem Banner">
 
     <div class="banner-info">
-        <h2>PALEOPEDIA</h2>
+        <div class="banner-logo">
+            <div class="img-div">
+                <img src="assets/images/logo.png" alt="Logo">
+            </div>
+            <div class="text-div">
+                <h2>PALEOPEDIA</h2>
+                <h3>TRANSFORMANDO CONHECIMENTO CIENTÍFICO EM UMA JORNADA PELO PASSADO</h3>
+            </div>
+        </div>
         <p>Explore milhões de anos de história de forma simples, organizada e envolvente, e descubra como a vida evoluiu em nosso planeta ao longo de diferentes eras e transformações naturais. Conheça espécies extintas, os ambientes em que viveram, fósseis raros preservados ao longo do tempo, curiosidades científicas fascinantes e os períodos geológicos que marcaram profundamente a formação, a biodiversidade e a história da Terra.
-        <h4>Paleopedia transforma conhecimento científico em uma jornada pelo passado.</h4>
     </div>
 </div>
 
@@ -57,7 +63,6 @@
     <img class="separatio_img" src="assets/images/home/separation_image2.png" alt="Imagem para separeção">
 </div>
 
-<h2>ESPÉCIES EM DESTAQUE</h2>
 
 
 

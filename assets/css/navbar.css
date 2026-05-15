@@ -10,15 +10,24 @@ nav{
     display: grid;
     grid-template-columns: 120px 1fr 120px;
     align-items:center;
-    background: linear-gradient(91deg, var(--Marrom-Claro) 8%, var(--Marrom) 90%
-);
+    background: linear-gradient(91deg, var(--Marrom-Claro) 8%, var(--Marrom) 90%);
     padding:5px 10px;
 
     .nav-left{
-        img{
-            width: 25%;
+        display: flex;
+        align-items: center;
+
+        .nav-image{
+            display: flex;
+            align-items: center;
+
+            img{
+                width: 6vh;
+                height: auto;
+                display: block;
+            }
         }
-    } 
+    }
 
     .nav-mid{
         display:flex;
