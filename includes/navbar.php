@@ -2,7 +2,7 @@
     <div class="nav-left">
         <div class="nav-image">
             <!-- Logo temporária -->
-            <img src="assets/images/Dinopedia.webp" alt="Logo"> 
+            <img src="assets/images/logo.png" alt="Logo"> 
         </div>
     </div>
 

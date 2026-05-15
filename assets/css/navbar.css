@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+@import url('./variables.css');
 
 *{
     margin:0;
@@ -10,7 +10,8 @@ nav{
     display: grid;
     grid-template-columns: 120px 1fr 120px;
     align-items:center;
-    background: linear-gradient(91deg, rgba(149,59,0,1) 8%, rgba(130,10,2,1) 90%);
+    background: linear-gradient(91deg, var(--Marrom-Claro) 8%, var(--Marrom) 90%
+);
     padding:5px 10px;
 
     .nav-left{
@@ -29,10 +30,10 @@ nav{
 
             .nav-item{
                 text-decoration:none;
-                font-family:"Poppins";
+                font-family: var(--font-secondary);
                 font-weight:300;
                 font-size:20px;
-                color:#FFFBFE;
+                color:var(--Branco);
             }
         }
     }

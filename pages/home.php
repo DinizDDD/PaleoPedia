@@ -14,7 +14,7 @@
 
     <div class="info_1">
         <div class="left">
-            <h3>O que é Paleontologia?</h3>
+            <h3>O QUE É PALEONTOLOGIA?</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quidem dignissimos? Voluptatibus cupiditate iusto eligendi iste assumenda nobis harum. Repellat quaerat, dolor sint magni fuga voluptatum vero blanditiis rerum ad.</p>
         </div>
         <div class="right">
@@ -24,7 +24,7 @@
 
     <div class="info_2">
         <div class="up">
-            <h3>Estudo dos fósseis</h3>
+            <h3>ESTUDO DOS FÓSSEIS</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit cupiditate laborum dolorum libero doloribus! Iure</p>
         </div>
         <div class="down">
@@ -39,7 +39,7 @@
             <img src="assets/images/home/banner_image.png" alt="">
         </div>
         <div class="right">
-            <h3>Como cientistas descobrem espécies?</h3>
+            <h3>COMO CIENTISTAS DESCOBREM ESPÉCIES?</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quidem dignissimos? Voluptatibus cupiditate iusto eligendi iste assumenda nobis harum. Repellat quaerat, dolor sint magni fuga voluptatum vero blanditiis rerum ad.</p>
         </div>
     </div>
@@ -49,7 +49,7 @@
             <img src="assets/images/home/banner_image.png" alt="">
         </div>
         <div class="right">
-            <h3>Importância para entender a Terra</h3>
+            <h3>IMPORTÂNCIA PARA ENTENDER A TERRA</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quidem dignissimos? Voluptatibus cupiditate iusto eligendi iste assumenda nobis harum. Repellat quaerat, dolor sint magni fuga voluptatum vero blanditiis rerum ad.</p>
         </div>
     </div>
