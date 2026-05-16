@@ -50,18 +50,19 @@
         </div>
     </div>
 
-    <div class="info_4">
+    <div class="info_1">
         <div class="left">
-            <img src="assets/images/home/banner_image.png" alt="">
+            <h3>IMPORTÂNCIA PARA A TERRA</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quidem dignissimos? Voluptatibus cupiditate iusto eligendi iste assumenda nobis harum. Repellat quaerat, dolor sint magni fuga voluptatum vero blanditiis rerum ad.</p>
         </div>
         <div class="right">
-            <h3>IMPORTÂNCIA PARA ENTENDER A TERRA</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quidem dignissimos? Voluptatibus cupiditate iusto eligendi iste assumenda nobis harum. Repellat quaerat, dolor sint magni fuga voluptatum vero blanditiis rerum ad.</p>
+            <img src="assets/images/home/banner_image.png" alt="">
         </div>
     </div>
 
     <img class="separatio_img" src="assets/images/home/separation_image2.png" alt="Imagem para separeção">
 </div>
+
 
 
 
