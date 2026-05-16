@@ -21,42 +21,46 @@
     <div class="info_1">
         <div class="left">
             <h3>O QUE É PALEONTOLOGIA?</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quidem dignissimos? Voluptatibus cupiditate iusto eligendi iste assumenda nobis harum. Repellat quaerat, dolor sint magni fuga voluptatum vero blanditiis rerum ad.</p>
+            <p>A paleontologia é a ciência que estuda a vida que existiu na Terra há milhões de anos. Através da análise de fósseis, ossos, pegadas e vestígios preservados nas rochas, os cientistas conseguem compreender como viviam os organismos do passado e como o planeta mudou ao longo do tempo. Além dos dinossauros, essa área também investiga plantas, animais marinhos e diversos outros seres que fizeram parte da história da vida na Terra.</p>
         </div>
         <div class="right">
-            <img src="assets/images/home/banner_image.png" alt="">
+            <img src="assets/images/home/info1_image.jpg" alt="">
         </div>
     </div>
 
     <div class="info_2">
         <div class="up">
             <h3>ESTUDO DOS FÓSSEIS</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit cupiditate laborum dolorum libero doloribus! Iure</p>
+            <p>Os fósseis são registros naturais preservados ao longo de milhões de anos e representam uma das principais fontes de informação sobre a vida pré-histórica. Através deles, os cientistas conseguem identificar espécies extintas, compreender antigos ecossistemas e estudar processos evolutivos que marcaram profundamente a história do planeta. Esses vestígios ajudam a revelar hábitos, características físicas e até possíveis comportamentos de organismos que viveram em diferentes períodos geológicos.</p>
         </div>
         <div class="down">
-            <img src="assets/images/home/banner_image.png" alt="">
-            <img src="assets/images/home/banner_image.png" alt="">
-            <img src="assets/images/home/banner_image.png" alt="">
+            <img src="assets/images/home/info2_image1.jpg" alt="">
+            <img src="assets/images/home/info2_image2.jpg" alt="">
+            <img src="assets/images/home/info2_image3.jpg" alt="">
         </div>
     </div>
 
     <div class="info_3">
         <div class="left">
-            <img src="assets/images/home/banner_image.png" alt="">
+             <img src="assets/images/home/info3_image.jpg" alt="">
         </div>
         <div class="right">
             <h3>COMO CIENTISTAS DESCOBREM ESPÉCIES?</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quidem dignissimos? Voluptatibus cupiditate iusto eligendi iste assumenda nobis harum. Repellat quaerat, dolor sint magni fuga voluptatum vero blanditiis rerum ad.</p>
+            <p>A descoberta de novas espécies envolve anos de pesquisa, escavações e análises detalhadas realizadas por paleontólogos. Os fósseis encontrados passam por processos de limpeza, preservação e estudo em laboratório, onde cada detalhe é cuidadosamente analisado. Os cientistas comparam estruturas ósseas, tamanhos, formatos e características específicas com espécies já conhecidas para identificar possíveis diferenças.
+            <br><br>
+            Além das análises tradicionais, tecnologias modernas como modelagem 3D, tomografias e reconstruções digitais auxiliam na criação de representações mais precisas dos organismos do passado. Esse trabalho permite não apenas descobrir novas espécies, mas também compreender relações evolutivas, mudanças ambientais e adaptações que ocorreram ao longo da história da Terra.</p>
         </div>
     </div>
 
     <div class="info_1">
         <div class="left">
             <h3>IMPORTÂNCIA PARA A TERRA</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, quidem dignissimos? Voluptatibus cupiditate iusto eligendi iste assumenda nobis harum. Repellat quaerat, dolor sint magni fuga voluptatum vero blanditiis rerum ad.</p>
+            <p>O estudo da paleontologia ajuda a compreender as transformações ambientais, climáticas e biológicas que ocorreram ao longo da história da Terra. Através da análise de fósseis e registros geológicos, os cientistas conseguem estudar extinções em massa, mudanças climáticas antigas e eventos naturais que influenciaram diretamente a evolução da vida no planeta.
+            <br>
+            Essas informações contribuem para diversas áreas da ciência e auxiliam pesquisadores a entender melhor os processos naturais que moldaram o mundo ao longo de milhões de anos.</p>
         </div>
         <div class="right">
-            <img src="assets/images/home/banner_image.png" alt="">
+            <img src="assets/images/home/info4_image.jpg" alt="">
         </div>
     </div>
 
