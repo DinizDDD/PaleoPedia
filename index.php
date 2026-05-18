@@ -12,11 +12,7 @@
 
         case 'period':
             $title = 'Paleopedia - Périodos';
-            break;   
-            
-        case 'tax':
-            $title = 'Paleopedia - Taxônomia';
-            break;   
+            break;    
     }
 ?>
 
@@ -43,10 +39,6 @@
 
             case 'period':
                 include('pages/period.php');
-                break;
-            
-            case 'tax':
-                include('pages/tax.php');
                 break;
         }
     ?>

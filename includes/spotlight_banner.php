@@ -1,3 +1,5 @@
+<!-- Não está pronto, aqui eu tava so brincando com o php -->
+
 <?php
 include("config/database.php");
 

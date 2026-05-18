@@ -23,7 +23,7 @@ CREATE TABLE tax (
 
 CREATE TABLE images (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    _path VARCHAR(150),
+    _path VARCHAR(255),
     legenda TEXT
 );
 
@@ -57,17 +57,28 @@ CREATE TABLE species (
     cientific_name VARCHAR(150) UNIQUE,
     name VARCHAR(150),
     sumary TEXT,
-    diet VARCHAR(150),
+    diet ENUM(
+        'carnivoro',
+        'herbivoro',
+        'onivoro',
+        'piscivoro',
+        'insetivoro'
+    )
     length DECIMAL(6,2),
     height DECIMAL(6,2),
     weight INT,
-    info1 TEXT,
-    info2 TEXT,
-    info3 TEXT,
+    behavior TEXT,
+    ecology TEXT,
+    curiosities TEXT,
     discovery_year INT,
     discovery_local VARCHAR(150),
     formation VARCHAR(150),
     discover VARCHAR(150),
+    habitat VARCHAR(150),
+    region VARCHAR(150),
+    biome VARCHAR(150),
+    climate VARCHAR(150),
+    continent VARCHAR(150),
     image_id INT,
     geotime_id INT,
     FOREIGN KEY (taxon_id) REFERENCES tax(id),
@@ -76,10 +87,18 @@ CREATE TABLE species (
 );
 
 CREATE TABLE species_images (
-    id INT AUTO_INCREMENT PRIMARY KEY,
     species_id INT,
     image_id INT,
     PRIMARY KEY (species_id, image_id),
     FOREIGN KEY (species_id) REFERENCES species(id),
     FOREIGN KEY (image_id) REFERENCES images(id)
+);
+
+CREATE TABLE species_relations (
+    species_id INT,
+    related_species_id INT,
+    relation_type ENUM('coexistiu'),
+    PRIMARY KEY (species_id, related_species_id),
+    FOREIGN KEY (species_id) REFERENCES species(id),
+    FOREIGN KEY (related_species_id) REFERENCES species(id)
 );
