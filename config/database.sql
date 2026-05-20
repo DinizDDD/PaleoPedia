@@ -29,6 +29,7 @@ CREATE TABLE images (
 
 CREATE TABLE geo_time (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    slug VARCHAR(150) UNIQUE,
     name VARCHAR(100),
     type ENUM(
         'era',
@@ -56,7 +57,7 @@ CREATE TABLE species (
     taxon_id INT,
     scientific_name VARCHAR(150) UNIQUE,
     name VARCHAR(150),
-    slug VARCHAR(150) UNIQUE
+    slug VARCHAR(150) UNIQUE,
     summary TEXT,
     diet ENUM(
         'carnivoro',
@@ -64,7 +65,7 @@ CREATE TABLE species (
         'onivoro',
         'piscivoro',
         'insetivoro'
-    )
+    ),
     length DECIMAL(6,2),
     height DECIMAL(6,2),
     weight INT,
