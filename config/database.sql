@@ -1,4 +1,4 @@
-DROP DATABASE paleo_db;
+DROP DATABASE IF EXISTS paleo_db;
 
 CREATE DATABASE paleo_db;
 
@@ -18,7 +18,7 @@ CREATE TABLE tax (
     ),
     parent_id INT,
     descricao TEXT,
-    FOREIGN KEY (parent_id) REFERENCES tax(id)
+    FOREIGN KEY (parent_id) REFERENCES tax(id) ON DELETE CASCADE
 );
 
 CREATE TABLE images (
@@ -40,17 +40,16 @@ CREATE TABLE geo_time (
     begin_year DECIMAL(8,2),
     end_year DECIMAL(8,2),
     parent_id INT,
-    FOREIGN KEY (parent_id) REFERENCES geo_time(id)
+    FOREIGN KEY (parent_id) REFERENCES geo_time(id) ON DELETE CASCADE
 );
 
 CREATE TABLE geotime_images (
     geotime_id INT,
     image_id INT,
     PRIMARY KEY (geotime_id, image_id),
-    FOREIGN KEY (geotime_id) REFERENCES geo_time(id),
-    FOREIGN KEY (image_id) REFERENCES images(id)
-
-)
+    FOREIGN KEY (geotime_id) REFERENCES geo_time(id) ON DELETE CASCADE,
+    FOREIGN KEY (image_id) REFERENCES images(id) ON DELETE CASCADE
+);
 
 CREATE TABLE species (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -75,7 +74,7 @@ CREATE TABLE species (
     discovery_year INT,
     discovery_local VARCHAR(150),
     formation VARCHAR(150),
-    discover VARCHAR(150),
+    discovered_by VARCHAR(150),
     habitat VARCHAR(150),
     region VARCHAR(150),
     biome VARCHAR(150),
@@ -83,17 +82,17 @@ CREATE TABLE species (
     continent VARCHAR(150),
     image_id INT,
     geotime_id INT,
-    FOREIGN KEY (taxon_id) REFERENCES tax(id),
-    FOREIGN KEY (image_id) REFERENCES images(id),
-    FOREIGN KEY (geotime_id) REFERENCES geo_time(id)
+    FOREIGN KEY (taxon_id) REFERENCES tax(id) ON DELETE CASCADE,
+    FOREIGN KEY (image_id) REFERENCES images(id) ON DELETE CASCADE,
+    FOREIGN KEY (geotime_id) REFERENCES geo_time(id) ON DELETE CASCADE
 );
 
 CREATE TABLE species_images (
     species_id INT,
     image_id INT,
     PRIMARY KEY (species_id, image_id),
-    FOREIGN KEY (species_id) REFERENCES species(id),
-    FOREIGN KEY (image_id) REFERENCES images(id)
+    FOREIGN KEY (species_id) REFERENCES species(id) ON DELETE CASCADE,
+    FOREIGN KEY (image_id) REFERENCES images(id) ON DELETE CASCADE
 );
 
 CREATE TABLE species_relations (
@@ -101,6 +100,6 @@ CREATE TABLE species_relations (
     related_species_id INT,
     relation_type ENUM('coexistiu'),
     PRIMARY KEY (species_id, related_species_id),
-    FOREIGN KEY (species_id) REFERENCES species(id),
-    FOREIGN KEY (related_species_id) REFERENCES species(id)
+    FOREIGN KEY (species_id) REFERENCES species(id) ON DELETE CASCADE,
+    FOREIGN KEY (related_species_id) REFERENCES species(id) ON DELETE CASCADE
 );
