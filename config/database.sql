@@ -54,9 +54,10 @@ CREATE TABLE geotime_images (
 CREATE TABLE species (
     id INT AUTO_INCREMENT PRIMARY KEY,
     taxon_id INT,
-    cientific_name VARCHAR(150) UNIQUE,
+    scientific_name VARCHAR(150) UNIQUE,
     name VARCHAR(150),
-    sumary TEXT,
+    slug VARCHAR(150) UNIQUE
+    summary TEXT,
     diet ENUM(
         'carnivoro',
         'herbivoro',
