@@ -1,0 +1,158 @@
+.species-section{
+    width: 100%;
+
+    padding:
+    140px 8% 80px;
+}
+
+.species-title-area{
+    margin-bottom: 50px;
+}
+
+.species-title-area h1{
+    color: white;
+
+    font-size: 3rem;
+
+    margin-bottom: 10px;
+}
+
+.species-title-area p{
+    color: #9e9e9e;
+
+    font-size: 1.1rem;
+}
+
+.species-grid{
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(320px, 1fr));
+
+    gap: 30px;
+}
+
+.species-link{
+    text-decoration: none;
+}
+
+.species-card{
+    width: 100%;
+
+    min-height: 560px;
+
+    background:
+    linear-gradient(
+        180deg,
+        #111111 0%,
+        #1a120d 100%
+    );
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    transition: 0.3s ease;
+
+    border:
+    1px solid rgba(255,255,255,0.05);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.45);
+}
+
+.species-card:hover{
+    transform: translateY(-10px);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.6);
+}
+
+.species-image{
+    width: 100%;
+    height: 300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.species-image img{
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    filter:
+    drop-shadow(
+        0 10px 20px rgba(0,0,0,0.6)
+    );
+}
+
+.species-content{
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+.species-title h2{
+    color: white;
+
+    font-size: 2rem;
+    font-weight: 800;
+
+    line-height: 100%;
+}
+
+.species-title h3{
+    color: #b6a08b;
+
+    font-size: 1rem;
+    font-style: italic;
+
+    margin-top: 6px;
+}
+
+.species-info{
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.info-item{
+    background:
+    rgba(255,255,255,0.04);
+
+    border:
+    1px solid rgba(255,255,255,0.05);
+
+    border-radius: 14px;
+
+    padding: 14px 16px;
+}
+
+.info-item span{
+    color: #9b7b63;
+
+    font-size: 0.8rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.info-item p{
+    color: white;
+
+    margin-top: 5px;
+
+    font-size: 1rem;
+}
