@@ -1,2 +1,1 @@
-<H1>ESPÉCIES</H1>
-
+<?php include('includes/card.php'); ?>

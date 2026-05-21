@@ -1,56 +1,33 @@
-<!-- Não está pronto, aqui eu tava so brincando com o php -->
+<?php 
 
-<?php
-include("config/database.php");
+include('config/database.php');
 
-$id = $_GET['id'] ?? null;
+$sql = "
+SELECT
+    species.id
+    species.name
+    species.scientific.name
+    species.diet
+    species.continent
 
-if ($id) {
+    images._path AS image_path
+    geo_time.name AS period_name
 
-    $sql = $conn->prepare("SELECT * FROM tax WHERE id = ?");
-    $sql->execute([$id]);
+FROM species
 
-    $tax = $sql->fetch(PDO::FETCH_ASSOC);
+LEFT JOIN images
+ON species.image.id = images.id
 
-    if ($tax) {
-?>
-        <h1><?php echo $tax['id']; ?></h1>
-        <h1><?php echo $tax['nome']; ?></h1>
-        <h3><?php echo $tax['slug']; ?></h3>
-        <h3><?php echo $tax['rank']; ?></h3>
-        <h3><?php echo $tax['parent_id']; ?></h3>
-        <p><?php echo $tax['descricao']; ?></p>
+LEFT JOIN geo_time
+ON species.geotime_id = geo_time.id
+";
 
-<?php
-    } else {
-        echo "Taxonomia não encontrada.";
-    }
-
-} else {
-    echo "ID não informado.";
-}
-
-if ($id) {
-
-    $sql = $conn->prepare("SELECT * FROM images WHERE id = ?");
-    $sql->execute([$id]);
-
-    $images = $sql->fetch(PDO::FETCH_ASSOC);
-
-    if ($images) {
-?>
-        <h1><?php echo $images['id']; ?></h1>
-        <img src=<?php echo $images['url'] ?> alt="<?php echo $images['legenda']?>">
-
-<?php
-    } else {
-        echo "Taxonomia não encontrada.";
-    }
-
-} else {
-    echo "ID não informado.";
-}
-
-
+$result = $conn->query($sql);
 
 ?>
+
+<section class="spotlight_banner">
+    <div class="spotlight-div">
+        <a href="index.php?page=specie$&slug=<?= $species['slug']; ?>">ola</a>
+    </div>
+</section>
