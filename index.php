@@ -24,7 +24,8 @@
     <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/home.css">
-    <link rel="stylesheet" href="assets/css/species.css">
+    <link rel="stylesheet" href="assets/css/card.css">
+    <link rel="stylesheet" href="assets/css/spotlight_banner.css">
 </head>
 <body>
     <?php require 'includes/navbar.php';
