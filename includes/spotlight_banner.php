@@ -9,6 +9,7 @@ SELECT
     species.scientific_name,
     species.diet,
     species.continent,
+    species.summary,
 
     images._path AS image_path,
     geo_time.name AS period_name
@@ -24,17 +25,22 @@ ON species.geotime_id = geo_time.id
 
 $result = $conn->query($sql);
 
+
 ?>
 
 <section class='spotlight_banner'>
     <h1>ESPÉCIES EM DESTAQUE</h1>
 
-    <div class='spotlight-div'>
-        <div class="text">
-            <h2>TIRANOSSAURO REX</h2>
-            <h2 class="scientific-h2">TYRANNOSAURUS REX</h2>
-            <h4>CRETÁCEO SUPERIOR | CARNÍVORO</h4>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime explicabo eligendi exercitationem laboriosam quidem mollitia ut! Porro, asperiores a repudiandae mollitia accusantium esse qui voluptates magni alias nesciunt, optio officia.</p>
+    <?php while($species = $result->fetch(PDO::FETCH_ASSOC)) { ?>
+    <a href="#">
+        <div class='spotlight-div'>
+            <div class="text">
+                <h2><?= mb_strtoupper($species['name']); ?></h2>
+                <h2 class="scientific-h2"><?= mb_strtoupper($species['scientific_name']); ?></h2>
+                <h4> <?= mb_strtoupper($species['diet']); ?> | <?= mb_strtoupper($species['period_name']);?> | <?= mb_strtoupper($species['continent']); ?></h4>
+                <p><?=  ($species['summary']); ?></p>
+            </div>
         </div>
-    </div>
+    </a>
+    <?php } ?>
 </section>

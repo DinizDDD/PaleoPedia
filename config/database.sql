@@ -59,11 +59,11 @@ CREATE TABLE species (
     slug VARCHAR(150) UNIQUE,
     summary TEXT,
     diet ENUM(
-        'carnivoro',
-        'herbivoro',
-        'onivoro',
-        'piscivoro',
-        'insetivoro'
+        'carnívoro',
+        'herbívoro',
+        'onívoro',
+        'piscívoro',
+        'insetívoro'
     ),
     length DECIMAL(6,2),
     height DECIMAL(6,2),
