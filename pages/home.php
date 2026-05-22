@@ -67,6 +67,8 @@
     <img class="separatio_img" src="assets/images/home/separation_image2.png" alt="Imagem para separeção">
 </div>
 
+<?php include('includes/spotlight_banner.php') ?>
+
 
 
 
