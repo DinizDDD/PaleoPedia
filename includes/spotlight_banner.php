@@ -21,26 +21,32 @@ ON species.image_id = images.id
 
 LEFT JOIN geo_time
 ON species.geotime_id = geo_time.id
+
+ORDER BY RAND()
+LIMIT 3
 ";
 
 $result = $conn->query($sql);
-
-
 ?>
 
-<section class='spotlight_banner'>
+<section class="spotlight_banner">
     <h1>ESPÉCIES EM DESTAQUE</h1>
-
-    <?php while($species = $result->fetch(PDO::FETCH_ASSOC)) { ?>
-    <a href="#">
-        <div class='spotlight-div'>
-            <div class="text">
-                <h2><?= mb_strtoupper($species['name']); ?></h2>
-                <h2 class="scientific-h2"><?= mb_strtoupper($species['scientific_name']); ?></h2>
-                <h4> <?= mb_strtoupper($species['diet']); ?> | <?= mb_strtoupper($species['period_name']);?> | <?= mb_strtoupper($species['continent']); ?></h4>
-                <p><?=  ($species['summary']); ?></p>
-            </div>
+    <div class="carousel-container">
+        <div class="carousel">
+            <?php while($species = $result->fetch(PDO::FETCH_ASSOC)) { ?>
+                <div class="slide">
+                    <a href="#">
+                        <div class="spotlight-div" style="background-image:url('<?= $species['image_path']; ?>')">
+                            <div class="text">
+                                <h2><?= mb_strtoupper($species['name']); ?></h2>
+                                <h2 class="scientific-h2"><?= mb_strtoupper($species['scientific_name']); ?> </h2>
+                                <h4> <?= mb_strtoupper($species['diet']); ?> | <?= mb_strtoupper($species['period_name']); ?> | <?= mb_strtoupper($species['continent']); ?> </h4>
+                                <p><?= $species['summary']; ?></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <?php } ?>
         </div>
-    </a>
-    <?php } ?>
+    </div>
 </section>

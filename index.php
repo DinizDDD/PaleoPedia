@@ -44,5 +44,7 @@
                 break;
         }
     ?>
+
+    <script src="assets/js/spotlight_carousel.js"></script>
 </body>
 </html>
