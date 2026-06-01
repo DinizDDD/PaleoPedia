@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01/06/2026 às 19:06
+-- Tempo de geração: 01/06/2026 às 22:02
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -74,11 +74,9 @@ CREATE TABLE `images` (
 
 INSERT INTO `images` (`id`, `_path`, `legenda`) VALUES
 (1, 'assets/images/species/trex-main.png', 'Reconstrução artística do Tyrannosaurus rex'),
-(2, 'assets/images/species/trex-skeleton.png', 'Esqueleto fossilizado de Tyrannosaurus rex'),
-(3, 'assets/images/species/trex-size.png', 'Comparação de tamanho entre um Tyrannosaurus rex e um humano'),
 (4, 'assets/images/species/triceratops-main.png', 'Reconstrução artística do Tricerátops'),
-(5, 'assets/images/species/triceratops-skeleton.png', 'Esqueleto fossilizado de Tricerátops'),
-(6, 'assets/images/species/triceratops-size.png', 'Comparação de tamanho entre um Tricerátops e um humano');
+(7, 'assets/images/species/velociraptor-main.png', 'Reconstrução artística do Velociraptor'),
+(10, 'assets/images/species/ankylosaurus-main.png', 'Reconstrução artística do Ankylosaurus');
 
 -- --------------------------------------------------------
 
@@ -119,7 +117,9 @@ CREATE TABLE `species` (
 
 INSERT INTO `species` (`id`, `taxon_id`, `scientific_name`, `name`, `slug`, `summary`, `diet`, `length`, `height`, `weight`, `behavior`, `ecology`, `curiosities`, `discovery_year`, `discovery_local`, `formation`, `discovered_by`, `habitat`, `region`, `biome`, `climate`, `continent`, `image_id`, `geotime_id`) VALUES
 (1, 6, 'Tyrannosaurus rex', 'Tiranossauro Rex', 'tyrannosaurus-rex', 'O Tyrannosaurus rex foi um dos maiores predadores terrestres da história. Viveu no final do período Cretáceo e possuía mandíbula extremamente poderosa, dentes serrilhados e sentidos muito desenvolvidos.', 'carnívoro', 12.30, 4.00, 9000, 'Provavelmente era um predador ativo, mas também poderia se alimentar de carcaças.', 'Habitava ambientes florestais e planícies alagadas próximas a rios.', 'Seu nome significa \"rei dos lagartos tiranos\". É um dos dinossauros mais famosos do mundo.', 1902, 'Montana, Estados Unidos', 'Hell Creek Formation', 'Barnum Brown', 'Florestas subtropicais e planícies úmidas', 'América do Norte', 'Florestal', 'Subtropical', 'América do Norte', 1, 2),
-(2, 12, 'Triceratops horridus', 'Tricerátops', 'triceratops', 'O Tricerátops foi um dos maiores dinossauros herbívoros do final do Cretáceo. Possuía três chifres e uma grande gola óssea que provavelmente servia para defesa, exibição visual e reconhecimento entre indivíduos da mesma espécie.', 'herbívoro', 9.00, 3.00, 12000, 'Possivelmente vivia em grupos e utilizava seus chifres para defesa contra predadores e disputas entre membros da espécie.', 'Alimentava-se de vegetação rasteira, arbustos e samambaias em ambientes de planícies aluviais.', 'É um dos dinossauros mais conhecidos e frequentemente encontrado nos mesmos depósitos fossilíferos do Tyrannosaurus rex.', 1887, 'Colorado, Estados Unidos', 'Lance Formation', 'Othniel Charles Marsh', 'Planícies abertas e florestas subtropicais', 'América do Norte Ocidental', 'Florestal e Campestre', 'Subtropical', 'América do Norte', 4, 2);
+(2, 12, 'Triceratops horridus', 'Tricerátops', 'triceratops', 'O Tricerátops foi um dos maiores dinossauros herbívoros do final do Cretáceo. Possuía três chifres e uma grande gola óssea que provavelmente servia para defesa, exibição visual e reconhecimento entre indivíduos da mesma espécie.', 'herbívoro', 9.00, 3.00, 12000, 'Possivelmente vivia em grupos e utilizava seus chifres para defesa contra predadores e disputas entre membros da espécie.', 'Alimentava-se de vegetação rasteira, arbustos e samambaias em ambientes de planícies aluviais.', 'É um dos dinossauros mais conhecidos e frequentemente encontrado nos mesmos depósitos fossilíferos do Tyrannosaurus rex.', 1887, 'Colorado, Estados Unidos', 'Lance Formation', 'Othniel Charles Marsh', 'Planícies abertas e florestas subtropicais', 'América do Norte Ocidental', 'Florestal e Campestre', 'Subtropical', 'América do Norte', 4, 2),
+(3, 14, 'Velociraptor mongoliensis', 'Velociraptor', 'velociraptor', 'O Velociraptor foi um pequeno dinossauro carnívoro coberto por penas que viveu durante o final do Cretáceo. Apesar de sua fama nos filmes, era muito menor do que geralmente é retratado.', 'carnívoro', 2.00, 0.70, 15, 'Provavelmente caçava pequenos vertebrados utilizando sua velocidade, inteligência e a grande garra curva presente nos pés.', 'Habitava ambientes áridos e semiáridos compostos por dunas e planícies secas.', 'Fósseis encontrados mostram evidências diretas de combate entre Velociraptor e Protoceratops.', 1923, 'Deserto de Gobi, Mongólia', 'Djadochta Formation', 'Peter Kaisen', 'Desertos e regiões semiáridas', 'Ásia Central', 'Desértico', 'Árido', 'Ásia', 7, 2),
+(4, 17, 'Ankylosaurus magniventris', 'Anquilossauro', 'ankylosaurus', 'O Ankylosaurus foi um grande dinossauro herbívoro blindado que viveu durante o final do período Cretáceo. Seu corpo era protegido por placas ósseas e possuía uma poderosa clava na ponta da cauda.', 'herbívoro', 8.00, 1.70, 6000, 'Possivelmente vivia de forma solitária ou em pequenos grupos, utilizando sua armadura para se defender de grandes predadores.', 'Alimentava-se de vegetação rasteira encontrada em áreas florestadas e planícies úmidas.', 'Sua clava caudal poderia gerar impactos extremamente fortes contra predadores.', 1906, 'Montana, Estados Unidos', 'Hell Creek Formation', 'Barnum Brown', 'Planícies úmidas e florestas', 'América do Norte Ocidental', 'Florestal', 'Subtropical', 'América do Norte', 10, 2);
 
 -- --------------------------------------------------------
 
@@ -138,11 +138,9 @@ CREATE TABLE `species_images` (
 
 INSERT INTO `species_images` (`species_id`, `image_id`) VALUES
 (1, 1),
-(1, 2),
-(1, 3),
 (2, 4),
-(2, 5),
-(2, 6);
+(3, 7),
+(4, 10);
 
 -- --------------------------------------------------------
 
@@ -195,7 +193,12 @@ INSERT INTO `tax` (`id`, `name`, `slug`, `rank`, `parent_id`, `descricao`) VALUE
 (9, 'Ornithischia', 'ornithischia', 'ordem', 7, 'Dinossauros com quadril semelhante ao das aves'),
 (10, 'Ceratopsia', 'ceratopsia', 'familia', 9, 'Grupo de dinossauros herbívoros com bicos e chifres'),
 (11, 'Ceratopsidae', 'ceratopsidae', 'familia', 10, 'Família dos grandes dinossauros ceratopsianos'),
-(12, 'Triceratops', 'triceratops', 'genero', 11, 'Gênero dos Tricerátops');
+(12, 'Triceratops', 'triceratops', 'genero', 11, 'Gênero dos Tricerátops'),
+(13, 'Dromaeosauridae', 'dromaeosauridae', 'familia', 8, 'Família dos dinossauros dromeossaurídeos, conhecidos por sua agilidade e garras especializadas'),
+(14, 'Velociraptor', 'velociraptor', 'genero', 13, 'Gênero dos Velociraptores'),
+(15, 'Ankylosauria', 'ankylosauria', 'familia', 9, 'Grupo de dinossauros blindados'),
+(16, 'Ankylosauridae', 'ankylosauridae', 'familia', 15, 'Família dos anquilossaurídeos'),
+(17, 'Ankylosaurus', 'ankylosaurus', 'genero', 16, 'Gênero do Ankylosaurus');
 
 --
 -- Índices para tabelas despejadas
@@ -269,19 +272,19 @@ ALTER TABLE `geo_time`
 -- AUTO_INCREMENT de tabela `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `species`
 --
 ALTER TABLE `species`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `tax`
 --
 ALTER TABLE `tax`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restrições para tabelas despejadas
