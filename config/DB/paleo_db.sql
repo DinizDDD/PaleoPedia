@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22/05/2026 às 22:01
+-- Tempo de geração: 01/06/2026 às 19:06
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -75,7 +75,10 @@ CREATE TABLE `images` (
 INSERT INTO `images` (`id`, `_path`, `legenda`) VALUES
 (1, 'assets/images/species/trex-main.png', 'Reconstrução artística do Tyrannosaurus rex'),
 (2, 'assets/images/species/trex-skeleton.png', 'Esqueleto fossilizado de Tyrannosaurus rex'),
-(3, 'assets/images/species/trex-size.png', 'Comparação de tamanho entre um Tyrannosaurus rex e um humano');
+(3, 'assets/images/species/trex-size.png', 'Comparação de tamanho entre um Tyrannosaurus rex e um humano'),
+(4, 'assets/images/species/triceratops-main.png', 'Reconstrução artística do Tricerátops'),
+(5, 'assets/images/species/triceratops-skeleton.png', 'Esqueleto fossilizado de Tricerátops'),
+(6, 'assets/images/species/triceratops-size.png', 'Comparação de tamanho entre um Tricerátops e um humano');
 
 -- --------------------------------------------------------
 
@@ -115,7 +118,8 @@ CREATE TABLE `species` (
 --
 
 INSERT INTO `species` (`id`, `taxon_id`, `scientific_name`, `name`, `slug`, `summary`, `diet`, `length`, `height`, `weight`, `behavior`, `ecology`, `curiosities`, `discovery_year`, `discovery_local`, `formation`, `discovered_by`, `habitat`, `region`, `biome`, `climate`, `continent`, `image_id`, `geotime_id`) VALUES
-(1, 6, 'Tyrannosaurus rex', 'Tiranossauro Rex', 'tyrannosaurus-rex', 'O Tyrannosaurus rex foi um dos maiores predadores terrestres da história. Viveu no final do período Cretáceo e possuía mandíbula extremamente poderosa, dentes serrilhados e sentidos muito desenvolvidos.', 'carnívoro', 12.30, 4.00, 9000, 'Provavelmente era um predador ativo, mas também poderia se alimentar de carcaças.', 'Habitava ambientes florestais e planícies alagadas próximas a rios.', 'Seu nome significa \"rei dos lagartos tiranos\". É um dos dinossauros mais famosos do mundo.', 1902, 'Montana, Estados Unidos', 'Hell Creek Formation', 'Barnum Brown', 'Florestas subtropicais e planícies úmidas', 'América do Norte', 'Florestal', 'Subtropical', 'América do Norte', 1, 2);
+(1, 6, 'Tyrannosaurus rex', 'Tiranossauro Rex', 'tyrannosaurus-rex', 'O Tyrannosaurus rex foi um dos maiores predadores terrestres da história. Viveu no final do período Cretáceo e possuía mandíbula extremamente poderosa, dentes serrilhados e sentidos muito desenvolvidos.', 'carnívoro', 12.30, 4.00, 9000, 'Provavelmente era um predador ativo, mas também poderia se alimentar de carcaças.', 'Habitava ambientes florestais e planícies alagadas próximas a rios.', 'Seu nome significa \"rei dos lagartos tiranos\". É um dos dinossauros mais famosos do mundo.', 1902, 'Montana, Estados Unidos', 'Hell Creek Formation', 'Barnum Brown', 'Florestas subtropicais e planícies úmidas', 'América do Norte', 'Florestal', 'Subtropical', 'América do Norte', 1, 2),
+(2, 12, 'Triceratops horridus', 'Tricerátops', 'triceratops', 'O Tricerátops foi um dos maiores dinossauros herbívoros do final do Cretáceo. Possuía três chifres e uma grande gola óssea que provavelmente servia para defesa, exibição visual e reconhecimento entre indivíduos da mesma espécie.', 'herbívoro', 9.00, 3.00, 12000, 'Possivelmente vivia em grupos e utilizava seus chifres para defesa contra predadores e disputas entre membros da espécie.', 'Alimentava-se de vegetação rasteira, arbustos e samambaias em ambientes de planícies aluviais.', 'É um dos dinossauros mais conhecidos e frequentemente encontrado nos mesmos depósitos fossilíferos do Tyrannosaurus rex.', 1887, 'Colorado, Estados Unidos', 'Lance Formation', 'Othniel Charles Marsh', 'Planícies abertas e florestas subtropicais', 'América do Norte Ocidental', 'Florestal e Campestre', 'Subtropical', 'América do Norte', 4, 2);
 
 -- --------------------------------------------------------
 
@@ -135,7 +139,10 @@ CREATE TABLE `species_images` (
 INSERT INTO `species_images` (`species_id`, `image_id`) VALUES
 (1, 1),
 (1, 2),
-(1, 3);
+(1, 3),
+(2, 4),
+(2, 5),
+(2, 6);
 
 -- --------------------------------------------------------
 
@@ -148,6 +155,14 @@ CREATE TABLE `species_relations` (
   `related_species_id` int(11) NOT NULL,
   `relation_type` enum('coexistiu') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `species_relations`
+--
+
+INSERT INTO `species_relations` (`species_id`, `related_species_id`, `relation_type`) VALUES
+(1, 2, 'coexistiu'),
+(2, 1, 'coexistiu');
 
 -- --------------------------------------------------------
 
@@ -173,8 +188,14 @@ INSERT INTO `tax` (`id`, `name`, `slug`, `rank`, `parent_id`, `descricao`) VALUE
 (2, 'Chordata', 'chordata', 'filo', 1, 'Filo dos animais com corda dorsal'),
 (3, 'Reptilia', 'reptilia', 'classe', 2, 'Classe dos répteis'),
 (4, 'Saurischia', 'saurischia', 'ordem', 3, 'Ordem dos dinossauros de quadril semelhante ao de lagartos'),
-(5, 'Tyrannosauridae', 'tyrannosauridae', 'familia', 4, 'Família dos grandes dinossauros carnívoros'),
-(6, 'Tyrannosaurus', 'tyrannosaurus', 'genero', 5, 'Gênero do Tyrannosaurus rex');
+(5, 'Tyrannosauridae', 'tyrannosauridae', 'familia', 8, 'Família dos grandes dinossauros carnívoros'),
+(6, 'Tyrannosaurus', 'tyrannosaurus', 'genero', 5, 'Gênero do Tyrannosaurus rex'),
+(7, 'Dinosauria', 'dinosauria', 'ordem', 3, 'Clado que reúne todos os dinossauros'),
+(8, 'Theropoda', 'theropoda', 'familia', 7, 'Grupo de dinossauros bípedes predominantemente carnívoros'),
+(9, 'Ornithischia', 'ornithischia', 'ordem', 7, 'Dinossauros com quadril semelhante ao das aves'),
+(10, 'Ceratopsia', 'ceratopsia', 'familia', 9, 'Grupo de dinossauros herbívoros com bicos e chifres'),
+(11, 'Ceratopsidae', 'ceratopsidae', 'familia', 10, 'Família dos grandes dinossauros ceratopsianos'),
+(12, 'Triceratops', 'triceratops', 'genero', 11, 'Gênero dos Tricerátops');
 
 --
 -- Índices para tabelas despejadas
@@ -248,19 +269,19 @@ ALTER TABLE `geo_time`
 -- AUTO_INCREMENT de tabela `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `species`
 --
 ALTER TABLE `species`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `tax`
 --
 ALTER TABLE `tax`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restrições para tabelas despejadas
