@@ -45,6 +45,6 @@
         }
     ?>
 
-    <script src="assets/js/spotlight_carousel.js"></script>
+    <script src="assets/js/spotlight_banner.js"></script>
 </body>
 </html>

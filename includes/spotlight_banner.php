@@ -32,6 +32,10 @@ $result = $conn->query($sql);
 <section class="spotlight_banner">
     <h1>ESPÉCIES EM DESTAQUE</h1>
     <div class="carousel-container">
+        
+        <button class="carousel-btn prev-btn">&#10094;</button>
+        <button class="carousel-btn next-btn">&#10095;</button>
+
         <div class="carousel">
             <?php while($species = $result->fetch(PDO::FETCH_ASSOC)) { ?>
                 <div class="slide">
