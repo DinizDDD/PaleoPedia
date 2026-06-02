@@ -69,6 +69,36 @@
 
 <?php include('includes/spotlight_banner.php') ?>
 
+<section class="Links">
+    <div class="left">
+        <div class="link-container">
+            <a class="nav-item" href="index.php?page=period">PERÍODOS</a>
+        </div>
+    </div>
+    <div class="right">
+        <div class="link-container">
+            <a class="nav-item" href="index.php?page=species">ESPÉCIES</a>
+        </div>
+    </div>
+
+     <?php
+        switch($page) {
+            
+            case 'species':
+                include('pages/species.php');
+                break;
+
+            case 'period':
+                include('pages/period.php');
+                break;
+        }
+    ?>
+</section>
+
+
+
+
+
 
 
 

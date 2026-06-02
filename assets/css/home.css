@@ -220,6 +220,27 @@ body{
     }
 }
 
+.Links{
+    display: flex;
+    width: 90%;
+    margin: auto;
+    align-items: center;
+
+    .left, right{
+        display: flex;
+        width: 50%;
+
+        .link-container{
+            width: 20%;
+            align-items: center;
+            margin: auto;
+        }
+
+    }
+
+
+}
+
 /* ========================= */
 /* RESPONSIVIDADE */
 /* ========================= */
