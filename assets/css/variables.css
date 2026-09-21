@@ -1,19 +1,21 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-    :root {
-    /* Cores */
+:root {
     --Preto: #000000;
     --Marrom-Escuro: #3B0D0D;
     --Marrom: #7A0F0F;
     --Marrom-Claro: #953B00;
     --Laranja: #FFA62B;
     --Bege: #E8D5C4;
-    --Branco: #ffffff;
-
+    --Branco: #F1F1F1;
+    
+    --Cinza-Fundo: #1E1E1E;      
+    --Cinza-Card: #262626;      
+    --Cinza-Input: #141414;     
+    --Borda-Cinza: #3A3A3A;      
+    
     /* Fontes */
     --font-primary: 'Poppins', sans-serif;
     --font-secondary: 'Montserrat', sans-serif;
-
-    
 }

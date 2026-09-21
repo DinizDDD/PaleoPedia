@@ -22,10 +22,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="assets/css/navbar.css">
-    <link rel="stylesheet" href="assets/css/home.css">
-    <link rel="stylesheet" href="assets/css/card.css">
-    <link rel="stylesheet" href="assets/css/spotlight_banner.css">
+<link rel="stylesheet" href="assets/css/variables.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="assets/css/navbar.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="assets/css/home.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="assets/css/card.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="assets/css/spotlight_banner.css?v=<?= time(); ?>">
 </head>
 <body>
     <?php require 'includes/navbar.php';
