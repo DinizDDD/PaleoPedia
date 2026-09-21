@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01/06/2026 às 22:02
+-- Tempo de geração: 21/09/2026 às 14:32
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -54,7 +54,9 @@ CREATE TABLE `geo_time` (
 
 INSERT INTO `geo_time` (`id`, `slug`, `name`, `type`, `begin_year`, `end_year`, `parent_id`) VALUES
 (1, 'cretaceo', 'Cretáceo', 'periodo', 145.00, 66.00, NULL),
-(2, 'cretaceo-superior', 'Cretáceo Superior', 'epoca', 100.50, 66.00, 1);
+(2, 'cretaceo-superior', 'Cretáceo Superior', 'epoca', 100.50, 66.00, 1),
+(3, 'permiano', 'Permiano', 'periodo', 298.90, 251.90, NULL),
+(4, 'pleistoceno', 'Pleistoceno', 'epoca', 2.58, 0.01, NULL);
 
 -- --------------------------------------------------------
 
@@ -76,7 +78,9 @@ INSERT INTO `images` (`id`, `_path`, `legenda`) VALUES
 (1, 'assets/images/species/trex-main.png', 'Reconstrução artística do Tyrannosaurus rex'),
 (4, 'assets/images/species/triceratops-main.png', 'Reconstrução artística do Tricerátops'),
 (7, 'assets/images/species/velociraptor-main.png', 'Reconstrução artística do Velociraptor'),
-(10, 'assets/images/species/ankylosaurus-main.png', 'Reconstrução artística do Ankylosaurus');
+(10, 'assets/images/species/ankylosaurus-main.png', 'Reconstrução artística do Ankylosaurus'),
+(13, 'assets/images/species/mamute-main.png', 'Reconstrução artística do Mammuthus primigenius'),
+(14, 'assets/images/species/diplocaulus-main.png', 'Reconstrução artística do Diplocaulus magnicornis');
 
 -- --------------------------------------------------------
 
@@ -119,7 +123,9 @@ INSERT INTO `species` (`id`, `taxon_id`, `scientific_name`, `name`, `slug`, `sum
 (1, 6, 'Tyrannosaurus rex', 'Tiranossauro Rex', 'tyrannosaurus-rex', 'O Tyrannosaurus rex foi um dos maiores predadores terrestres da história. Viveu no final do período Cretáceo e possuía mandíbula extremamente poderosa, dentes serrilhados e sentidos muito desenvolvidos.', 'carnívoro', 12.30, 4.00, 9000, 'Provavelmente era um predador ativo, mas também poderia se alimentar de carcaças.', 'Habitava ambientes florestais e planícies alagadas próximas a rios.', 'Seu nome significa \"rei dos lagartos tiranos\". É um dos dinossauros mais famosos do mundo.', 1902, 'Montana, Estados Unidos', 'Hell Creek Formation', 'Barnum Brown', 'Florestas subtropicais e planícies úmidas', 'América do Norte', 'Florestal', 'Subtropical', 'América do Norte', 1, 2),
 (2, 12, 'Triceratops horridus', 'Tricerátops', 'triceratops', 'O Tricerátops foi um dos maiores dinossauros herbívoros do final do Cretáceo. Possuía três chifres e uma grande gola óssea que provavelmente servia para defesa, exibição visual e reconhecimento entre indivíduos da mesma espécie.', 'herbívoro', 9.00, 3.00, 12000, 'Possivelmente vivia em grupos e utilizava seus chifres para defesa contra predadores e disputas entre membros da espécie.', 'Alimentava-se de vegetação rasteira, arbustos e samambaias em ambientes de planícies aluviais.', 'É um dos dinossauros mais conhecidos e frequentemente encontrado nos mesmos depósitos fossilíferos do Tyrannosaurus rex.', 1887, 'Colorado, Estados Unidos', 'Lance Formation', 'Othniel Charles Marsh', 'Planícies abertas e florestas subtropicais', 'América do Norte Ocidental', 'Florestal e Campestre', 'Subtropical', 'América do Norte', 4, 2),
 (3, 14, 'Velociraptor mongoliensis', 'Velociraptor', 'velociraptor', 'O Velociraptor foi um pequeno dinossauro carnívoro coberto por penas que viveu durante o final do Cretáceo. Apesar de sua fama nos filmes, era muito menor do que geralmente é retratado.', 'carnívoro', 2.00, 0.70, 15, 'Provavelmente caçava pequenos vertebrados utilizando sua velocidade, inteligência e a grande garra curva presente nos pés.', 'Habitava ambientes áridos e semiáridos compostos por dunas e planícies secas.', 'Fósseis encontrados mostram evidências diretas de combate entre Velociraptor e Protoceratops.', 1923, 'Deserto de Gobi, Mongólia', 'Djadochta Formation', 'Peter Kaisen', 'Desertos e regiões semiáridas', 'Ásia Central', 'Desértico', 'Árido', 'Ásia', 7, 2),
-(4, 17, 'Ankylosaurus magniventris', 'Anquilossauro', 'ankylosaurus', 'O Ankylosaurus foi um grande dinossauro herbívoro blindado que viveu durante o final do período Cretáceo. Seu corpo era protegido por placas ósseas e possuía uma poderosa clava na ponta da cauda.', 'herbívoro', 8.00, 1.70, 6000, 'Possivelmente vivia de forma solitária ou em pequenos grupos, utilizando sua armadura para se defender de grandes predadores.', 'Alimentava-se de vegetação rasteira encontrada em áreas florestadas e planícies úmidas.', 'Sua clava caudal poderia gerar impactos extremamente fortes contra predadores.', 1906, 'Montana, Estados Unidos', 'Hell Creek Formation', 'Barnum Brown', 'Planícies úmidas e florestas', 'América do Norte Ocidental', 'Florestal', 'Subtropical', 'América do Norte', 10, 2);
+(4, 17, 'Ankylosaurus magniventris', 'Anquilossauro', 'ankylosaurus', 'O Ankylosaurus foi um grande dinossauro herbívoro blindado que viveu durante o final do período Cretáceo. Seu corpo era protegido por placas ósseas e possuía uma poderosa clava na ponta da cauda.', 'herbívoro', 8.00, 1.70, 6000, 'Possivelmente vivia de forma solitária ou em pequenos grupos, utilizando sua armadura para se defender de grandes predadores.', 'Alimentava-se de vegetação rasteira encontrada em áreas florestadas e planícies úmidas.', 'Sua clava caudal poderia gerar impactos extremamente fortes contra predadores.', 1906, 'Montana, Estados Unidos', 'Hell Creek Formation', 'Barnum Brown', 'Planícies úmidas e florestas', 'América do Norte Ocidental', 'Florestal', 'Subtropical', 'América do Norte', 10, 2),
+(5, 21, 'Mammuthus primigenius', 'Mamute-lanoso', 'mammuthus-primigenius', 'O mamute-lanoso foi um grande mamífero herbívoro que viveu durante o Pleistoceno. Possuía uma espessa camada de pelos, grandes presas curvas e adaptações para sobreviver em ambientes extremamente frios.', 'herbívoro', 3.40, 3.40, 6000, 'Vivia em grupos sociais, semelhantes aos dos elefantes atuais, provavelmente liderados por fêmeas adultas. Os machos adultos tendiam a viver de maneira mais solitária.', 'Alimentava-se principalmente de gramíneas, ervas e outras plantas encontradas nas estepes frias do norte da Eurásia e da América do Norte.', 'Alguns exemplares foram preservados no permafrost da Sibéria com pelos, pele e outros tecidos moles. Suas grandes presas eram utilizadas para alimentação, defesa e movimentação de neve.', 0, 'Sibéria, Rússia', 'Depósitos do Pleistoceno', 'Pesquisadores e habitantes locais da Sibéria', 'Estepes frias e tundras', 'Europa, Ásia e América do Norte', 'Estepe-tundra', 'Frio e glacial', 'Europa, Ásia e América do Norte', 13, 4),
+(6, 25, 'Diplocaulus magnicornis', 'Diplocaulus', 'diplocaulus', 'O Diplocaulus foi um pequeno anfíbio do Permiano conhecido por seu crânio extremamente incomum, com formato semelhante a um bumerangue. Viveu em ambientes aquáticos e próximos a rios e lagos.', 'carnívoro', 1.00, 0.20, 5, 'Provavelmente passava grande parte do tempo na água e utilizava seu corpo alongado para se movimentar em ambientes aquáticos.', 'Vivia em rios, lagos e áreas pantanosas, alimentando-se de pequenos organismos aquáticos.', 'O formato incomum de seu crânio é uma de suas características mais marcantes. A função exata dessa estrutura ainda é discutida pelos pesquisadores.', 1877, 'Texas, Estados Unidos', 'Permian Red Beds', 'Edward Drinker Cope', 'Rios, lagos e áreas pantanosas', 'América do Norte', 'Aquático e Pantanoso', 'Quente e semiárido', 'América do Norte', 14, 3);
 
 -- --------------------------------------------------------
 
@@ -140,7 +146,9 @@ INSERT INTO `species_images` (`species_id`, `image_id`) VALUES
 (1, 1),
 (2, 4),
 (3, 7),
-(4, 10);
+(4, 10),
+(5, 13),
+(6, 14);
 
 -- --------------------------------------------------------
 
@@ -198,7 +206,15 @@ INSERT INTO `tax` (`id`, `name`, `slug`, `rank`, `parent_id`, `descricao`) VALUE
 (14, 'Velociraptor', 'velociraptor', 'genero', 13, 'Gênero dos Velociraptores'),
 (15, 'Ankylosauria', 'ankylosauria', 'familia', 9, 'Grupo de dinossauros blindados'),
 (16, 'Ankylosauridae', 'ankylosauridae', 'familia', 15, 'Família dos anquilossaurídeos'),
-(17, 'Ankylosaurus', 'ankylosaurus', 'genero', 16, 'Gênero do Ankylosaurus');
+(17, 'Ankylosaurus', 'ankylosaurus', 'genero', 16, 'Gênero do Ankylosaurus'),
+(18, 'Mammalia', 'mammalia', 'classe', 2, 'Classe dos mamíferos'),
+(19, 'Proboscidea', 'proboscidea', 'ordem', 18, 'Ordem que inclui elefantes modernos e seus parentes extintos'),
+(20, 'Elephantidae', 'elephantidae', 'familia', 19, 'Família que inclui os elefantes e mamutes'),
+(21, 'Mammuthus', 'mammuthus', 'genero', 20, 'Gênero que reúne diversas espécies de mamutes'),
+(22, 'Amphibia', 'amphibia', 'classe', 2, 'Classe dos anfíbios'),
+(23, 'Lepospondyli', 'lepospondyli', 'ordem', 22, 'Grupo de anfíbios paleozoicos'),
+(24, 'Diplocaulidae', 'diplocaulidae', 'familia', 23, 'Família de anfíbios lepospôndilos caracterizados por crânios alongados'),
+(25, 'Diplocaulus', 'diplocaulus', 'genero', 24, 'Gênero de anfíbios extintos do Permiano');
 
 --
 -- Índices para tabelas despejadas
@@ -266,25 +282,25 @@ ALTER TABLE `tax`
 -- AUTO_INCREMENT de tabela `geo_time`
 --
 ALTER TABLE `geo_time`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `species`
 --
 ALTER TABLE `species`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `tax`
 --
 ALTER TABLE `tax`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Restrições para tabelas despejadas
