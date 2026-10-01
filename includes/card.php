@@ -32,7 +32,6 @@
                     </span>
                     <p>
                         <?php
-
                         $dietNames = [
                             'carnivoro' => 'Carnívoro',
                             'herbivoro' => 'Herbívoro',
@@ -42,7 +41,6 @@
                         ];
                         echo $dietNames[$species['diet']]
                             ?? ucfirst($species['diet']);
-
                         ?>
                     </p>
                 </div>

@@ -1,0 +1,619 @@
+@import url('./variables.css');
+
+.species-page {
+    width: 100%;
+    background: var(--Branco);
+    color: var(--Marrom-Escuro);
+    overflow: hidden;
+}
+
+.species-page * {
+    box-sizing: border-box;
+}
+
+/* HERO */
+
+.species-hero {
+    width: 100%;
+    margin-top: 5vh;
+    padding: 0 0 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.species-hero-banner {
+    width: min(190vh, 90%);
+    height: 80vh;
+    min-height: 550px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 20px;
+    background: var(--Cinza-Fundo);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.species-hero-banner:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+}
+
+.species-hero-banner > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.species-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.05) 25%,
+            rgba(0, 0, 0, 0.20) 45%,
+            rgba(0, 0, 0, 0.90) 100%
+        );
+}
+
+.species-hero-text {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 50px 55px;
+    color: var(--Branco);
+}
+
+.species-hero-text h1 {
+    margin: 0;
+    font-family: var(--font-secondary);
+    font-size: clamp(38px, 5vw, 68px);
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.species-hero-text h2 {
+    margin: 12px 0 22px;
+    color: var(--Laranja);
+    font-family: var(--font-secondary);
+    font-size: clamp(20px, 2.5vw, 30px);
+    font-style: italic;
+    font-weight: 500;
+}
+
+.species-hero-text h4 {
+    margin: 0 0 14px;
+    color: var(--Branco);
+    font-family: var(--font-primary);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.species-hero-text p {
+    width: min(800px, 100%);
+    margin: 0;
+    color: #eeeeee;
+    font-family: var(--font-secondary);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* TITULOS */
+
+.species-section-title {
+    margin-bottom: 45px;
+}
+
+.species-section-title span {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--Marrom-Claro);
+    font-family: var(--font-primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.species-section-title h2 {
+    margin: 0;
+    color: var(--Marrom-Escuro);
+    font-family: var(--font-primary);
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+
+/* INFO BASICAS */
+
+.species-basic-section {
+    width: min(1200px, calc(100% - 60px));
+    margin: 0 auto;
+    padding: 20px 0 100px;
+}
+
+.species-basic-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.species-data-card {
+    min-height: 125px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #ded5ce;
+    border-radius: 12px;
+    background: #f8f5f2;
+}
+
+.species-data-card span {
+    margin-bottom: 9px;
+    color: #8a7d73;
+    font-family: var(--font-primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.species-data-card strong {
+    color: var(--Marrom-Escuro);
+    font-family: var(--font-primary);
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.species-diet-card {
+    background: var(--Marrom-Escuro);
+    border-color: var(--Marrom-Escuro);
+}
+
+.species-diet-card span {
+    color: var(--Laranja);
+}
+
+.species-diet-card strong {
+    color: var(--Branco);
+}
+
+
+/* DARK AREAS */
+
+.species-dark-section {
+    width: 100%;
+    padding: 100px 30px;
+    background: var(--Marrom-Escuro);
+}
+
+.species-dark-content {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+}
+
+.species-section-title-dark span {
+    color: var(--Laranja);
+}
+
+.species-section-title-dark h2 {
+    color: var(--Branco);
+}
+
+
+/* TAXO */
+
+.species-taxonomy-section {
+    margin-top: 10px;
+}
+
+.taxonomy-table {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.taxonomy-row {
+    min-height: 65px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.taxonomy-rank {
+    color: #c6b6aa;
+    font-family: var(--font-primary);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.taxonomy-name {
+    color: var(--Branco);
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.taxonomy-row:last-child .taxonomy-name {
+    color: var(--Laranja);
+}
+
+
+/* INFOS */
+
+.species-content-section {
+    width: min(1200px, calc(100% - 60px));
+    margin: 0 auto;
+    padding: 100px 0;
+}
+
+.species-text-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.species-text-card {
+    min-height: 310px;
+    padding: 35px;
+    border: 1px solid #ded5ce;
+    border-radius: 15px;
+    background: #f8f5f2;
+}
+
+.species-text-card > span {
+    color: var(--Laranja);
+    font-family: var(--font-primary);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.species-text-card h3 {
+    margin: 45px 0 18px;
+    color: var(--Marrom-Escuro);
+    font-family: var(--font-primary);
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.species-text-card p {
+    margin: 0;
+    color: #5c5550;
+    font-family: var(--font-secondary);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* CONTEXTO */
+
+.species-environment-section {
+    margin-top: 10px;
+}
+
+.environment-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.environment-card {
+    min-height: 150px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.environment-card span {
+    margin-bottom: 12px;
+    color: var(--Laranja);
+    font-family: var(--font-primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.environment-card strong {
+    color: var(--Branco);
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+/* ESPECIES */
+
+.contemporaneous-section {
+    margin-top: 80px;
+}
+
+.contemporaneous-title {
+    margin-bottom: 30px;
+}
+
+.contemporaneous-title span {
+    color: #c6b6aa;
+    font-family: var(--font-primary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.contemporaneous-title h3 {
+    margin: 10px 0 0;
+    color: var(--Branco);
+    font-family: var(--font-primary);
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.related-species-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.related-species-card {
+    display: flex;
+    min-height: 110px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.related-species-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--Laranja);
+}
+
+.related-species-image {
+    width: 115px;
+    min-width: 115px;
+    height: 110px;
+    background: #30211c;
+}
+
+.related-species-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.related-species-content {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.related-species-content strong {
+    color: var(--Branco);
+    font-family: var(--font-primary);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.related-species-content span {
+    margin-top: 5px;
+    color: #b9aaa0;
+    font-family: var(--font-secondary);
+    font-size: 12px;
+    font-style: italic;
+}
+
+/* DESCOBERTA */
+
+.species-discovery-section {
+    padding-top: 100px;
+    padding-bottom: 120px;
+}
+
+.discovery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid #ded5ce;
+    border-bottom: 1px solid #ded5ce;
+}
+
+.discovery-item {
+    min-height: 140px;
+    padding: 30px 25px;
+    border-right: 1px solid #ded5ce;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.discovery-item:last-child {
+    border-right: none;
+}
+
+.discovery-item span {
+    margin-bottom: 12px;
+    color: #8a7d73;
+    font-family: var(--font-primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.discovery-item strong {
+    color: var(--Marrom-Escuro);
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+
+/* VAZIA */
+
+.species-empty-message {
+    padding: 30px 0;
+    color: #b9aaa0;
+    font-family: var(--font-secondary);
+    font-size: 14px;
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1000px){
+
+    .species-basic-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .environment-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .species-text-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .related-species-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .discovery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .discovery-item:nth-child(2) {
+        border-right: none;
+    }
+
+    .discovery-item:nth-child(-n + 2) {
+        border-bottom: 1px solid #ded5ce;
+    }
+
+    .discovery-item:nth-child(3) {
+        border-top: none;
+    }
+}
+
+
+@media (max-width: 700px){
+
+    .species-hero {
+        padding: 65px 20px 75px;
+    }
+
+    .species-hero-title h1 {
+        font-size: 42px;
+    }
+
+    .species-hero-image {
+        height: 390px;
+        border-radius: 16px;
+    }
+
+    .species-hero-summary p {
+        font-size: 15px;
+    }
+
+    .species-basic-section,
+    .species-content-section {
+        width: calc(100% - 40px);
+    }
+
+    .species-basic-section,
+    .species-content-section {
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+
+    .species-dark-section {
+        padding: 75px 20px;
+    }
+
+    .species-basic-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .environment-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .taxonomy-row {
+        grid-template-columns: 120px 1fr;
+        min-height: 60px;
+    }
+
+    .taxonomy-rank {
+        font-size: 10px;
+    }
+
+    .taxonomy-name {
+        font-size: 15px;
+    }
+
+    .related-species-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .discovery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .discovery-item,
+    .discovery-item:nth-child(2) {
+        border-right: none;
+        border-bottom: 1px solid #ded5ce;
+    }
+
+    .discovery-item:last-child {
+        border-bottom: none;
+    }
+}
+
+
+@media (max-width: 450px){
+
+    .species-hero-title h1 {
+        font-size: 34px;
+    }
+
+    .species-hero-title h2 {
+        font-size: 17px;
+    }
+
+    .species-hero-image {
+        height: 300px;
+    }
+
+    .species-section-title h2 {
+        font-size: 31px;
+    }
+
+    .species-text-card {
+        min-height: auto;
+        padding: 25px;
+    }
+
+    .species-text-card h3 {
+        margin-top: 30px;
+    }
+}
