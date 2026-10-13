@@ -213,22 +213,19 @@
     display: block;
     color: inherit;
     text-decoration: none;
+    height: 100%;
 }
 
 .species-card {
     width: 100%;
     min-height: auto;
-    background: linear-gradient(
-        180deg,
-        var(--Cinza-Card) 0%,
-        var(--Preto) 100%
-    );
-
+    background: linear-gradient( 180deg, var(--Cinza-Card) 0%, var(--Preto) 100%);
     border-radius: 20px;
     overflow: hidden;
     transition: 0.3s ease;
     border: 1px solid var(--Borda-Cinza);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    height: 100%;
 }
 
 .species-card:hover {
@@ -263,6 +260,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    height: calc(100% - 180px);
 }
 
 .species-title h2 {
@@ -271,6 +269,7 @@
     font-size: 1.4rem;
     font-weight: 800;
     line-height: 110%;
+    overflow-wrap: anywhere;
 }
 
 .species-title h3 {
@@ -307,6 +306,7 @@
     color: var(--Branco);
     margin-top: 2px;
     font-size: 0.9rem;
+    overflow-wrap: anywhere;
 }
 
 /* SEM RESULTADOS */

@@ -1,8 +1,9 @@
+
 <?php
 
 require_once __DIR__ . '/../config/database.php';
 
-$search = $_GET['search'] ?? '';
+$search = trim($_GET['search'] ?? '');
 $diet = $_GET['diet'] ?? '';
 $period = $_GET['period'] ?? '';
 $continent = $_GET['continent'] ?? '';
@@ -10,96 +11,193 @@ $continent = $_GET['continent'] ?? '';
 $conditions = [];
 $params = [];
 
-if($search !== ''){
+$validContinents = [
+    'África',
+    'América do Norte',
+    'América do Sul',
+    'Ásia',
+    'Europa',
+    'Oceania',
+    'Antártida'
+];
 
-    $conditions[] = "
-        (
-            species.name LIKE :search
-            OR species.scientific_name LIKE :search
-        )
-    ";
+if ($search !== '') {
+    $conditions[] = "(
+        species.name LIKE :search
+        OR species.scientific_name LIKE :search
+    )";
 
     $params['search'] = '%' . $search . '%';
 }
 
-if($diet !== ''){
+$validDiets = [
+    'carnívoro',
+    'herbívoro',
+    'onívoro',
+    'piscívoro',
+    'insetívoro'
+];
 
+if (in_array($diet, $validDiets, true)) {
     $conditions[] = "species.diet = :diet";
-
     $params['diet'] = $diet;
+} else {
+    $diet = '';
 }
 
-if($period !== ''){
+if ($period !== '' && ctype_digit((string) $period)) {
+    $conditions[] = "(
+        species.geotime_id = :geotime
+        OR geo_time.parent_id = :geotime_parent
+        OR geo_parent.parent_id = :geotime_grandparent
+    )";
 
-    $conditions[] = "species.geotime_id = :period";
-
-    $params['period'] = $period;
+    $params['geotime'] = (int) $period;
+    $params['geotime_parent'] = (int) $period;
+    $params['geotime_grandparent'] = (int) $period;
+} else {
+    $period = '';
 }
 
-if($continent !== ''){
+if (in_array($continent, $validContinents, true)) {
+    $conditions[] = "
+        CONCAT(
+            ',',
+            REPLACE(
+                REPLACE(species.continent, ' e ', ','),
+                ', ',
+                ','
+            ),
+            ','
+        ) LIKE :continent
+    ";
 
-    $conditions[] = "species.continent = :continent";
-
-    $params['continent'] = $continent;
+    $params['continent'] = '%,' . $continent . ',%';
+} else {
+    $continent = '';
 }
 
 $where = '';
 
-if(!empty($conditions)){
-
+if (!empty($conditions)) {
     $where = 'WHERE ' . implode(' AND ', $conditions);
-
 }
 
 $sql = "
-SELECT 
+SELECT
     species.id,
     species.name,
     species.scientific_name,
     species.slug,
     species.diet,
     species.continent,
-
     images._path AS image_path,
 
-    geo_time.id AS period_id,
-    geo_time.name AS period_name,
-    geo_time.begin_year
+    geo_time.id AS geotime_id,
+    geo_time.name AS geotime_name,
+    geo_time.type AS geotime_type,
+    geo_time.begin_year AS geotime_begin_year,
+
+    geo_parent.id AS parent_id,
+    geo_parent.name AS parent_name,
+    geo_parent.type AS parent_type,
+
+    geo_grandparent.id AS grandparent_id,
+    geo_grandparent.name AS grandparent_name,
+    geo_grandparent.type AS grandparent_type,
+
+    CASE
+        WHEN geo_time.type = 'periodo'
+            THEN geo_time.id
+        WHEN geo_parent.type = 'periodo'
+            THEN geo_parent.id
+        WHEN geo_grandparent.type = 'periodo'
+            THEN geo_grandparent.id
+        ELSE NULL
+    END AS period_id,
+
+    CASE
+        WHEN geo_time.type = 'periodo'
+            THEN geo_time.name
+        WHEN geo_parent.type = 'periodo'
+            THEN geo_parent.name
+        WHEN geo_grandparent.type = 'periodo'
+            THEN geo_grandparent.name
+        ELSE NULL
+    END AS period_name,
+
+    CASE
+        WHEN geo_time.type = 'epoca'
+            THEN geo_time.name
+        WHEN geo_parent.type = 'epoca'
+            THEN geo_parent.name
+        ELSE NULL
+    END AS epoch_name,
+
+    CASE
+        WHEN geo_time.type = 'idade'
+            THEN geo_time.name
+        ELSE NULL
+    END AS age_name,
+
+    CASE
+        WHEN geo_time.type = 'periodo'
+            THEN geo_time.begin_year
+        WHEN geo_parent.type = 'periodo'
+            THEN geo_parent.begin_year
+        WHEN geo_grandparent.type = 'periodo'
+            THEN geo_grandparent.begin_year
+        ELSE NULL
+    END AS period_begin_year
 
 FROM species
 
 LEFT JOIN images
-ON species.image_id = images.id
+    ON species.image_id = images.id
 
 LEFT JOIN geo_time
-ON species.geotime_id = geo_time.id
+    ON species.geotime_id = geo_time.id
+
+LEFT JOIN geo_time AS geo_parent
+    ON geo_time.parent_id = geo_parent.id
+
+LEFT JOIN geo_time AS geo_grandparent
+    ON geo_parent.parent_id = geo_grandparent.id
 
 $where
-
 ORDER BY
-    geo_time.begin_year ASC,
+    period_begin_year DESC,
     species.name ASC
 ";
 
 $stmt = $conn->prepare($sql);
-
 $stmt->execute($params);
 
-$speciesList = $stmt->fetchAll();
+$speciesList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $groupedSpecies = [];
 
-foreach($speciesList as $species){
-
-    $periodName = $species['period_name'];
-
-    if(!$periodName){
-        $periodName = 'Período desconhecido';
-    }
-
+foreach ($speciesList as $species) {
+    $periodName = $species['period_name'] ?? 'Período não informado';
     $groupedSpecies[$periodName][] = $species;
 }
 
+$geologicalTimes = $conn->query("
+    SELECT
+        gt_atual.id,
+        gt_atual.name,
+        gt_atual.type,
+        gt_atual.begin_year,
+        parent_time.name AS parent_name,
+        grandparent_time.name AS grandparent_name,
+        grandparent_time.type AS grandparent_type
+    FROM geo_time AS gt_atual
+    LEFT JOIN geo_time AS parent_time
+        ON gt_atual.parent_id = parent_time.id
+    LEFT JOIN geo_time AS grandparent_time
+        ON parent_time.parent_id = grandparent_time.id
+    ORDER BY gt_atual.begin_year DESC, gt_atual.id ASC
+")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <section class="species-section">
@@ -115,7 +213,7 @@ foreach($speciesList as $species){
                     type="text"
                     name="search"
                     placeholder="Buscar espécie..."
-                    value="<?= htmlspecialchars($search); ?>"
+                    value="<?= htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); ?>"
                 >
                 <button type="submit">
                     Buscar
@@ -128,64 +226,68 @@ foreach($speciesList as $species){
                         Dieta
                     </label>
                     <select name="diet" id="diet">
-                        <option value="">
-                            Todas
-                        </option>
-                        <option
-                            value="carnivoro"
-                            <?= $diet === 'carnivoro' ? 'selected' : ''; ?>
-                        >
-                            Carnívoro
-                        </option>
-                        <option
-                            value="herbivoro"
-                            <?= $diet === 'herbivoro' ? 'selected' : ''; ?>
-                        >
-                            Herbívoro
-                        </option>
-                        <option
-                            value="onivoro"
-                            <?= $diet === 'onivoro' ? 'selected' : ''; ?>
-                        >
-                            Onívoro
-                        </option>
-                        <option
-                            value="piscivoro"
-                            <?= $diet === 'piscivoro' ? 'selected' : ''; ?>
-                        >
-                            Piscívoro
-                        </option>
-                        <option
-                            value="insetivoro"
-                            <?= $diet === 'insetivoro' ? 'selected' : ''; ?>
-                        >
-                            Insetívoro
-                        </option>
+                        <option value="">Todas</option>
+
+                        <?php
+                        $dietOptions = [
+                            'carnívoro' => 'Carnívoro',
+                            'herbívoro' => 'Herbívoro',
+                            'onívoro' => 'Onívoro',
+                            'piscívoro' => 'Piscívoro',
+                            'insetívoro' => 'Insetívoro'
+                        ];
+
+                        foreach ($dietOptions as $value => $label) {
+                        ?>
+                            <option
+                                value="<?= htmlspecialchars($value, ENT_QUOTES, 'UTF-8'); ?>"
+                                <?= $diet === $value ? 'selected' : ''; ?>
+                            >
+                                <?= $label; ?>
+                            </option>
+                        <?php } ?>
                     </select>
                 </div>
 
                 <div class="filter">
                     <label for="period">
-                        Período
+                        Tempo geológico
                     </label>
+
                     <select name="period" id="period">
-                        <option value="">
-                            Todos
-                        </option>
-                        <?php
-                        $periods = $conn->query("
-                            SELECT id, name
-                            FROM geo_time
-                            WHERE type = 'periodo'
-                            ORDER BY begin_year ASC
-                        ");
-                        while($periodItem = $periods->fetch()){
-                        ?>
+                        <option value="">Todos</option>
+
+                        <?php foreach ($geologicalTimes as $time) { ?>
+                            <?php
+                            $timeLabel = $time['name'];
+
+                            if ($time['type'] === 'epoca' && $time['parent_name']) {
+                                $timeLabel = $time['parent_name'] . ' → ' . $time['name'];
+                            }
+
+                            if ($time['type'] === 'idade') {
+                                if ($time['parent_name']) {
+                                    $timeLabel = $time['parent_name'] . ' → ' . $time['name'];
+                                }
+
+                                if (
+                                    $time['grandparent_name']
+                                    && $time['grandparent_type'] === 'periodo'
+                                ) {
+                                    $timeLabel = $time['grandparent_name']
+                                        . ' → '
+                                        . $time['parent_name']
+                                        . ' → '
+                                        . $time['name'];
+                                }
+                            }
+                            ?>
+
                             <option
-                                value="<?= $periodItem['id']; ?>"
-                                <?= $period == $periodItem['id'] ? 'selected' : ''; ?>
+                                value="<?= (int) $time['id']; ?>"
+                                <?= (string) $period === (string) $time['id'] ? 'selected' : ''; ?>
                             >
-                                <?= htmlspecialchars($periodItem['name']); ?>
+                                <?= htmlspecialchars($timeLabel, ENT_QUOTES, 'UTF-8'); ?>
                             </option>
                         <?php } ?>
                     </select>
@@ -196,69 +298,48 @@ foreach($speciesList as $species){
                         Onde viveu
                     </label>
                     <select name="continent" id="continent">
-                        <option value="">
-                            Todos
-                        </option>
-                        <?php
-                        $continents = $conn->query("
-                            SELECT DISTINCT continent
-                            FROM species
-                            WHERE continent IS NOT NULL
-                            AND continent != ''
-                            ORDER BY continent
-                        ");
-                        while($continentItem = $continents->fetch()){
-                        ?>
+                        <option value="">Todos</option>
+                        <?php foreach ($validContinents as $continentOption) { ?>
                             <option
-                                value="<?= htmlspecialchars($continentItem['continent']); ?>"
-                                <?= $continent === $continentItem['continent'] ? 'selected' : ''; ?>
+                                value="<?= htmlspecialchars($continentOption, ENT_QUOTES, 'UTF-8'); ?>"
+                                <?= $continent === $continentOption ? 'selected' : ''; ?>
                             >
-                                <?= htmlspecialchars($continentItem['continent']); ?>
+                                <?= htmlspecialchars($continentOption, ENT_QUOTES, 'UTF-8'); ?>
                             </option>
                         <?php } ?>
                     </select>
                 </div>
 
-                <button
-                    type="submit"
-                    class="filter-button"
-                >
+                <button type="submit" class="filter-button">
                     Filtrar
                 </button>
-
-                <a
-                    href="index.php?page=species"
-                    class="clear-button"
-                >
+                <a href="index.php?page=species" class="clear-button">
                     Limpar
                 </a>
             </div>
         </form>
     </div>
 
-    <?php if(empty($speciesList)){ ?>
+    <?php if (empty($speciesList)) { ?>
         <div class="no-results">
             <h2>Nenhuma espécie encontrada</h2>
             <p>
                 Tente alterar os filtros ou o termo pesquisado.
             </p>
         </div>
-    <?php } ?>
 
+    <?php } ?>
     <div class="species-results">
-        <?php foreach($groupedSpecies as $periodName => $speciesGroup){ ?>
+        <?php foreach ($groupedSpecies as $periodName => $speciesGroup) { ?>
             <div class="period-group">
                 <div class="period-title">
                     <h2>
-                        <?= htmlspecialchars($periodName); ?>
+                        <?= htmlspecialchars($periodName, ENT_QUOTES, 'UTF-8'); ?>
                     </h2>
                 </div>
-
                 <div class="species-grid">
-                    <?php foreach($speciesGroup as $species){ ?>
-                        <?php
-                            include('includes/card.php');
-                        ?>
+                    <?php foreach ($speciesGroup as $species) { ?>
+                        <?php include __DIR__ . '/../includes/card.php'; ?>
                     <?php } ?>
                 </div>
             </div>
