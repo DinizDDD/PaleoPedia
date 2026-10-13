@@ -126,17 +126,17 @@ $relatedSpecies = $relationStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <main class="species-page">
+
 <section class="species-hero">
     <div class="species-hero-banner">
-        <img
-            src="<?= formatValue($species['image_path']); ?>"
-            alt="<?= formatValue($species['name']); ?>"
-        >
+        <img src="<?= formatValue($species['image_path']); ?>"alt="<?= formatValue($species['name']); ?>">
         <div class="species-hero-overlay"></div>
-        <div class="species-hero-text">
+        <div class="species-hero-title">
             <h1>
                 <?= mb_strtoupper(formatValue($species['name'])); ?>
             </h1>
+        </div>
+        <div class="species-hero-info">
             <h2>
                 <?= formatValue($species['scientific_name']); ?>
             </h2>
