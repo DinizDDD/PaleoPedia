@@ -7,6 +7,7 @@ SELECT
     species.id,
     species.name,
     species.scientific_name,
+    species.slug,
     species.diet,
     species.continent,
     species.summary,
@@ -31,21 +32,22 @@ $result = $conn->query($sql);
 
 <section class="spotlight_banner">
     <h1>ESPÉCIES EM DESTAQUE</h1>
+
     <div class="carousel-container">
-        
+
         <button class="carousel-btn prev-btn">&#10094;</button>
         <button class="carousel-btn next-btn">&#10095;</button>
 
         <div class="carousel">
             <?php while($species = $result->fetch(PDO::FETCH_ASSOC)) { ?>
                 <div class="slide">
-                    <a href="#">
-                        <div class="spotlight-div" style="background-image:url('<?= $species['image_path']; ?>')">
+                    <a href="index.php?page=species_info&slug=<?= urlencode($species['slug']); ?>">
+                        <div class="spotlight-div" style="background-image:url('<?= htmlspecialchars($species['image_path'] ?? '', ENT_QUOTES, 'UTF-8'); ?>')">
                             <div class="text">
                                 <h2><?= mb_strtoupper($species['name']); ?></h2>
-                                <h2 class="scientific-h2"><?= mb_strtoupper($species['scientific_name']); ?> </h2>
-                                <h4> <?= mb_strtoupper($species['diet']); ?> | <?= mb_strtoupper($species['period_name']); ?> | <?= mb_strtoupper($species['continent']); ?> </h4>
-                                <p><?= $species['summary']; ?></p>
+                                <h2 class="scientific-h2"><?= mb_strtoupper($species['scientific_name']); ?></h2>
+                                <h4><?= mb_strtoupper($species['diet'] ?? ''); ?> | <?= mb_strtoupper($species['period_name'] ?? 'Não informado'); ?> | <?= mb_strtoupper($species['continent'] ?? ''); ?></h4>
+                                <p><?= htmlspecialchars($species['summary'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
                             </div>
                         </div>
                     </a>
