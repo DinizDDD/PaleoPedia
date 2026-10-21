@@ -14,7 +14,7 @@
         <p>Explore milhões de anos de história de forma simples, organizada e envolvente, e descubra como a vida evoluiu em nosso planeta ao longo de diferentes eras e transformações naturais. Conheça espécies extintas, os ambientes em que viveram, fósseis raros preservados ao longo do tempo, curiosidades científicas fascinantes e os períodos geológicos que marcaram profundamente a formação, a biodiversidade e a história da Terra.
     </div>
 </div>
-
+    
 <div class="info-body">
     <img class="separatio_img" src="assets/images/home/separation_image.png" alt="Imagem para separeção">
 
@@ -84,26 +84,3 @@
         </div>
     </a>
 </section>
-
-<?php
-    switch ($page) {
-        case 'species':
-            include('pages/species.php');
-            break;
-
-        case 'period':
-            include('pages/period.php');
-            break;
-    }
-?>
-
-
-
-
-
-
-
-
-
-
-

@@ -53,12 +53,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
-<link rel="stylesheet" href="assets/css/variables.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="assets/css/variables.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="assets/css/navbar.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="assets/css/home.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="assets/css/card.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="assets/css/spotlight_banner.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="assets/css/specie_info.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="assets/css/footer.css?v=<?= time(); ?>">
 </head>
 <body>
     <?php require 'includes/navbar.php';
@@ -81,6 +82,8 @@
                 break;
         }
     ?>
+
+    <?php require 'includes/footer.php'; ?>
 
     <script src="assets/js/spotlight_banner.js"></script>
 </body>

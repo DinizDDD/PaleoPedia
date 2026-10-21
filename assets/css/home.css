@@ -89,6 +89,7 @@ body{
     color: var(--Preto);
 
     .separatio_img{
+        display: block;
         width:100%;
         height:100px;
         object-fit:cover;
