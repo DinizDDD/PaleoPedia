@@ -70,30 +70,33 @@
 <?php include('includes/spotlight_banner.php') ?>
 
 <section class="Links">
-    <div class="left">
-        <div class="link-container">
-            <a class="nav-item" href="index.php?page=period">PERÍODOS</a>
+    <a class="link-card link-period" href="index.php?page=period">
+        <div class="link-content">
+            <h2>PERÍODOS</h2>
+            <p>Explore as eras geológicas e descubra como a Terra se transformou ao longo do tempo.</p>
         </div>
-    </div>
-    <div class="right">
-        <div class="link-container">
-            <a class="nav-item" href="index.php?page=species">ESPÉCIES</a>
+    </a>
+
+    <a class="link-card link-species" href="index.php?page=species">
+        <div class="link-content">
+            <h2>ESPÉCIES</h2>
+            <p>Conheça os organismos que habitaram nosso planeta e suas fascinantes histórias.</p>
         </div>
-    </div>
-
-     <?php
-        switch($page) {
-            
-            case 'species':
-                include('pages/species.php');
-                break;
-
-            case 'period':
-                include('pages/period.php');
-                break;
-        }
-    ?>
+    </a>
 </section>
+
+<?php
+    switch ($page) {
+        case 'species':
+            include('pages/species.php');
+            break;
+
+        case 'period':
+            include('pages/period.php');
+            break;
+    }
+?>
+
 
 
 
