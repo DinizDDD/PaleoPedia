@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13/10/2026 às 16:28
+-- Tempo de geração: 30/10/2026 às 17:54
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -92,12 +92,12 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `_path`, `legenda`) VALUES
-(1, 'assets/images/species/trex-main.png', 'Reconstrução artística do Tyrannosaurus rex'),
-(4, 'assets/images/species/triceratops-main.png', 'Reconstrução artística do Tricerátops'),
-(7, 'assets/images/species/velociraptor-main.png', 'Reconstrução artística do Velociraptor'),
-(10, 'assets/images/species/ankylosaurus-main.png', 'Reconstrução artística do Ankylosaurus'),
-(13, 'assets/images/species/mamute-main.png', 'Reconstrução artística do Mammuthus primigenius'),
-(14, 'assets/images/species/diplocaulus-main.png', 'Reconstrução artística do Diplocaulus magnicornis');
+(1, 'assets/images/species/trex/principal.png', 'Reconstrução do Tyrannosaurus rex'),
+(4, 'assets/images/species/triceratops/principal.png', 'Reconstrução do Tricerátops'),
+(7, 'assets/images/species/velociraptor/principal.png', 'Reconstrução do Velociraptor'),
+(10, 'assets/images/species/ankylosaurus/principal.png', 'Reconstrução do Ankylosaurus'),
+(13, 'assets/images/species/mamute/principal.png', 'Reconstrução do Mammuthus'),
+(14, 'assets/images/species/diplocaulus/principal.png', 'Reconstrução do Diplocaulus');
 
 -- --------------------------------------------------------
 
@@ -152,20 +152,21 @@ INSERT INTO `species` (`id`, `taxon_id`, `scientific_name`, `name`, `slug`, `sum
 
 CREATE TABLE `species_images` (
   `species_id` int(11) NOT NULL,
-  `image_id` int(11) NOT NULL
+  `image_id` int(11) NOT NULL,
+  `purpose` enum('principal','spotlight','card','behavior','ecology','curiosities','discovery') NOT NULL DEFAULT 'principal'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `species_images`
 --
 
-INSERT INTO `species_images` (`species_id`, `image_id`) VALUES
-(1, 1),
-(2, 4),
-(3, 7),
-(4, 10),
-(5, 13),
-(6, 14);
+INSERT INTO `species_images` (`species_id`, `image_id`, `purpose`) VALUES
+(1, 1, 'principal'),
+(2, 4, 'principal'),
+(3, 7, 'principal'),
+(4, 10, 'principal'),
+(5, 13, 'principal'),
+(6, 14, 'principal');
 
 -- --------------------------------------------------------
 
@@ -273,7 +274,7 @@ ALTER TABLE `species`
 -- Índices de tabela `species_images`
 --
 ALTER TABLE `species_images`
-  ADD PRIMARY KEY (`species_id`,`image_id`),
+  ADD PRIMARY KEY (`species_id`,`purpose`),
   ADD KEY `image_id` (`image_id`);
 
 --
