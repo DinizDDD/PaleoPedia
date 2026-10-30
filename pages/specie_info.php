@@ -15,13 +15,58 @@ $stmt = $conn->prepare("
         species.*,
         geo_time.name AS period_name,
         geo_time.type AS period_type,
-        images._path AS image_path,
-        images.legenda AS image_legend
+
+        principal_file._path AS image_path,
+        principal_file.legenda AS image_legend,
+
+        COALESCE(behavior_file._path, principal_file._path) AS behavior_image_path,
+        COALESCE(ecology_file._path, principal_file._path) AS ecology_image_path,
+        COALESCE(curiosities_file._path, principal_file._path) AS curiosities_image_path,
+        COALESCE(discovery_file._path, principal_file._path) AS discovery_image_path
+
     FROM species
+
     LEFT JOIN geo_time
         ON species.geotime_id = geo_time.id
-    LEFT JOIN images
-        ON species.image_id = images.id
+
+    LEFT JOIN species_images AS principal_image
+        ON principal_image.species_id = species.id
+        AND principal_image.purpose = 'principal'
+
+    LEFT JOIN images AS principal_file
+        ON principal_file.id = COALESCE(
+            principal_image.image_id,
+            species.image_id
+        )
+
+    LEFT JOIN species_images AS behavior_image
+        ON behavior_image.species_id = species.id
+        AND behavior_image.purpose = 'behavior'
+
+    LEFT JOIN images AS behavior_file
+        ON behavior_file.id = behavior_image.image_id
+
+    LEFT JOIN species_images AS ecology_image
+        ON ecology_image.species_id = species.id
+        AND ecology_image.purpose = 'ecology'
+
+    LEFT JOIN images AS ecology_file
+        ON ecology_file.id = ecology_image.image_id
+
+    LEFT JOIN species_images AS curiosities_image
+        ON curiosities_image.species_id = species.id
+        AND curiosities_image.purpose = 'curiosities'
+
+    LEFT JOIN images AS curiosities_file
+        ON curiosities_file.id = curiosities_image.image_id
+
+    LEFT JOIN species_images AS discovery_image
+        ON discovery_image.species_id = species.id
+        AND discovery_image.purpose = 'discovery'
+
+    LEFT JOIN images AS discovery_file
+        ON discovery_file.id = discovery_image.image_id
+
     WHERE species.slug = :slug
     LIMIT 1
 ");
@@ -154,33 +199,44 @@ $relationStmt = $conn->prepare("
         related.scientific_name,
         related.slug,
         related.continent,
-        images._path AS image_path
-    FROM species_relations AS relations
+        related_file._path AS image_path
+
+    FROM (
+        SELECT related_species_id AS related_id
+        FROM species_relations
+        WHERE species_id = :species_id_1
+
+        UNION
+
+        SELECT species_id AS related_id
+        FROM species_relations
+        WHERE related_species_id = :species_id_2
+    ) AS relations
+
     INNER JOIN species AS related
-        ON (
-            related.id = relations.species_id
-            OR related.id = relations.related_species_id
+        ON related.id = relations.related_id
+
+    LEFT JOIN species_images AS related_principal
+        ON related_principal.species_id = related.id
+        AND related_principal.purpose = 'principal'
+
+    LEFT JOIN images AS related_file
+        ON related_file.id = COALESCE(
+            related_principal.image_id,
+            related.image_id
         )
-    LEFT JOIN images
-        ON related.image_id = images.id
-    WHERE (
-        relations.species_id = :species_id
-        OR relations.related_species_id = :species_id
-    )
-    AND related.id != :species_id
-    GROUP BY
-        related.id,
-        related.name,
-        related.scientific_name,
-        related.slug,
-        related.continent,
-        images._path
+
+    WHERE related.id != :species_id_3
+
     ORDER BY related.name
 ");
 
 $relationStmt->execute([
-    ':species_id' => $species['id']
+    ':species_id_1' => $species['id'],
+    ':species_id_2' => $species['id'],
+    ':species_id_3' => $species['id']
 ]);
+
 $relatedSpecies = $relationStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 

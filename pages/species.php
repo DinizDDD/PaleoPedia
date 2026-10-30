@@ -91,7 +91,8 @@ SELECT
     species.slug,
     species.diet,
     species.continent,
-    images._path AS image_path,
+
+    COALESCE(card_file._path, principal_file._path) AS image_path,
 
     geo_time.id AS geotime_id,
     geo_time.name AS geotime_name,
@@ -152,8 +153,22 @@ SELECT
 
 FROM species
 
-LEFT JOIN images
-    ON species.image_id = images.id
+LEFT JOIN species_images AS card_image
+    ON card_image.species_id = species.id
+    AND card_image.purpose = 'card'
+
+LEFT JOIN images AS card_file
+    ON card_file.id = card_image.image_id
+
+LEFT JOIN species_images AS principal_image
+    ON principal_image.species_id = species.id
+    AND principal_image.purpose = 'principal'
+
+LEFT JOIN images AS principal_file
+    ON principal_file.id = COALESCE(
+        principal_image.image_id,
+        species.image_id
+    )
 
 LEFT JOIN geo_time
     ON species.geotime_id = geo_time.id
@@ -165,6 +180,7 @@ LEFT JOIN geo_time AS geo_grandparent
     ON geo_parent.parent_id = geo_grandparent.id
 
 $where
+
 ORDER BY
     period_begin_year DESC,
     species.name ASC

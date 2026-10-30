@@ -12,16 +12,31 @@ SELECT
     species.continent,
     species.summary,
 
-    images._path AS image_path,
+    COALESCE(spotlight_file._path, principal_file._path) AS image_path,
+
     geo_time.name AS period_name
 
 FROM species
 
-LEFT JOIN images
-ON species.image_id = images.id
+LEFT JOIN species_images AS spotlight_image
+    ON spotlight_image.species_id = species.id
+    AND spotlight_image.purpose = 'spotlight'
+
+LEFT JOIN images AS spotlight_file
+    ON spotlight_file.id = spotlight_image.image_id
+
+LEFT JOIN species_images AS principal_image
+    ON principal_image.species_id = species.id
+    AND principal_image.purpose = 'principal'
+
+LEFT JOIN images AS principal_file
+    ON principal_file.id = COALESCE(
+        principal_image.image_id,
+        species.image_id
+    )
 
 LEFT JOIN geo_time
-ON species.geotime_id = geo_time.id
+    ON species.geotime_id = geo_time.id
 
 ORDER BY RAND()
 LIMIT 3
