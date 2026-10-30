@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30/10/2026 às 17:54
+-- Tempo de geração: 30/10/2026 às 19:02
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -97,7 +97,8 @@ INSERT INTO `images` (`id`, `_path`, `legenda`) VALUES
 (7, 'assets/images/species/velociraptor/principal.png', 'Reconstrução do Velociraptor'),
 (10, 'assets/images/species/ankylosaurus/principal.png', 'Reconstrução do Ankylosaurus'),
 (13, 'assets/images/species/mamute/principal.png', 'Reconstrução do Mammuthus'),
-(14, 'assets/images/species/diplocaulus/principal.png', 'Reconstrução do Diplocaulus');
+(15, 'assets/images/species/diplocaulus/card.png', 'Reconstrução do Diplocaulus para o card de espécies'),
+(37, 'assets/images/species/diplocaulus/principal.png', 'Reconstrução do Diplocaulus - imagem principal');
 
 -- --------------------------------------------------------
 
@@ -142,7 +143,7 @@ INSERT INTO `species` (`id`, `taxon_id`, `scientific_name`, `name`, `slug`, `sum
 (3, 14, 'Velociraptor mongoliensis', 'Velociraptor', 'velociraptor', 'O Velociraptor foi um pequeno dinossauro carnívoro coberto por penas que viveu durante o final do Cretáceo. Apesar de sua fama nos filmes, era muito menor do que geralmente é retratado.', 'carnívoro', 2.00, 0.70, 15, 'Provavelmente caçava pequenos vertebrados utilizando sua velocidade, inteligência e a grande garra curva presente nos pés.', 'Habitava ambientes áridos e semiáridos compostos por dunas e planícies secas.', 'Fósseis encontrados mostram evidências diretas de combate entre Velociraptor e Protoceratops.', 1923, 'Deserto de Gobi, Mongólia', 'Djadochta Formation', 'Peter Kaisen', 'Desertos e regiões semiáridas', 'Ásia Central', 'Desértico', 'Árido', 'Ásia', 7, 2),
 (4, 17, 'Ankylosaurus magniventris', 'Anquilossauro', 'ankylosaurus', 'O Ankylosaurus foi um grande dinossauro herbívoro blindado que viveu durante o final do período Cretáceo. Seu corpo era protegido por placas ósseas e possuía uma poderosa clava na ponta da cauda.', 'herbívoro', 8.00, 1.70, 6000, 'Possivelmente vivia de forma solitária ou em pequenos grupos, utilizando sua armadura para se defender de grandes predadores.', 'Alimentava-se de vegetação rasteira encontrada em áreas florestadas e planícies úmidas.', 'Sua clava caudal poderia gerar impactos extremamente fortes contra predadores.', 1906, 'Montana, Estados Unidos', 'Hell Creek Formation', 'Barnum Brown', 'Planícies úmidas e florestas', 'América do Norte Ocidental', 'Florestal', 'Subtropical', 'América do Norte', 10, 7),
 (5, 21, 'Mammuthus primigenius', 'Mamute-lanoso', 'mammuthus-primigenius', 'O mamute-lanoso foi um grande mamífero herbívoro que viveu durante o Pleistoceno. Possuía uma espessa camada de pelos, grandes presas curvas e adaptações para sobreviver em ambientes extremamente frios.', 'herbívoro', 3.40, 3.40, 6000, 'Vivia em grupos sociais, semelhantes aos dos elefantes atuais, provavelmente liderados por fêmeas adultas. Os machos adultos tendiam a viver de maneira mais solitária.', 'Alimentava-se principalmente de gramíneas, ervas e outras plantas encontradas nas estepes frias do norte da Eurásia e da América do Norte.', 'Alguns exemplares foram preservados no permafrost da Sibéria com pelos, pele e outros tecidos moles. Suas grandes presas eram utilizadas para alimentação, defesa e movimentação de neve.', 0, 'Sibéria, Rússia', 'Depósitos do Pleistoceno', 'Pesquisadores e habitantes locais da Sibéria', 'Estepes frias e tundras', 'Europa, Ásia e América do Norte', 'Estepe-tundra', 'Frio e glacial', 'Europa, Ásia e América do Norte', 13, 4),
-(6, 25, 'Diplocaulus magnicornis', 'Diplocaulus', 'diplocaulus', 'O Diplocaulus foi um pequeno anfíbio do Permiano conhecido por seu crânio extremamente incomum, com formato semelhante a um bumerangue. Viveu em ambientes aquáticos e próximos a rios e lagos.', 'carnívoro', 1.00, 0.20, 5, 'Provavelmente passava grande parte do tempo na água e utilizava seu corpo alongado para se movimentar em ambientes aquáticos.', 'Vivia em rios, lagos e áreas pantanosas, alimentando-se de pequenos organismos aquáticos.', 'O formato incomum de seu crânio é uma de suas características mais marcantes. A função exata dessa estrutura ainda é discutida pelos pesquisadores.', 1877, 'Texas, Estados Unidos', 'Permian Red Beds', 'Edward Drinker Cope', 'Rios, lagos e áreas pantanosas', 'América do Norte', 'Aquático e Pantanoso', 'Quente e semiárido', 'América do Norte', 14, 3);
+(10, 25, 'Diplocaulus magnicornis', 'Diplocaulus', 'diplocaulus', 'O Diplocaulus foi um anfíbio pré-histórico que viveu durante o período Permiano. Ficou conhecido por seu crânio extremamente largo e achatado, com prolongamentos laterais que formavam uma estrutura semelhante a um bumerangue. Possuía corpo alongado, cauda achatada e adaptações que indicam um estilo de vida predominantemente aquático.', 'carnívoro', 1.00, NULL, NULL, 'Provavelmente era um animal predominantemente aquático que se movimentava em rios e lagoas. Possivelmente permanecia próximo ao fundo dos ambientes aquáticos, capturando pequenos animais. Seu crânio peculiar também pode ter contribuído para sua proteção contra predadores.', 'Habitava ambientes de água doce, como rios, lagoas e áreas alagadas. Alimentava-se de pequenos animais aquáticos, incluindo peixes e outros organismos. Fazia parte dos ecossistemas continentais do Permiano, compartilhando seu ambiente com outros anfíbios e vertebrados primitivos.', 'Sua característica mais marcante era o crânio em formato de bumerangue, com duas grandes projeções laterais. Essa estrutura pode ter auxiliado na proteção contra predadores e na movimentação dentro da água. Seu nome científico faz referência à aparência peculiar de sua estrutura craniana.', 1882, 'Baylor County, Texas, Estados Unidos', 'Arroyo Formation', 'Edward Drinker Cope', 'Rios, lagoas e ambientes de água doce', 'América do Norte', 'Aquático de água doce', 'Quente e sazonal, com períodos secos', 'América do Norte', 37, 3);
 
 -- --------------------------------------------------------
 
@@ -166,7 +167,8 @@ INSERT INTO `species_images` (`species_id`, `image_id`, `purpose`) VALUES
 (3, 7, 'principal'),
 (4, 10, 'principal'),
 (5, 13, 'principal'),
-(6, 14, 'principal');
+(10, 15, 'card'),
+(10, 37, 'principal');
 
 -- --------------------------------------------------------
 
@@ -306,13 +308,13 @@ ALTER TABLE `geo_time`
 -- AUTO_INCREMENT de tabela `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de tabela `species`
 --
 ALTER TABLE `species`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `tax`
