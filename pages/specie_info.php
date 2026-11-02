@@ -19,53 +19,56 @@ $stmt = $conn->prepare("
         principal_file._path AS image_path,
         principal_file.legenda AS image_legend,
 
-        COALESCE(behavior_file._path, principal_file._path) AS behavior_image_path,
-        COALESCE(ecology_file._path, principal_file._path) AS ecology_image_path,
-        COALESCE(curiosities_file._path, principal_file._path) AS curiosities_image_path,
-        COALESCE(discovery_file._path, principal_file._path) AS discovery_image_path
+        COALESCE(
+            behavior_file._path,
+            principal_file._path
+        ) AS behavior_image_path,
+
+        COALESCE(
+            ecology_file._path,
+            principal_file._path
+        ) AS ecology_image_path,
+
+        COALESCE(
+            curiosities_file._path,
+            principal_file._path
+        ) AS curiosities_image_path
 
     FROM species
 
     LEFT JOIN geo_time
         ON species.geotime_id = geo_time.id
 
-    LEFT JOIN species_images AS principal_image
-        ON principal_image.species_id = species.id
-        AND principal_image.purpose = 'principal'
+    LEFT JOIN species_images AS principal_relation
+        ON principal_relation.species_id = species.id
+        AND principal_relation.purpose = 'principal'
 
     LEFT JOIN images AS principal_file
         ON principal_file.id = COALESCE(
-            principal_image.image_id,
+            principal_relation.image_id,
             species.image_id
         )
 
-    LEFT JOIN species_images AS behavior_image
-        ON behavior_image.species_id = species.id
-        AND behavior_image.purpose = 'behavior'
+    LEFT JOIN species_images AS behavior_relation
+        ON behavior_relation.species_id = species.id
+        AND behavior_relation.purpose = 'behavior'
 
     LEFT JOIN images AS behavior_file
-        ON behavior_file.id = behavior_image.image_id
+        ON behavior_file.id = behavior_relation.image_id
 
-    LEFT JOIN species_images AS ecology_image
-        ON ecology_image.species_id = species.id
-        AND ecology_image.purpose = 'ecology'
+    LEFT JOIN species_images AS ecology_relation
+        ON ecology_relation.species_id = species.id
+        AND ecology_relation.purpose = 'ecology'
 
     LEFT JOIN images AS ecology_file
-        ON ecology_file.id = ecology_image.image_id
+        ON ecology_file.id = ecology_relation.image_id
 
-    LEFT JOIN species_images AS curiosities_image
-        ON curiosities_image.species_id = species.id
-        AND curiosities_image.purpose = 'curiosities'
+    LEFT JOIN species_images AS curiosities_relation
+        ON curiosities_relation.species_id = species.id
+        AND curiosities_relation.purpose = 'curiosities'
 
     LEFT JOIN images AS curiosities_file
-        ON curiosities_file.id = curiosities_image.image_id
-
-    LEFT JOIN species_images AS discovery_image
-        ON discovery_image.species_id = species.id
-        AND discovery_image.purpose = 'discovery'
-
-    LEFT JOIN images AS discovery_file
-        ON discovery_file.id = discovery_image.image_id
+        ON curiosities_file.id = curiosities_relation.image_id
 
     WHERE species.slug = :slug
     LIMIT 1
@@ -292,7 +295,6 @@ $relatedSpecies = $relationStmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="species-characteristics-group">
 
                 <div class="species-characteristics-heading">
-                    <span class="species-characteristics-number">01</span>
 
                     <div>
                         <h3>Dimensões físicas</h3>
@@ -326,7 +328,6 @@ $relatedSpecies = $relationStmt->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="species-characteristics-group">
                 <div class="species-characteristics-heading">
-                    <span class="species-characteristics-number">02</span>
 
                     <div>
                         <h3>Características biológicas</h3>
@@ -353,7 +354,6 @@ $relatedSpecies = $relationStmt->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="species-characteristics-group">
                 <div class="species-characteristics-heading">
-                    <span class="species-characteristics-number">03</span>
                     <div>
                         <h3>Distribuição temporal e geográfica</h3>
                         <p>Quando e onde viveu</p>
@@ -430,37 +430,120 @@ $relatedSpecies = $relationStmt->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- COMPORTAMENTO, ECOLOGIA E CURIOSIDADES -->
 
-    <section class="species-content-section">
+    <section class="species-content-section species-editorial-section">
         <div class="species-section-title">
             <span>CONHECENDO A ESPÉCIE</span>
             <h2>Comportamento e ecologia</h2>
+            <p>
+                Explore os hábitos, o ambiente e as características
+                que marcaram a história desta espécie.
+            </p>
         </div>
 
-        <div class="species-text-grid">
-            <article class="species-text-card">
-                <span>01</span>
-                <h3>Comportamento</h3>
+        <!-- COMPORTAMENTO -->
+
+        <article class="editorial-block editorial-behavior">
+            <div class="editorial-image editorial-behavior-image">
+                <?php if (!empty($species['behavior_image_path'])) { ?>
+                    <img
+                        src="<?= formatValue($species['behavior_image_path']); ?>"
+                        alt="Representação do comportamento de <?= formatValue($species['name']); ?>"
+                        loading="lazy"
+                    >
+                <?php } ?>
+
+                <span class="editorial-image-caption">
+                    COMPORTAMENTO
+                </span>
+            </div>
+            <div class="editorial-content editorial-behavior-content">
+                <div class="editorial-heading">
+                    <span class="editorial-number">01</span>
+                    <span class="editorial-label">
+                        HÁBITOS E LOCOMOÇÃO
+                    </span>
+                </div>
+                <h3>Como vivia esta espécie?</h3>
                 <p>
                     <?= formatValue($species['behavior']); ?>
                 </p>
-            </article>
+                <div class="editorial-bottom-line"></div>
+            </div>
+        </article>
 
-            <article class="species-text-card">
-                <span>02</span>
-                <h3>Ecologia</h3>
+        <!-- ECOLOGIA -->
+
+        <article class="editorial-block editorial-ecology">
+            <div class="editorial-content editorial-ecology-content">
+                <div class="editorial-heading">
+                    <span class="editorial-number">02</span>
+                    <span class="editorial-label">
+                        AMBIENTE E RELAÇÕES ECOLÓGICAS
+                    </span>
+                </div>
+                <h3>O ambiente em que habitava</h3>
                 <p>
                     <?= formatValue($species['ecology']); ?>
                 </p>
-            </article>
+                <div class="editorial-ecology-details">
+                    <div>
+                        <span>HABITAT</span>
+                        <strong>
+                            <?= formatValue($species['habitat']); ?>
+                        </strong>
+                    </div>
+                    <div>
+                        <span>BIOMA</span>
+                        <strong>
+                            <?= formatValue($species['biome']); ?>
+                        </strong>
+                    </div>
+                </div>
+            </div>
 
-            <article class="species-text-card">
-                <span>03</span>
-                <h3>Curiosidades</h3>
-                <p>
-                    <?= formatValue($species['curiosities']); ?>
-                </p>
-            </article>
-        </div>
+            <div class="editorial-image editorial-ecology-image">
+                <?php if (!empty($species['ecology_image_path'])) { ?>
+                    <img
+                        src="<?= formatValue($species['ecology_image_path']); ?>"
+                        alt="Representação do ambiente ecológico de <?= formatValue($species['name']); ?>"
+                        loading="lazy"
+                    >
+                <?php } ?>
+                <span class="editorial-image-caption">
+                    CONTEXTO ECOLÓGICO
+                </span>
+            </div>
+        </article>
+
+        <!-- CURIOSIDADES -->
+
+        <article class="editorial-curiosities">
+            <div class="editorial-curiosities-image">
+                <?php if (!empty($species['curiosities_image_path'])) { ?>
+                    <img
+                        src="<?= formatValue($species['curiosities_image_path']); ?>"
+                        alt="Características marcantes de <?= formatValue($species['name']); ?>"
+                        loading="lazy"
+                    >
+                <?php } ?>
+                <div class="editorial-curiosities-overlay">
+                    <span>03 — CARACTERÍSTICAS MARCANTES</span>
+                    <h3>O que torna esta espécie especial?</h3>
+                </div>
+            </div>
+
+            <div class="editorial-curiosities-content">
+                <span class="editorial-curiosities-number">03</span>
+                <div class="editorial-curiosities-text">
+                    <span class="editorial-label">
+                        CURIOSIDADES
+                    </span>
+                    <p>
+                        <?= formatValue($species['curiosities']); ?>
+                    </p>
+                </div>
+            </div>
+        </article>
     </section>
 
     <!-- CONTEXTO AMBIENTAL -->
