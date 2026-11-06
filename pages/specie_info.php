@@ -591,88 +591,53 @@ $relatedSpecies = array_values(array_filter(
         </article>
     </section>
 
-    <!-- CONTEXTO AMBIENTAL -->
-
-    <section class="species-dark-section species-environment-section">
+    <!-- ESPECIES RELACIONADAS -->
+    <section class="species-dark-section species-related-section">
         <div class="species-dark-content">
             <div class="species-section-title species-section-title-dark">
-                <span>O MUNDO PRÉ-HISTÓRICO</span>
-                <h2>Contexto ambiental</h2>
+                <span>COMPARTILHARAM O PASSADO</span>
+                <h2>Espécies relacionadas</h2>
+                <p>
+                    Conheça outros animais que viveram juntos dessa espécie.
+                </p>
             </div>
+            <?php if (!empty($relatedSpecies)) { ?>
+                <div class="related-species-grid">
+                    <?php foreach ($relatedSpecies as $related) { ?>
+                        <a
+                            href="index.php?page=species_info&slug=<?= urlencode($related['slug']); ?>"
+                            class="related-species-card"
+                        >
+                            <div class="related-species-image">
+                                <?php if (!empty($related['image_path'])) { ?>
 
-            <div class="environment-grid">
-                <div class="environment-card">
-                    <span>BIOMA</span>
-                    <strong>
-                        <?= formatValue($species['biome']); ?>
-                    </strong>
-                </div>
-
-                <div class="environment-card">
-                    <span>CLIMA</span>
-                    <strong>
-                        <?= formatValue($species['climate']); ?>
-                    </strong>
-                </div>
-                <div class="environment-card">
-                    <span>HABITAT</span>
-                    <strong>
-                        <?= formatValue($species['habitat']); ?>
-                    </strong>
-                </div>
-                <div class="environment-card">
-                    <span>CONTINENTE</span>
-                    <strong>
-                        <?= formatValue($species['continent']); ?>
-                    </strong>
-                </div>
-            </div>
-
-            <!-- ESPECIES CONTEMPORANEAS -->
-
-            <div class="contemporaneous-section">
-                <div class="contemporaneous-title">
-                    <span>COMPARTILHARAM O PASSADO</span>
-                    <h3>Espécies relacionadas</h3>
-                </div>
-
-                <?php if (!empty($relatedSpecies)) { ?>
-                    <div class="related-species-grid">
-                        <?php foreach ($relatedSpecies as $related) { ?>
-                            <a
-                                href="index.php?page=species_info&slug=<?= urlencode($related['slug']); ?>"
-                                class="related-species-card"
-                            >
-
-                                <div class="related-species-image">
-                                    <?php if (!empty($related['image_path'])) { ?>
-                                        <img
-                                            src="<?= formatValue($related['image_path']); ?>"
-                                            alt="<?= formatValue($related['name']); ?>"
-                                            loading="lazy"
-                                        >
-                                    <?php } ?>
+                                    <img
+                                        src="<?= formatValue($related['image_path']); ?>"
+                                        alt="<?= formatValue($related['name']); ?>"
+                                        loading="lazy"
+                                    >
+                                <?php } ?>
+                            </div>
+                            <div class="related-species-content">
+                                <strong>
+                                    <?= formatValue($related['name']); ?>
+                                </strong>
+                                <span>
+                                    <?= formatValue($related['scientific_name']); ?>
+                                </span>
+                                <div class="related-species-link">
+                                    <span>Conhecer espécie</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
                                 </div>
-
-                                <div class="related-species-content">
-                                    <strong>
-                                        <?= formatValue($related['name']); ?>
-                                    </strong>
-
-                                    <span>
-                                        <?= formatValue($related['scientific_name']); ?>
-                                    </span>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
-
-                <?php } else { ?>
-                    <p class="species-empty-message">
-                        Nenhuma espécie relacionada cadastrada.
-                    </p>
-                <?php } ?>
-            </div>
+                            </div>
+                        </a>
+                    <?php } ?>
+                </div>
+            <?php } else { ?>
+                <p class="species-empty-message">
+                    Nenhuma espécie relacionada encontrada.
+                </p>
+            <?php } ?>
         </div>
     </section>
 
