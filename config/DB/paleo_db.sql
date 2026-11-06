@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30/10/2026 às 19:02
+-- Tempo de geração: 06/11/2026 às 17:25
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -173,26 +173,6 @@ INSERT INTO `species_images` (`species_id`, `image_id`, `purpose`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `species_relations`
---
-
-CREATE TABLE `species_relations` (
-  `species_id` int(11) NOT NULL,
-  `related_species_id` int(11) NOT NULL,
-  `relation_type` enum('coexistiu') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `species_relations`
---
-
-INSERT INTO `species_relations` (`species_id`, `related_species_id`, `relation_type`) VALUES
-(1, 2, 'coexistiu'),
-(2, 1, 'coexistiu');
-
--- --------------------------------------------------------
-
---
 -- Estrutura para tabela `tax`
 --
 
@@ -280,13 +260,6 @@ ALTER TABLE `species_images`
   ADD KEY `image_id` (`image_id`);
 
 --
--- Índices de tabela `species_relations`
---
-ALTER TABLE `species_relations`
-  ADD PRIMARY KEY (`species_id`,`related_species_id`),
-  ADD KEY `related_species_id` (`related_species_id`);
-
---
 -- Índices de tabela `tax`
 --
 ALTER TABLE `tax`
@@ -353,13 +326,6 @@ ALTER TABLE `species`
 ALTER TABLE `species_images`
   ADD CONSTRAINT `species_images_ibfk_1` FOREIGN KEY (`species_id`) REFERENCES `species` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `species_images_ibfk_2` FOREIGN KEY (`image_id`) REFERENCES `images` (`id`) ON DELETE CASCADE;
-
---
--- Restrições para tabelas `species_relations`
---
-ALTER TABLE `species_relations`
-  ADD CONSTRAINT `species_relations_ibfk_1` FOREIGN KEY (`species_id`) REFERENCES `species` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `species_relations_ibfk_2` FOREIGN KEY (`related_species_id`) REFERENCES `species` (`id`) ON DELETE CASCADE;
 
 --
 -- Restrições para tabelas `tax`

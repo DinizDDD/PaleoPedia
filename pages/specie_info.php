@@ -1,4 +1,3 @@
-
 <?php
 
 include(__DIR__ . '/../config/database.php');
@@ -202,45 +201,91 @@ $relationStmt = $conn->prepare("
         related.scientific_name,
         related.slug,
         related.continent,
-        related_file._path AS image_path
 
-    FROM (
-        SELECT related_species_id AS related_id
-        FROM species_relations
-        WHERE species_id = :species_id_1
+        COALESCE(
+            card_file._path,
+            principal_file._path,
+            legacy_file._path
+        ) AS image_path
 
-        UNION
+    FROM species AS current_species
 
-        SELECT species_id AS related_id
-        FROM species_relations
-        WHERE related_species_id = :species_id_2
-    ) AS relations
+    INNER JOIN geo_time AS current_geo_time
+        ON current_geo_time.id = current_species.geotime_id
 
     INNER JOIN species AS related
-        ON related.id = relations.related_id
+        ON related.id != current_species.id
 
-    LEFT JOIN species_images AS related_principal
-        ON related_principal.species_id = related.id
-        AND related_principal.purpose = 'principal'
+    INNER JOIN geo_time AS related_time
+        ON related_time.id = related.geotime_id
 
-    LEFT JOIN images AS related_file
-        ON related_file.id = COALESCE(
-            related_principal.image_id,
-            related.image_id
-        )
+    LEFT JOIN species_images AS card_relation
+        ON card_relation.species_id = related.id
+        AND card_relation.purpose = 'card'
 
-    WHERE related.id != :species_id_3
+    LEFT JOIN images AS card_file
+        ON card_file.id = card_relation.image_id
+
+    LEFT JOIN species_images AS principal_relation
+        ON principal_relation.species_id = related.id
+        AND principal_relation.purpose = 'principal'
+
+    LEFT JOIN images AS principal_file
+        ON principal_file.id = principal_relation.image_id
+
+    LEFT JOIN images AS legacy_file
+        ON legacy_file.id = related.image_id
+
+    WHERE current_species.id = :species_id
+
+        AND current_geo_time.begin_year >= related_time.end_year
+        AND related_time.begin_year >= current_geo_time.end_year
 
     ORDER BY related.name
 ");
 
 $relationStmt->execute([
-    ':species_id_1' => $species['id'],
-    ':species_id_2' => $species['id'],
-    ':species_id_3' => $species['id']
+    ':species_id' => $species['id']
 ]);
 
-$relatedSpecies = $relationStmt->fetchAll(PDO::FETCH_ASSOC);
+$timeRelatedSpecies = $relationStmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+/* CONTINENTES COMPARAÇÃO */
+
+$currentContinents = preg_split(
+    '/\s*,\s*|\s+e\s+/u',
+    trim($species['continent'] ?? ''),
+    -1,
+    PREG_SPLIT_NO_EMPTY
+);
+
+$currentContinents = array_map(
+    fn($continent) => mb_strtolower(trim($continent), 'UTF-8'),
+    $currentContinents
+);
+
+$relatedSpecies = array_values(array_filter(
+    $timeRelatedSpecies,
+    function ($related) use ($currentContinents) {
+
+        $relatedContinents = preg_split(
+            '/\s*,\s*|\s+e\s+/u',
+            trim($related['continent'] ?? ''),
+            -1,
+            PREG_SPLIT_NO_EMPTY
+        );
+
+        $relatedContinents = array_map(
+            fn($continent) => mb_strtolower(trim($continent), 'UTF-8'),
+            $relatedContinents
+        );
+
+        return count(
+            array_intersect($currentContinents, $relatedContinents)
+        ) > 0;
+    }
+));
 ?>
 
 <main class="species-page">
