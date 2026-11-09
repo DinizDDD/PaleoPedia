@@ -31,7 +31,12 @@ $stmt = $conn->prepare("
         COALESCE(
             curiosities_file._path,
             principal_file._path
-        ) AS curiosities_image_path
+        ) AS curiosities_image_path,
+
+        COALESCE(
+            discovery_file._path,
+            principal_file._path
+        ) AS discovery_image_path
 
     FROM species
 
@@ -68,6 +73,13 @@ $stmt = $conn->prepare("
 
     LEFT JOIN images AS curiosities_file
         ON curiosities_file.id = curiosities_relation.image_id
+
+    LEFT JOIN species_images AS discovery_relation
+        ON discovery_relation.species_id = species.id
+        AND discovery_relation.purpose = 'discovery'
+
+    LEFT JOIN images AS discovery_file
+        ON discovery_file.id = discovery_relation.image_id
 
     WHERE species.slug = :slug
     LIMIT 1
@@ -592,6 +604,7 @@ $relatedSpecies = array_values(array_filter(
     </section>
 
     <!-- ESPECIES RELACIONADAS -->
+
     <section class="species-dark-section species-related-section">
         <div class="species-dark-content">
             <div class="species-section-title species-section-title-dark">
@@ -647,39 +660,55 @@ $relatedSpecies = array_values(array_filter(
         <div class="species-section-title">
             <span>REGISTRO FOSSILÍFERO</span>
             <h2>Descoberta</h2>
+            <p>
+                Conheça os registros e as informações sobre a descoberta
+                dos fósseis desta espécie.
+            </p>
         </div>
 
         <div class="discovery-grid">
-            <div class="discovery-item">
-                <span>ANO DE DESCOBERTA</span>
+            <div class="discovery-image">
+                <?php if (!empty($species['discovery_image_path'])) { ?>
+                    <img
+                        src="<?= formatValue($species['discovery_image_path']); ?>"
+                        alt="Registro fóssil de <?= formatValue($species['name']); ?>"
+                        loading="lazy"
+                    >
+                <?php } ?>
 
-                <strong>
-                    <?= formatValue($species['discovery_year']); ?>
-                </strong>
+                <span class="discovery-image-caption">
+                    REGISTRO FOSSILÍFERO
+                </span>
             </div>
 
-            <div class="discovery-item">
-                <span>LOCAL DA DESCOBERTA</span>
+            <div class="discovery-information">
+                <div class="discovery-item">
+                    <span>ANO DE DESCOBERTA</span>
+                    <strong>
+                        <?= formatValue($species['discovery_year']); ?>
+                    </strong>
+                </div>
 
-                <strong>
-                    <?= formatValue($species['discovery_local']); ?>
-                </strong>
-            </div>
+                <div class="discovery-item">
+                    <span>LOCAL DA DESCOBERTA</span>
+                    <strong>
+                        <?= formatValue($species['discovery_local']); ?>
+                    </strong>
+                </div>
 
-            <div class="discovery-item">
-                <span>FORMAÇÃO GEOLÓGICA</span>
+                <div class="discovery-item">
+                    <span>FORMAÇÃO GEOLÓGICA</span>
+                    <strong>
+                        <?= formatValue($species['formation']); ?>
+                    </strong>
+                </div>
 
-                <strong>
-                    <?= formatValue($species['formation']); ?>
-                </strong>
-            </div>
-
-            <div class="discovery-item">
-                <span>DESCOBERTO POR</span>
-
-                <strong>
-                    <?= formatValue($species['discovered_by']); ?>
-                </strong>
+                <div class="discovery-item">
+                    <span>DESCOBERTO POR</span>
+                    <strong>
+                        <?= formatValue($species['discovered_by']); ?>
+                    </strong>
+                </div>
             </div>
         </div>
     </section>
