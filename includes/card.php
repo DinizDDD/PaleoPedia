@@ -49,24 +49,16 @@
                     </p>
                 </div>
 
-                <?php if (!empty($species['epoch_name'])): ?>
-                    <div class="info-item">
-                        <span>Época</span>
-                        <p><?= htmlspecialchars($species['epoch_name']); ?></p>
-                    </div>
-                <?php elseif (!empty($species['period_name'])): ?>
-                    <div class="info-item">
-                        <span>Período</span>
-                        <p><?= htmlspecialchars($species['period_name']); ?></p>
-                    </div>
-                <?php endif; ?>
-
-                <?php if (!empty($species['age_name'])): ?>
-                    <div class="info-item">
-                        <span>Idade geológica</span>
-                        <p><?= htmlspecialchars($species['age_name']); ?></p>
-                    </div>
-                <?php endif; ?>
+                <div class="info-item">
+                    <span>Época</span>
+                    <p>
+                        <?= htmlspecialchars(
+                            $species['epoch_name'] ?? $species['period_name'] ?? 'Não informada',
+                            ENT_QUOTES,
+                            'UTF-8'
+                        ); ?>
+                    </p>
+                </div>
 
                 <div class="info-item">
                     <span>Onde viveu</span>

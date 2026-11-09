@@ -136,12 +136,6 @@ SELECT
     END AS epoch_name,
 
     CASE
-        WHEN geo_time.type = 'idade'
-            THEN geo_time.name
-        ELSE NULL
-    END AS age_name,
-
-    CASE
         WHEN geo_time.type = 'periodo'
             THEN geo_time.begin_year
         WHEN geo_parent.type = 'periodo'
