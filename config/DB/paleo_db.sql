@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06/11/2026 às 17:25
+-- Tempo de geração: 09/11/2026 às 17:17
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -92,13 +92,18 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `_path`, `legenda`) VALUES
-(1, 'assets/images/species/trex/principal.png', 'Reconstrução do Tyrannosaurus rex'),
-(4, 'assets/images/species/triceratops/principal.png', 'Reconstrução do Tricerátops'),
-(7, 'assets/images/species/velociraptor/principal.png', 'Reconstrução do Velociraptor'),
-(10, 'assets/images/species/ankylosaurus/principal.png', 'Reconstrução do Ankylosaurus'),
-(13, 'assets/images/species/mamute/principal.png', 'Reconstrução do Mammuthus'),
-(15, 'assets/images/species/diplocaulus/card.png', 'Reconstrução do Diplocaulus para o card de espécies'),
-(37, 'assets/images/species/diplocaulus/principal.png', 'Reconstrução do Diplocaulus - imagem principal');
+(1, 'assets/images/species/trex/principal.png', 'Imagem principal trex'),
+(4, 'assets/images/species/triceratops/principal.png', 'Imagem principal triceratops'),
+(7, 'assets/images/species/velociraptor/principal.png', 'Imagem principal velociraptor'),
+(10, 'assets/images/species/ankylosaurus/principal.png', 'Imagem principal ankylosaurus'),
+(13, 'assets/images/species/mamute/principal.png', 'Imagem principal mamute'),
+(15, 'assets/images/species/diplocaulus/card.png', 'imagem para card diplocaulus'),
+(37, 'assets/images/species/diplocaulus/principal.png', 'Imagem principal diplocaulus'),
+(38, 'assets/images/species/trex/discovery.png', 'Imagem de Fóssil de trex'),
+(39, 'assets/images/species/trex/behavior.png', 'Imagem de comportamento trex'),
+(40, 'assets/images/species/trex/ecology.png', 'Imagem de ecologia trex'),
+(41, 'assets/images/species/trex/curiosities.png', 'Imagem de cusiosidades trex'),
+(42, 'assets/images/species/trex/card.png', 'Imagem para card trex');
 
 -- --------------------------------------------------------
 
@@ -168,7 +173,12 @@ INSERT INTO `species_images` (`species_id`, `image_id`, `purpose`) VALUES
 (4, 10, 'principal'),
 (5, 13, 'principal'),
 (10, 15, 'card'),
-(10, 37, 'principal');
+(10, 37, 'principal'),
+(1, 38, 'discovery'),
+(1, 39, 'behavior'),
+(1, 40, 'ecology'),
+(1, 41, 'curiosities'),
+(1, 42, 'card');
 
 -- --------------------------------------------------------
 
@@ -281,7 +291,7 @@ ALTER TABLE `geo_time`
 -- AUTO_INCREMENT de tabela `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de tabela `species`
