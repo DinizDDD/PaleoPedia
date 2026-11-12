@@ -137,92 +137,115 @@ $totalAges = count(array_filter(
     </div>
 </section>
 
-    <!-- ORGANIZAÇÃO DO TEMPO GEOLÓGICO -->
+<!-- ORGANIZAÇÃO DO TEMPO GEOLÓGICO -->
 
-    <section class="period-hierarchy">
-        <div class="period-section-heading">
-            <span>02 — ORGANIZAÇÃO</span>
-            <h2>Como o tempo geológico é dividido?</h2>
-            <p>
-                A escala do tempo geológico é organizada em unidades
-                hierárquicas, que vão dos maiores intervalos de tempo
-                até subdivisões mais específicas.
-            </p>
-        </div>
-        <div class="period-hierarchy-grid">
-            <article class="period-hierarchy-card">
-                <span class="hierarchy-number">01</span>
-                <div class="hierarchy-icon">
-                    <i class="fa-solid fa-earth-americas"></i>
-                </div>
-                <h3>Éon</h3>
-                <p>
-                    Representa os maiores intervalos da história da Terra,
-                    abrangendo bilhões de anos e grandes transformações
-                    no planeta.
-                </p>
+<section class="period-hierarchy">
+    <div class="period-section-heading">
+        <span>02 — ORGANIZAÇÃO</span>
+        <h2>COMO O TEMPO GEOLÓGICO É DIVIDIDO?</h2>
+        <p>
+            A escala do tempo geológico é organizada em unidades
+            hierárquicas, que vão dos maiores intervalos de tempo
+            até subdivisões mais específicas.
+        </p>
+    </div>
+    <div class="period-hierarchy-table-wrapper">
+        <table class="period-hierarchy-table">
+            <thead>
+                <tr>
+                    <th>Divisão</th>
+                    <th>Descrição</th>
+                    <th>Organização</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="hierarchy-level">1º</span>
+                        <strong>Éon</strong>
+                    </td>
+                    <td>
+                        Representa os maiores intervalos da história
+                        da Terra, abrangendo bilhões de anos e grandes
+                        transformações no planeta.
+                    </td>
+                    <td>
+                        Subdivide-se em eras.
+                    </td>
+                </tr>
 
-            </article>
-            <article class="period-hierarchy-card">
-                <span class="hierarchy-number">02</span>
-                <div class="hierarchy-icon">
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
-                <h3>Era</h3>
-                <p>
-                    Subdivide os éons e reúne intervalos caracterizados
-                    por importantes mudanças na vida e nas condições
-                    ambientais da Terra.
-                </p>
-            </article>
+                <tr>
+                    <td>
+                        <span class="hierarchy-level">2º</span>
+                        <strong>Era</strong>
+                    </td>
+                    <td>
+                        Reúne intervalos marcados por importantes
+                        mudanças na vida, na geologia e nas condições
+                        ambientais da Terra.
+                    </td>
+                    <td>
+                        Subdivide-se em períodos.
+                    </td>
+                </tr>
 
-            <article class="period-hierarchy-card">
-                <span class="hierarchy-number">03</span>
-                <div class="hierarchy-icon">
-                    <i class="fa-solid fa-mountain"></i>
-                </div>
-                <h3>Período</h3>
-                <p>
-                    Divide as eras em intervalos menores, marcados por
-                    transformações geológicas, climáticas e biológicas.
-                </p>
-            </article>
+                <tr>
+                    <td>
+                        <span class="hierarchy-level">3º</span>
+                        <strong>Período</strong>
+                    </td>
+                    <td>
+                        Divide as eras em intervalos menores,
+                        caracterizados por transformações geológicas,
+                        climáticas e biológicas.
+                    </td>
+                    <td>
+                        Subdivide-se em épocas.
+                    </td>
+                </tr>
 
-            <article class="period-hierarchy-card">
-                <span class="hierarchy-number">04</span>
-                <div class="hierarchy-icon">
-                    <i class="fa-solid fa-clock"></i>
-                </div>
-                <h3>Época</h3>
-                <p>
-                    Subdivide os períodos em intervalos mais específicos,
-                    permitindo observar mudanças ocorridas ao longo
-                    de milhões de anos.
-                </p>
-            </article>
+                <tr>
+                    <td>
+                        <span class="hierarchy-level">4º</span>
+                        <strong>Época</strong>
+                    </td>
+                    <td>
+                        Representa subdivisões dos períodos,
+                        permitindo identificar mudanças ocorridas
+                        em intervalos mais específicos.
+                    </td>
+                    <td>
+                        Subdivide-se em idades.
+                    </td>
+                </tr>
 
-            <article class="period-hierarchy-card">
-                <span class="hierarchy-number">05</span>
-                <div class="hierarchy-icon">
-                    <i class="fa-solid fa-hourglass-half"></i>
-                </div>
-                <h3>Idade</h3>
-                <p>
-                    Corresponde a subdivisões menores das épocas,
-                    utilizadas para representar intervalos mais
-                    detalhados da história geológica.
-                </p>
-            </article>
-        </div>
-        <div class="period-hierarchy-note">
-            <i class="fa-solid fa-circle-info"></i>
-            <p>
-                Essas divisões formam uma hierarquia: os éons são
-                subdivididos em eras, as eras em períodos, os períodos
-                em épocas e as épocas em idades.
-            </p>
-        </div>
-    </section>
+                <tr>
+                    <td>
+                        <span class="hierarchy-level">5º</span>
+                        <strong>Idade</strong>
+                    </td>
+                    <td>
+                        Corresponde às menores unidades da escala
+                        apresentada, utilizadas para representar
+                        intervalos mais detalhados da história geológica.
+                    </td>
+                    <td>
+                        É a menor subdivisão dessa hierarquia.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="period-hierarchy-note">
+        <i class="fa-solid fa-circle-info"></i>
+        <p>
+            Essas unidades seguem uma hierarquia: os éons são
+            subdivididos em eras, as eras em períodos, os períodos
+            em épocas e as épocas em idades.
+        </p>
+    </div>
+</section>
 
     <!-- ESCALA DO TEMPO GEOLOGICO -->
 
