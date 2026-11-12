@@ -60,6 +60,7 @@
     <link rel="stylesheet" href="assets/css/spotlight_banner.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="assets/css/specie_info.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="assets/css/footer.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="assets/css/period.css?v=<?= time(); ?>">
 </head>
 <body>
     <?php require 'includes/navbar.php';

@@ -127,7 +127,7 @@ function getDietName($diet)
     return $diets[$diet] ?? $diet;
 }
 
-/* HIERARQUIA GEOLOGICA */
+/* HIERARQUIA */
 
 $geologicalTime = [];
 $geotimeId = $species['geotime_id'] ?? null;

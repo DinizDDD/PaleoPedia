@@ -1,0 +1,947 @@
+
+@import url('./variables.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-primary);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.period-page {
+    background-color: var(--Bege);
+    color: var(--Preto);
+    overflow: hidden;
+}
+
+/* BANNER PRINCIPAL */
+
+.period-hero {
+    position: relative;
+    isolation: isolate;
+    min-height: 650px;
+    height: 85vh;
+    max-height: 950px;
+    overflow: hidden;
+    background-color: var(--Preto);
+
+    .period-hero-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: inherit;
+        object-fit: cover;
+        opacity: 0.65;
+        animation: periodBannerReveal 1.2s ease both;
+    }
+
+    .period-hero-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+            linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.88) 0%,
+                rgba(0, 0, 0, 0.65) 48%,
+                rgba(0, 0, 0, 0.15) 100%
+            ),
+            linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.5),
+                transparent 65%
+            );
+    }
+
+    .period-hero-content {
+        position: absolute;
+        top: 50%;
+        left: 8%;
+        z-index: 2;
+        width: min(80%, 950px);
+        transform: translateY(-50%);
+
+        .period-hero-label {
+            display: inline-block;
+            margin-bottom: 22px;
+            color: var(--Laranja);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        h1 {
+            margin-bottom: 25px;
+            color: var(--Branco);
+            font-family: var(--font-secondary);
+            font-size: clamp(3rem, 7vw, 6.5rem);
+            line-height: 1.05;
+            letter-spacing: 3px;
+
+            span {
+                display: block;
+                color: var(--Laranja);
+            }
+        }
+
+        p {
+            max-width: 750px;
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        .period-hero-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 35px;
+            padding: 16px 22px;
+            border: 1px solid var(--Laranja);
+            border-radius: 8px;
+            color: var(--Branco);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            transition:
+                background 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease;
+
+            &:hover {
+                background-color: var(--Laranja);
+                color: var(--Preto);
+                transform: translateY(-4px);
+            }
+        }
+    }
+}
+
+@keyframes periodBannerReveal {
+    from {
+        opacity: 0;
+        transform: scale(1.06);
+    }
+
+    to {
+        opacity: 0.65;
+        transform: scale(1);
+    }
+}
+
+/* TITULOS DAS SECOES */
+
+.period-section-heading {
+    max-width: 950px;
+    margin: 0 auto 55px;
+    text-align: center;
+
+    > span {
+        display: inline-block;
+        margin-bottom: 16px;
+        color: var(--Laranja);
+        font-family: var(--font-secondary);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        color: var(--Preto);
+        font-family: var(--font-secondary);
+        font-size: clamp(2rem, 3.5vw, 3.2rem);
+        line-height: 1.2;
+    }
+
+    p {
+        max-width: 800px;
+        margin: 0 auto;
+        color: rgba(0, 0, 0, 0.7);
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+}
+
+/* INTRODUCAO */
+
+.period-introduction {
+    padding: 100px 8% 120px;
+    background-color: var(--Bege);
+
+    .period-introduction-content {
+        display: grid;
+        grid-template-columns: 1.5fr 0.8fr;
+        align-items: center;
+        gap: 80px;
+        max-width: 1300px;
+        margin: auto;
+    }
+
+    .period-introduction-text {
+        p {
+            margin-bottom: 22px;
+            color: rgba(0, 0, 0, 0.78);
+            font-size: 1.05rem;
+            line-height: 2;
+            text-align: justify;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .period-introduction-highlight {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 280px;
+        padding: 35px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.48);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.07);
+        text-align: center;
+
+        span {
+            color: var(--Laranja);
+            font-family: var(--font-secondary);
+            font-size: clamp(3.5rem, 5vw, 5rem);
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        strong {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        p {
+            max-width: 280px;
+            margin-top: 18px;
+            color: rgba(0, 0, 0, 0.65);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+    }
+}
+
+/* HIERARQUIA GEOLOGICA */
+
+.period-hierarchy {
+    padding: 110px 8% 120px;
+    background-color: var(--Branco);
+
+    .period-hierarchy-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 20px;
+        max-width: 1500px;
+        margin: auto;
+    }
+
+    .period-hierarchy-card {
+        position: relative;
+        min-height: 310px;
+        padding: 35px 25px;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.07);
+        border-radius: 16px;
+        background: var(--Bege);
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .hierarchy-number {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            color: rgba(0, 0, 0, 0.12);
+            font-family: var(--font-secondary);
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .hierarchy-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 58px;
+            height: 58px;
+            margin-bottom: 25px;
+            border-radius: 14px;
+            background-color: var(--Laranja);
+            color: var(--Preto);
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            margin-bottom: 15px;
+            font-family: var(--font-secondary);
+            font-size: 1.35rem;
+        }
+
+        p {
+            color: rgba(0, 0, 0, 0.68);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+    }
+
+    .period-hierarchy-note {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        max-width: 1100px;
+        margin: 35px auto 0;
+        padding: 22px 25px;
+        border-left: 3px solid var(--Laranja);
+        border-radius: 5px;
+        background-color: rgba(0, 0, 0, 0.035);
+
+        i {
+            margin-top: 3px;
+            color: var(--Laranja);
+            font-size: 1.2rem;
+        }
+
+        p {
+            color: rgba(0, 0, 0, 0.72);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+    }
+}
+
+/* ESCALA GEOLOGICA */
+
+.period-scale {
+    padding: 115px 8% 120px;
+    background-color: var(--Bege);
+
+    .period-scale-summary {
+        display: flex;
+        justify-content: center;
+        gap: 70px;
+        margin-bottom: 55px;
+    }
+
+    .period-scale-stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 7px;
+
+        strong {
+            color: var(--Laranja);
+            font-family: var(--font-secondary);
+            font-size: 2.7rem;
+        }
+
+        span {
+            color: rgba(0, 0, 0, 0.65);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+    }
+
+    .period-scale-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 1250px;
+        margin: auto;
+    }
+
+    .period-scale-item {
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.09);
+        border-radius: 14px;
+        background-color: var(--Branco);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.045);
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 13px 30px rgba(0, 0, 0, 0.09);
+        }
+    }
+
+    .period-scale-main {
+        display: grid;
+        grid-template-columns: 1fr 1.3fr 60px;
+        align-items: center;
+        gap: 30px;
+        min-height: 135px;
+        padding: 25px 35px;
+        border-left: 5px solid var(--Laranja);
+    }
+
+    .period-scale-date {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        color: rgba(0, 0, 0, 0.65);
+        font-size: 0.85rem;
+
+        i {
+            color: var(--Laranja);
+            font-size: 0.75rem;
+        }
+    }
+
+    .period-scale-information {
+        span {
+            color: var(--Laranja);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        h3 {
+            margin: 7px 0;
+            color: var(--Preto);
+            font-family: var(--font-secondary);
+            font-size: 1.7rem;
+        }
+
+        p {
+            color: rgba(0, 0, 0, 0.45);
+            font-size: 0.75rem;
+        }
+    }
+
+    .period-scale-action {
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--Bege);
+            color: var(--Preto);
+            text-decoration: none;
+            transition:
+                background 0.3s ease,
+                color 0.3s ease;
+
+            &:hover {
+                background-color: var(--Laranja);
+                color: var(--Preto);
+            }
+        }
+    }
+
+    .period-scale-children {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 35px 30px 40px;
+    }
+
+    .period-scale-epoch {
+        padding: 20px 25px;
+        border-left: 2px solid var(--Laranja);
+        border-radius: 0 8px 8px 0;
+        background-color: rgba(0, 0, 0, 0.035);
+    }
+
+    .period-scale-division-heading {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+
+        > span {
+            color: var(--Laranja);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        strong {
+            color: var(--Preto);
+            font-size: 1rem;
+        }
+
+        small {
+            margin-left: auto;
+            color: rgba(0, 0, 0, 0.55);
+            font-size: 0.78rem;
+        }
+    }
+
+    .period-scale-ages {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 10px;
+        margin-top: 18px;
+    }
+
+    .period-scale-age {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 13px 15px;
+        border: 1px solid rgba(0, 0, 0, 0.07);
+        border-radius: 7px;
+        background-color: var(--Branco);
+
+        span {
+            color: var(--Preto);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        small {
+            color: rgba(0, 0, 0, 0.55);
+            font-size: 0.72rem;
+        }
+    }
+
+    .period-empty-message {
+        padding: 35px;
+        border-radius: 12px;
+        background-color: var(--Branco);
+        color: rgba(0, 0, 0, 0.65);
+        text-align: center;
+    }
+
+    .period-scale-disclaimer {
+        max-width: 900px;
+        margin: 30px auto 0;
+        color: rgba(0, 0, 0, 0.55);
+        font-size: 0.85rem;
+        line-height: 1.7;
+        text-align: center;
+    }
+}
+
+/* INVESTIGACAO CIENTIFICA */
+
+.period-science {
+    position: relative;
+    padding: 115px 8% 125px;
+    background-color: var(--Preto);
+    color: var(--Branco);
+
+    .period-science-content {
+        max-width: 1450px;
+        margin: auto;
+    }
+
+    .period-section-heading-light {
+        h2 {
+            color: var(--Branco);
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.68);
+        }
+    }
+
+    .period-science-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .period-science-card {
+        padding: 35px 28px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        background-color: rgba(255, 255, 255, 0.045);
+        transition:
+            transform 0.3s ease,
+            background 0.3s ease;
+
+        &:hover {
+            transform: translateY(-6px);
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .period-science-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            background-color: var(--Laranja);
+            color: var(--Preto);
+            font-size: 1.35rem;
+        }
+
+        h3 {
+            margin-bottom: 15px;
+            color: var(--Branco);
+            font-family: var(--font-secondary);
+            font-size: 1.2rem;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 0.9rem;
+            line-height: 1.85;
+        }
+    }
+}
+
+/* GRANDES ACONTECIMENTOS */
+
+.period-events {
+    padding: 115px 8% 125px;
+    background-color: var(--Branco);
+
+    .period-events-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px;
+        max-width: 1400px;
+        margin: auto;
+    }
+
+    .period-event-card {
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
+        background-color: var(--Bege);
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+        }
+    }
+
+    .period-event-image {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+        background-color: var(--Preto);
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.65),
+                transparent 65%
+            );
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        span {
+            position: absolute;
+            bottom: 22px;
+            left: 25px;
+            z-index: 1;
+            color: var(--Branco);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        &:hover img {
+            transform: scale(1.04);
+        }
+    }
+
+    .period-event-content {
+        padding: 28px 30px 32px;
+
+        > span {
+            color: var(--Laranja);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        h3 {
+            margin: 12px 0;
+            color: var(--Preto);
+            font-family: var(--font-secondary);
+            font-size: 1.45rem;
+            line-height: 1.35;
+        }
+
+        p {
+            color: rgba(0, 0, 0, 0.68);
+            font-size: 0.92rem;
+            line-height: 1.85;
+        }
+    }
+}
+
+/* RESPONSIVIDADE - NOTEBOOKS E TABLETS */
+
+@media (max-width: 1100px) {
+    .period-hierarchy {
+        .period-hierarchy-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    .period-science {
+        .period-science-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    .period-introduction {
+        .period-introduction-content {
+            gap: 40px;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .period-introduction {
+        .period-introduction-content {
+            grid-template-columns: 1fr;
+        }
+
+        .period-introduction-highlight {
+            min-height: 230px;
+        }
+    }
+
+    .period-scale {
+        .period-scale-main {
+            grid-template-columns: 1fr 1.5fr 50px;
+            gap: 20px;
+            padding: 25px;
+        }
+    }
+}
+
+/* RESPONSIVIDADE - CELULARES */
+
+@media (max-width: 768px) {
+    .period-hero {
+        height: 85vh;
+        min-height: 650px;
+
+        .period-hero-content {
+            left: 6%;
+            width: 88%;
+
+            .period-hero-label {
+                font-size: 0.72rem;
+                letter-spacing: 2px;
+            }
+
+            h1 {
+                font-size: clamp(2.8rem, 12vw, 4.5rem);
+            }
+
+            p {
+                font-size: 0.95rem;
+                line-height: 1.8;
+            }
+        }
+    }
+
+    .period-section-heading {
+        margin-bottom: 40px;
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 0.92rem;
+        }
+    }
+
+    .period-introduction,
+    .period-hierarchy,
+    .period-scale,
+    .period-science,
+    .period-events {
+        padding: 75px 6%;
+    }
+
+    .period-introduction {
+        .period-introduction-text p {
+            font-size: 0.95rem;
+            text-align: left;
+        }
+    }
+
+    .period-hierarchy {
+        .period-hierarchy-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 13px;
+        }
+
+        .period-hierarchy-card {
+            min-height: 290px;
+            padding: 25px 18px;
+
+            h3 {
+                font-size: 1.15rem;
+            }
+
+            p {
+                font-size: 0.82rem;
+            }
+        }
+
+        .period-hierarchy-note {
+            padding: 18px;
+        }
+    }
+
+    .period-scale {
+        .period-scale-summary {
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .period-scale-stat strong {
+            font-size: 2rem;
+        }
+
+        .period-scale-stat span {
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+        }
+
+        .period-scale-main {
+            grid-template-columns: 1fr 45px;
+            gap: 15px;
+            padding: 22px;
+
+            .period-scale-date {
+                grid-column: 1 / -1;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 8px;
+                font-size: 0.75rem;
+
+                i {
+                    transform: rotate(0deg);
+                }
+            }
+
+            .period-scale-information {
+                h3 {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+
+        .period-scale-children {
+            padding: 0 18px 22px;
+        }
+
+        .period-scale-epoch {
+            padding: 16px;
+        }
+
+        .period-scale-division-heading {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 7px;
+
+            small {
+                margin-left: 0;
+            }
+        }
+
+        .period-scale-ages {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .period-science {
+        .period-science-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .period-science-card {
+            padding: 28px 23px;
+        }
+    }
+
+    .period-events {
+        .period-events-grid {
+            grid-template-columns: 1fr;
+            gap: 22px;
+        }
+
+        .period-event-image {
+            height: 240px;
+        }
+
+        .period-event-content {
+            padding: 24px;
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    .period-hierarchy {
+        .period-hierarchy-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .period-hierarchy-card {
+            min-height: auto;
+        }
+    }
+
+    .period-scale {
+        .period-scale-summary {
+            gap: 20px;
+        }
+
+        .period-scale-stat strong {
+            font-size: 1.7rem;
+        }
+    }
+}
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+    .period-page *,
+    .period-page *::before,
+    .period-page *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
