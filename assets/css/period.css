@@ -18,13 +18,17 @@ html {
     overflow: hidden;
 }
 
-/* BANNER PRINCIPAL */
+.period-intro {
+    background-color: var(--Bege);
+}
+
+/* BANNER */
 
 .period-hero {
     position: relative;
     isolation: isolate;
+    height: 95vh;
     min-height: 650px;
-    height: 85vh;
     max-height: 950px;
     overflow: hidden;
     background-color: var(--Preto);
@@ -33,7 +37,6 @@ html {
         display: block;
         width: 100%;
         height: 100%;
-        min-height: inherit;
         object-fit: cover;
         opacity: 0.65;
         animation: periodBannerReveal 1.2s ease both;
@@ -88,18 +91,11 @@ html {
             }
         }
 
-        p {
-            max-width: 750px;
-            color: rgba(255, 255, 255, 0.82);
-            font-size: 1.05rem;
-            line-height: 1.9;
-        }
-
         .period-hero-link {
             display: inline-flex;
             align-items: center;
             gap: 16px;
-            margin-top: 35px;
+            margin-top: 10px;
             padding: 16px 22px;
             border: 1px solid var(--Laranja);
             border-radius: 8px;
@@ -134,44 +130,10 @@ html {
     }
 }
 
-/* TITULOS DAS SECOES */
-
-.period-section-heading {
-    max-width: 950px;
-    margin: 0 auto 55px;
-    text-align: center;
-
-    > span {
-        display: inline-block;
-        margin-bottom: 16px;
-        color: var(--Laranja);
-        font-family: var(--font-secondary);
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 2.5px;
-    }
-
-    h2 {
-        margin-bottom: 20px;
-        color: var(--Preto);
-        font-family: var(--font-secondary);
-        font-size: clamp(2rem, 3.5vw, 3.2rem);
-        line-height: 1.2;
-    }
-
-    p {
-        max-width: 800px;
-        margin: 0 auto;
-        color: rgba(0, 0, 0, 0.7);
-        font-size: 1rem;
-        line-height: 1.8;
-    }
-}
-
-/* INTRODUCAO */
+/* TEXTO DA INTRODUÇÃO */
 
 .period-introduction {
-    padding: 100px 8% 120px;
+    padding: 75px 8% 100px;
     background-color: var(--Bege);
 
     .period-introduction-content {
@@ -179,16 +141,34 @@ html {
         grid-template-columns: 1.5fr 0.8fr;
         align-items: center;
         gap: 80px;
-        max-width: 1300px;
+        max-width: 1400px;
         margin: auto;
     }
 
     .period-introduction-text {
+        > span {
+            display: inline-block;
+            margin-bottom: 16px;
+            color: var(--Laranja);
+            font-family: var(--font-secondary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: var(--Preto);
+            font-family: var(--font-secondary);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            line-height: 1.2;
+        }
+
         p {
-            margin-bottom: 22px;
-            color: rgba(0, 0, 0, 0.78);
-            font-size: 1.05rem;
-            line-height: 2;
+            margin-bottom: 18px;
+            color: rgba(0, 0, 0, 0.75);
+            font-size: 1rem;
+            line-height: 1.9;
             text-align: justify;
         }
 
@@ -227,12 +207,47 @@ html {
         p {
             max-width: 280px;
             margin-top: 18px;
-            color: rgba(0, 0, 0, 0.65);
+            color: var(--Cinza-Input);
             font-size: 0.9rem;
             line-height: 1.7;
         }
     }
 }
+
+/* TITULOS DAS SECOES */
+
+.period-section-heading {
+    max-width: 950px;
+    margin: 0 auto 55px;
+    text-align: center;
+
+    > span {
+        display: inline-block;
+        margin-bottom: 16px;
+        color: var(--Laranja);
+        font-family: var(--font-secondary);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        color: var(--Preto);
+        font-family: var(--font-secondary);
+        font-size: clamp(2rem, 3.5vw, 3.2rem);
+        line-height: 1.2;
+    }
+
+    p {
+        max-width: 800px;
+        margin: 0 auto;
+        color: var(--Cinza-Input);
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+}
+
 
 /* HIERARQUIA GEOLOGICA */
 

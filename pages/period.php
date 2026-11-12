@@ -82,35 +82,32 @@ $totalAges = count(array_filter(
 
     <!-- BANNER -->
 
-    <section class="period-hero">
+<!-- INTRODUÇÃO E BANNER -->
+
+<section class="period-intro">
+    <div class="period-hero">
         <img class="period-hero-image" src="assets/images/period/period_banner.jpg" alt="Representação da história geológica da Terra">
         <div class="period-hero-overlay"></div>
         <div class="period-hero-content">
             <span class="period-hero-label">
                 A HISTÓRIA DO NOSSO PLANETA
             </span>
+
             <h1>
                 TEMPO <span>GEOLÓGICO</span>
             </h1>
-            <p>
-                Explore bilhões de anos de transformações e descubra como
-                a Terra se formou, como seus continentes mudaram e como a
-                vida evoluiu ao longo de diferentes períodos geológicos.
-            </p>
             <a href="#geological-scale" class="period-hero-link">
                 EXPLORAR A ESCALA GEOLÓGICA
                 <i class="fa-solid fa-arrow-down"></i>
             </a>
         </div>
-    </section>
+    </div>
 
-    <section class="period-introduction">
-        <div class="period-section-heading">
-            <span>01 — INTRODUÇÃO</span>
-            <h2>O que é o tempo geológico?</h2>
-        </div>
+    <div class="period-introduction">
         <div class="period-introduction-content">
             <div class="period-introduction-text">
+                <span>01 — INTRODUÇÃO</span>
+                <h2>O QUE É O TEMPO GEOLÓGICO?</h2>
                 <p>
                     O tempo geológico representa toda a história da Terra,
                     desde sua formação, há aproximadamente 4,54 bilhões de
@@ -127,6 +124,7 @@ $totalAges = count(array_filter(
                     de extinção.
                 </p>
             </div>
+
             <div class="period-introduction-highlight">
                 <span>4,54</span>
                 <strong>BILHÕES DE ANOS</strong>
@@ -136,7 +134,8 @@ $totalAges = count(array_filter(
                 </p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- ORGANIZAÇÃO DO TEMPO GEOLÓGICO -->
 
