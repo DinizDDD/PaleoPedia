@@ -14,7 +14,7 @@
             break;
 
         case 'period':
-            $title = 'Paleopedia - Périodos';
+            $title = 'Paleopedia - Períodos';
             break;   
             
         case 'species_info':
@@ -44,6 +44,33 @@
                 $title = 'Paleopedia - Espécie';
             }
             break;
+
+        case 'time_info':
+            $slug = $_GET['slug'] ?? '';
+
+            if ($slug !== '') {
+                $stmt = $conn->prepare("
+                    SELECT name
+                    FROM geo_time
+                    WHERE slug = :slug
+                    LIMIT 1
+                ");
+
+                $stmt->execute([
+                    ':slug' => $slug
+                ]);
+
+                $timeTitle = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if ($timeTitle) {
+                    $title = 'Paleopedia - ' . $timeTitle['name'];
+                } else {
+                    $title = 'Paleopedia - Tempo Geológico';
+                }
+            } else {
+                $title = 'Paleopedia - Tempo Geológico';
+            }
+            break;
     }
 ?>
 
@@ -62,6 +89,7 @@
     <link rel="stylesheet" href="assets/css/specie_info.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="assets/css/footer.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="assets/css/period.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="assets/css/time_info.css?v=<?= time(); ?>">
 </head>
 <body>
     <?php require 'includes/navbar.php';
@@ -81,6 +109,10 @@
 
             case 'species_info':
                 include('pages/specie_info.php');
+                break;
+            
+            case 'time_info':
+                include('pages/time_info.php');
                 break;
         }
     ?>

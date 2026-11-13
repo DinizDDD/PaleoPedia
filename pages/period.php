@@ -62,11 +62,11 @@ $scaleColumns = [
 ];
 
 $scalePages = [
-    'eon' => 'eon_info',
-    'era' => 'era_info',
-    'periodo' => 'period_info',
-    'epoca' => 'epoch_info',
-    'idade' => 'age_info'
+    'eon' => 'time_info',
+    'era' => 'time_info',
+    'periodo' => 'time_info',
+    'epoca' => 'time_info',
+    'idade' => 'time_info'
 ];
 
 ?>
