@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13/11/2026 às 16:53
+-- Tempo de geração: 13/11/2026 às 21:24
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -32,6 +32,41 @@ CREATE TABLE `geotime_images` (
   `image_id` int(11) NOT NULL,
   `purpose` enum('banner','environment') NOT NULL DEFAULT 'banner'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `geotime_images`
+--
+
+INSERT INTO `geotime_images` (`geotime_id`, `image_id`, `purpose`) VALUES
+(1, 50, 'banner'),
+(2, 53, 'banner'),
+(3, 51, 'banner'),
+(4, 58, 'banner'),
+(5, 52, 'banner'),
+(6, 54, 'banner'),
+(7, 60, 'banner'),
+(8, 61, 'banner'),
+(9, 62, 'banner'),
+(10, 63, 'banner'),
+(11, 64, 'banner'),
+(12, 65, 'banner'),
+(13, 66, 'banner'),
+(14, 67, 'banner'),
+(15, 68, 'banner'),
+(16, 69, 'banner'),
+(17, 70, 'banner'),
+(18, 71, 'banner'),
+(19, 55, 'banner'),
+(20, 56, 'banner'),
+(21, 57, 'banner'),
+(22, 59, 'banner'),
+(23, 47, 'banner'),
+(24, 48, 'banner'),
+(25, 49, 'banner'),
+(26, 43, 'banner'),
+(27, 44, 'banner'),
+(28, 45, 'banner'),
+(29, 46, 'banner');
 
 -- --------------------------------------------------------
 
@@ -121,7 +156,36 @@ INSERT INTO `images` (`id`, `_path`, `legenda`) VALUES
 (39, 'assets/images/species/trex/behavior.png', 'Imagem de comportamento trex'),
 (40, 'assets/images/species/trex/ecology.png', 'Imagem de ecologia trex'),
 (41, 'assets/images/species/trex/curiosities.png', 'Imagem de cusiosidades trex'),
-(42, 'assets/images/species/trex/card.png', 'Imagem para card trex');
+(42, 'assets/images/species/trex/card.png', 'Imagem para card trex'),
+(43, 'assets/images/periods/hadeano.png', 'Representação artística do Éon Hadeano'),
+(44, 'assets/images/periods/arqueano.png', 'Representação artística do Éon Arqueano'),
+(45, 'assets/images/periods/proterozoico.png', 'Representação artística do Éon Proterozoico'),
+(46, 'assets/images/periods/fanerozoico.png', 'Representação artística do Éon Fanerozoico'),
+(47, 'assets/images/periods/paleozoico.png', 'Representação artística da Era Paleozoica'),
+(48, 'assets/images/periods/mesozoico.png', 'Representação artística da Era Mesozoica'),
+(49, 'assets/images/periods/cenozoico.png', 'Representação artística da Era Cenozoica'),
+(50, 'assets/images/periods/cretaceo.png', 'Representação artística do Período Cretáceo'),
+(51, 'assets/images/periods/permiano.png', 'Representação artística do Período Permiano'),
+(52, 'assets/images/periods/quaternario.png', 'Representação artística do Período Quaternário'),
+(53, 'assets/images/periods/cretaceo-superior.png', 'Representação artística da Época Cretáceo Superior'),
+(54, 'assets/images/periods/cretaceo-inferior.png', 'Representação artística da Época Cretáceo Inferior'),
+(55, 'assets/images/periods/cisuraliano.png', 'Representação artística da Época Cisuraliano'),
+(56, 'assets/images/periods/guadalupiano.png', 'Representação artística da Época Guadalupiano'),
+(57, 'assets/images/periods/lopingiano.png', 'Representação artística da Época Lopingiano'),
+(58, 'assets/images/periods/pleistoceno.png', 'Representação artística da Época Pleistoceno'),
+(59, 'assets/images/periods/holoceno.png', 'Representação artística da Época Holoceno'),
+(60, 'assets/images/periods/maastrichtiano.png', 'Representação artística da Idade Maastrichtiano'),
+(61, 'assets/images/periods/campaniano.png', 'Representação artística da Idade Campaniano'),
+(62, 'assets/images/periods/santoniano.png', 'Representação artística da Idade Santoniano'),
+(63, 'assets/images/periods/coniaciano.png', 'Representação artística da Idade Coniaciano'),
+(64, 'assets/images/periods/turoniano.png', 'Representação artística da Idade Turoniano'),
+(65, 'assets/images/periods/cenomaniano.png', 'Representação artística da Idade Cenomaniano'),
+(66, 'assets/images/periods/albiano.png', 'Representação artística da Idade Albiano'),
+(67, 'assets/images/periods/aptiano.png', 'Representação artística da Idade Aptiano'),
+(68, 'assets/images/periods/barremiano.png', 'Representação artística da Idade Barremiano'),
+(69, 'assets/images/periods/hauteriviano.png', 'Representação artística da Idade Hauteriviano'),
+(70, 'assets/images/periods/valanginiano.png', 'Representação artística da Idade Valanginiano'),
+(71, 'assets/images/periods/berriasiano.png', 'Representação artística da Idade Berriasiano');
 
 -- --------------------------------------------------------
 
@@ -309,7 +373,7 @@ ALTER TABLE `geo_time`
 -- AUTO_INCREMENT de tabela `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT de tabela `species`
