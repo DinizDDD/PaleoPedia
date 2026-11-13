@@ -360,204 +360,146 @@ html {
     padding: 115px 8% 120px;
     background-color: var(--Bege);
 
-    .period-scale-summary {
-        display: flex;
-        justify-content: center;
-        gap: 70px;
-        margin-bottom: 55px;
-    }
-
-    .period-scale-stat {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 7px;
-
-        strong {
-            color: var(--Laranja);
-            font-family: var(--font-secondary);
-            font-size: 2.7rem;
-        }
-
-        span {
-            color: rgba(0, 0, 0, 0.65);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-    }
-
-    .period-scale-list {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        max-width: 1250px;
-        margin: auto;
-    }
-
-    .period-scale-item {
-        overflow: hidden;
-        border: 1px solid rgba(0, 0, 0, 0.09);
-        border-radius: 14px;
+    .period-scale-table-wrapper {
+        width: 100%;
+        max-width: 1500px;
+        margin: 0 auto;
+        overflow-x: auto;
+        border: 1px solid var(--Cinza-Claro);
+        border-radius: 12px;
         background-color: var(--Branco);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.045);
-        transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease;
-
-        &:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 13px 30px rgba(0, 0, 0, 0.09);
-        }
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.07);
+        -webkit-overflow-scrolling: touch;
     }
 
-    .period-scale-main {
-        display: grid;
-        grid-template-columns: 1fr 1.3fr 60px;
-        align-items: center;
-        gap: 30px;
-        min-height: 135px;
-        padding: 25px 35px;
-        border-left: 5px solid var(--Laranja);
-    }
+    .period-scale-table {
+        width: 100%;
+        min-width: 850px;
+        border-collapse: separate;
+        border-spacing: 0;
+        text-align: left;
 
-    .period-scale-date {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        color: rgba(0, 0, 0, 0.65);
-        font-size: 0.85rem;
+        thead {
+            background-color: var(--Marrom-Escuro);
 
-        i {
-            color: var(--Laranja);
-            font-size: 0.75rem;
-        }
-    }
-
-    .period-scale-information {
-        span {
-            color: var(--Laranja);
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-
-        h3 {
-            margin: 7px 0;
-            color: var(--Preto);
-            font-family: var(--font-secondary);
-            font-size: 1.7rem;
-        }
-
-        p {
-            color: rgba(0, 0, 0, 0.45);
-            font-size: 0.75rem;
-        }
-    }
-
-    .period-scale-action {
-        a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background-color: var(--Bege);
-            color: var(--Preto);
-            text-decoration: none;
-            transition:
-                background 0.3s ease,
-                color 0.3s ease;
-
-            &:hover {
-                background-color: var(--Laranja);
-                color: var(--Preto);
+            th {
+                width: 20%;
+                padding: 21px 20px;
+                color: var(--Bege);
+                font-family: var(--font-secondary);
+                font-size: 0.75rem;
+                font-weight: 700;
+                letter-spacing: 1.2px;
+                text-transform: uppercase;
+                white-space: nowrap;
             }
         }
-    }
 
-    .period-scale-children {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        padding: 0 35px 30px 40px;
-    }
+        tbody {
+            tr {
+                transition: background-color 0.2s ease; &:hover {background-color: rgba(255, 166, 43, 0.09);} &:not(:last-child) {
+                    
+                    td {
+                        border-bottom: 1px solid rgba(59, 13, 13, 0.12);
+                    }
+                }
+            }
 
-    .period-scale-epoch {
-        padding: 20px 25px;
-        border-left: 2px solid var(--Laranja);
-        border-radius: 0 8px 8px 0;
-        background-color: rgba(0, 0, 0, 0.035);
-    }
-
-    .period-scale-division-heading {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 12px;
-
-        > span {
-            color: var(--Laranja);
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
+            td {
+                padding: 18px 20px;
+                color: var(--Preto);
+                font-size: 0.88rem;
+                line-height: 1.5;
+                vertical-align: middle;
+            }
         }
 
-        strong {
-            color: var(--Preto);
+        .period-scale-cell {
+            min-width: 150px;
+        }
+
+        .period-scale-cell-eon {
+            background-color: rgba(59, 13, 13, 0.09);
+        }
+
+        .period-scale-cell-era {
+            background-color: rgba(149, 59, 0, 0.075);
+        }
+
+        .period-scale-cell-periodo {
+            background-color: rgba(255, 166, 43, 0.09);
+        }
+
+        .period-scale-cell-epoca {
+            background-color: rgba(0, 0, 0, 0.025);
+        }
+
+        .period-scale-cell-idade {
+            background-color: rgba(0, 0, 0, 0.012);
+        }
+
+        .period-scale-link {
+            display: inline-block;
+            color: var(--Marrom-Escuro);
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.5;
+            text-decoration: none;
+            text-decoration-color: var(--Laranja);
+            text-underline-offset: 4px;
+            overflow-wrap: break-word;
+            transition:
+                color 0.2s ease,
+                text-decoration 0.2s ease;
+
+            &:hover {
+                color: var(--Marrom-Claro);
+                text-decoration: underline;
+            }
+
+            &:focus-visible {
+                outline: 2px solid var(--Marrom-Claro);
+                outline-offset: 4px;
+                border-radius: 2px;
+            }
+        }
+
+        .period-scale-empty {
+            color: rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+    }
+
+    .period-scale-legend {
+        display: flex;
+        align-items: flex-start;
+        gap: 13px;
+        max-width: 1500px;
+        margin: 25px auto 0;
+        padding: 20px 0;
+        border-top: 1px solid var(--Cinza-Claro);
+
+        i {
+            margin-top: 4px;
+            color: var(--Marrom-Claro);
             font-size: 1rem;
         }
 
-        small {
-            margin-left: auto;
-            color: rgba(0, 0, 0, 0.55);
-            font-size: 0.78rem;
-        }
-    }
-
-    .period-scale-ages {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 10px;
-        margin-top: 18px;
-    }
-
-    .period-scale-age {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        padding: 13px 15px;
-        border: 1px solid rgba(0, 0, 0, 0.07);
-        border-radius: 7px;
-        background-color: var(--Branco);
-
-        span {
-            color: var(--Preto);
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        small {
-            color: rgba(0, 0, 0, 0.55);
-            font-size: 0.72rem;
+        p {
+            color: var(--Marrom-Claro);
+            font-size: 0.82rem;
+            line-height: 1.8;
         }
     }
 
     .period-empty-message {
+        max-width: 1000px;
+        margin: auto;
         padding: 35px;
         border-radius: 12px;
         background-color: var(--Branco);
         color: rgba(0, 0, 0, 0.65);
-        text-align: center;
-    }
-
-    .period-scale-disclaimer {
-        max-width: 900px;
-        margin: 30px auto 0;
-        color: rgba(0, 0, 0, 0.55);
-        font-size: 0.85rem;
-        line-height: 1.7;
         text-align: center;
     }
 }
@@ -756,11 +698,13 @@ html {
         }
     }
 
-    .period-scale {
-        .period-scale-main {
-            grid-template-columns: 1fr 1.5fr 50px;
-            gap: 20px;
-            padding: 25px;
+    .period-events {
+        .period-events-grid {
+            gap: 22px;
+        }
+
+        .period-event-image {
+            height: 250px;
         }
     }
 }
@@ -816,13 +760,6 @@ html {
         padding: 75px 6%;
     }
 
-    .period-introduction {
-        .period-introduction-text p {
-            font-size: 0.95rem;
-            text-align: left;
-        }
-    }
-
     .period-hierarchy {
         .period-hierarchy-table-wrapper {
             margin-top: 35px;
@@ -852,106 +789,103 @@ html {
     }
 
     .period-scale {
-        .period-scale-summary {
-            gap: 30px;
-            margin-bottom: 40px;
+        .period-scale-table-wrapper {
+            border-radius: 8px;
         }
 
-        .period-scale-stat strong {
-            font-size: 2rem;
-        }
+        .period-scale-table {
+            min-width: 850px;
 
-        .period-scale-stat span {
-            font-size: 0.65rem;
-            letter-spacing: 1px;
-        }
-
-        .period-scale-main {
-            grid-template-columns: 1fr 45px;
-            gap: 15px;
-            padding: 22px;
-
-            .period-scale-date {
-                grid-column: 1 / -1;
-                flex-direction: row;
-                flex-wrap: wrap;
-                align-items: center;
-                gap: 8px;
-                font-size: 0.75rem;
-
-                i {
-                    transform: rotate(0deg);
-                }
+            thead th {
+                padding: 17px 15px;
+                font-size: 0.68rem;
             }
 
-            .period-scale-information {
-                h3 {
-                    font-size: 1.4rem;
-                }
+            tbody td {
+                padding: 15px;
+                font-size: 0.8rem;
+            }
+
+            .period-scale-link {
+                font-size: 0.82rem;
             }
         }
 
-        .period-scale-children {
-            padding: 0 18px 22px;
-        }
+        .period-scale-legend {
+            gap: 10px;
 
-        .period-scale-epoch {
-            padding: 16px;
-        }
-
-        .period-scale-division-heading {
-            align-items: flex-start;
-            flex-direction: column;
-            gap: 7px;
-
-            small {
-                margin-left: 0;
+            p {
+                font-size: 0.78rem;
             }
-        }
-
-        .period-scale-ages {
-            grid-template-columns: 1fr;
         }
     }
 
     .period-science {
         .period-science-grid {
             grid-template-columns: 1fr;
-            gap: 15px;
         }
 
         .period-science-card {
-            padding: 28px 23px;
+            padding: 28px 24px;
         }
     }
 
     .period-events {
         .period-events-grid {
             grid-template-columns: 1fr;
-            gap: 22px;
         }
 
         .period-event-image {
-            height: 240px;
+            height: 260px;
         }
 
         .period-event-content {
-            padding: 24px;
+            padding: 25px;
         }
     }
 }
 
-@media (max-width: 420px) {
-    .period-scale {
-        .period-scale-summary {
-            gap: 20px;
+@media (max-width: 480px) {
+    .period-hero {
+        min-height: 520px;
+    }
+
+    .period-section-heading {
+        h2 {
+            font-size: 1.75rem;
+        }
+    }
+
+    .period-introduction {
+        .period-introduction-highlight {
+            min-height: 210px;
+            padding: 25px;
+
+            span {
+                font-size: 3.5rem;
+            }
+        }
+    }
+
+    .period-hierarchy {
+        .period-hierarchy-note {
+            gap: 10px;
+        }
+    }
+
+    .period-events {
+        .period-event-image {
+            height: 210px;
         }
 
-        .period-scale-stat strong {
-            font-size: 1.7rem;
+        .period-event-content {
+            h3 {
+                font-size: 1.25rem;
+            }
         }
     }
 }
+
 
 /* ACESSIBILIDADE */
 

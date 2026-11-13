@@ -1,86 +1,77 @@
+
 <?php
 
 include(__DIR__ . '/../config/database.php');
 
-function periodValue($value)
+function buildGeologicalScaleRows($node, $childrenByParent, $path = [])
 {
-    if ($value === null || $value === '') {
-        return 'Informação não cadastrada.';
+    $path[] = $node;
+
+    $children = $childrenByParent[$node['id']] ?? [];
+
+    if (empty($children)) {
+        return [$path];
     }
 
-    return nl2br(htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8'));
+    $rows = [];
+
+    foreach ($children as $child) {
+        $rows = array_merge(
+            $rows,
+            buildGeologicalScaleRows($child, $childrenByParent, $path)
+        );
+    }
+
+    return $rows;
 }
 
-function periodDate($value)
-{
-    if ($value === null) {
-        return 'Não informado';
-    }
-
-    $value = (float) $value;
-
-    if ($value <= 0) {
-        return 'Presente';
-    }
-
-    if ($value < 1) {
-        $years = $value * 1000000;
-
-        return number_format($years, 0, ',', '.') . ' anos atrás';
-    }
-
-    $number = number_format($value, 2, ',', '.');
-    $number = rtrim(rtrim($number, '0'), ',');
-
-    return $number . ' milhões de anos atrás';
-}
-
-function periodRange($begin, $end)
-{
-    return periodDate($begin) . ' — ' . periodDate($end);
-}
-
-$periodStmt = $conn->query("
-    SELECT *
+$scaleStmt = $conn->query("
+    SELECT id, name, slug, type, parent_id
     FROM geo_time
-    WHERE type = 'periodo'
-    ORDER BY begin_year DESC
+    ORDER BY begin_year DESC, name ASC
 ");
 
-$periods = $periodStmt->fetchAll(PDO::FETCH_ASSOC);
+$scaleDivisions = $scaleStmt->fetchAll(PDO::FETCH_ASSOC);
 
-$timeStmt = $conn->query("
-    SELECT id, name, slug, type, begin_year, end_year, parent_id
-    FROM geo_time
-    WHERE type IN ('epoca', 'idade')
-    ORDER BY begin_year DESC
-");
+$childrenByParent = [];
+$scaleRoots = [];
 
-$timeDivisions = $timeStmt->fetchAll(PDO::FETCH_ASSOC);
-
-$children = [];
-
-foreach ($timeDivisions as $division) {
-    $children[$division['parent_id']][] = $division;
+foreach ($scaleDivisions as $division) {
+    if ($division['parent_id'] === null) {
+        $scaleRoots[] = $division;
+    } else {
+        $childrenByParent[$division['parent_id']][] = $division;
+    }
 }
 
-$totalPeriods = count($periods);
+$scaleRows = [];
 
-$totalEpochs = count(array_filter(
-    $timeDivisions,
-    fn($division) => $division['type'] === 'epoca'
-));
+foreach ($scaleRoots as $root) {
+    $scaleRows = array_merge(
+        $scaleRows,
+        buildGeologicalScaleRows($root, $childrenByParent)
+    );
+}
 
-$totalAges = count(array_filter(
-    $timeDivisions,
-    fn($division) => $division['type'] === 'idade'
-));
+$scaleColumns = [
+    'eon' => 'Éon',
+    'era' => 'Era',
+    'periodo' => 'Período',
+    'epoca' => 'Época',
+    'idade' => 'Idade'
+];
+
+$scalePages = [
+    'eon' => 'eon_info',
+    'era' => 'era_info',
+    'periodo' => 'period_info',
+    'epoca' => 'epoch_info',
+    'idade' => 'age_info'
+];
 
 ?>
 
 <main class="period-page">
-
-    <!-- BANNER -->
 
 <!-- INTRODUÇÃO E BANNER -->
 
@@ -247,120 +238,134 @@ $totalAges = count(array_filter(
     </div>
 </section>
 
-    <!-- ESCALA DO TEMPO GEOLOGICO -->
+<!-- ESCALA DO TEMPO GEOLOGICO -->
 
-    <section class="period-scale" id="geological-scale">
-        <div class="period-section-heading">
-            <span>03 — ESCALA GEOLÓGICA</span>
-            <h2>A história da Terra em períodos</h2>
-            <p>
-                Explore os períodos geológicos cadastrados na Paleopedia
-                e conheça suas subdivisões.
-            </p>
-        </div>
-        <div class="period-scale-summary">
-
-            <div class="period-scale-stat">
-                <strong><?= $totalPeriods; ?></strong>
-                <span>PERÍODOS</span>
-            </div>
-
-            <div class="period-scale-stat">
-                <strong><?= $totalEpochs; ?></strong>
-                <span>ÉPOCAS</span>
-            </div>
-
-            <div class="period-scale-stat">
-                <strong><?= $totalAges; ?></strong>
-                <span>IDADES</span>
-            </div>
-        </div>
-
-        <?php if (!empty($periods)) { ?>
-            <div class="period-scale-list">
-                <?php foreach ($periods as $period) { ?>
-                    <article class="period-scale-item">
-                        <div class="period-scale-main">
-
-                            <div class="period-scale-date">
-                                <span>
-                                    <?= periodDate($period['begin_year']); ?>
-                                </span>
-                                <i class="fa-solid fa-arrow-right"></i>
-                                <span>
-                                    <?= periodDate($period['end_year']); ?>
-                                </span>
-                            </div>
-
-                            <div class="period-scale-information">
-                                <span>PERÍODO GEOLÓGICO</span>
-                                <h3>
-                                    <?= htmlspecialchars($period['name'], ENT_QUOTES, 'UTF-8'); ?>
-                                </h3>
-                                <p>
-                                    <?= htmlspecialchars($period['slug'], ENT_QUOTES, 'UTF-8'); ?>
-                                </p>
-                            </div>
-
-                            <div class="period-scale-action">
-                                <a
-                                    href="index.php?page=period_info&slug=<?= urlencode($period['slug']); ?>"
-                                    aria-label="Conhecer <?= htmlspecialchars($period['name'], ENT_QUOTES, 'UTF-8'); ?>"
-                                >
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <?php if (!empty($children[$period['id']])) { ?>
-                            <div class="period-scale-children">
-                                <?php foreach ($children[$period['id']] as $epoch) { ?>
-                                    <?php if ($epoch['type'] === 'epoca') { ?>
-                                        <div class="period-scale-epoch">
-
-                                            <div class="period-scale-division-heading">
-                                                <span>ÉPOCA</span>
-                                                <strong>
-                                                    <?= htmlspecialchars($epoch['name'], ENT_QUOTES, 'UTF-8'); ?>
-                                                </strong>
-                                                <small>
-                                                    <?= periodRange($epoch['begin_year'], $epoch['end_year']); ?>
-                                                </small>
-                                            </div>
-
-                                            <?php if (!empty($children[$epoch['id']])) { ?>
-                                                <div class="period-scale-ages">
-                                                    <?php foreach ($children[$epoch['id']] as $age) { ?>
-                                                        <div class="period-scale-age">
-                                                            <span>
-                                                                <?= htmlspecialchars($age['name'], ENT_QUOTES, 'UTF-8'); ?>
-                                                            </span>
-                                                            <small>
-                                                                <?= periodRange($age['begin_year'], $age['end_year']); ?>
-                                                            </small>
-                                                        </div>
-                                                    <?php } ?>
-                                                </div>
-                                            <?php } ?>
-                                        </div>
-                                    <?php } ?>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                    </article>
-                <?php } ?>
-            </div>
-        <?php } else { ?>
-            <p class="period-empty-message">
-                Nenhum período geológico foi cadastrado até o momento.
-            </p>
-        <?php } ?>
-
-        <p class="period-scale-disclaimer">
-            A escala será ampliada conforme novas divisões geológicas
-            forem cadastradas na Paleopedia.
+<section class="period-scale" id="geological-scale">
+    <div class="period-section-heading">
+        <span>03 — ESCALA GEOLÓGICA</span>
+        <h2>A ESCALA ESTRATIGRÁFICA DA TERRA</h2>
+        <p>
+            Explore a organização do tempo geológico, desde os grandes
+            intervalos da história terrestre até suas subdivisões mais
+            específicas. Selecione uma divisão para conhecer seus detalhes.
         </p>
-    </section>
+    </div>
+
+    <?php if (!empty($scaleRows)) { ?>
+        <div class="period-scale-table-wrapper">
+            <table class="period-scale-table">
+                <thead>
+                    <tr>
+                        <th>Éon</th>
+                        <th>Era</th>
+                        <th>Período</th>
+                        <th>Época</th>
+                        <th>Idade</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php foreach ($scaleRows as $rowIndex => $path) { ?>
+                        <?php
+                            $divisionsByType = array_fill_keys(
+                                array_keys($scaleColumns),
+                                null
+                            );
+
+                            foreach ($path as $division) {
+                                $divisionsByType[$division['type']] = $division;
+                            }
+                        ?>
+                        <tr>
+                            <?php foreach ($scaleColumns as $type => $label) { ?>
+
+                                <?php
+                                    $division = $divisionsByType[$type];
+
+                                    if ($division === null) {
+                                        echo '<td class="period-scale-empty">—</td>';
+                                        continue;
+                                    }
+                                    $previousDivision = null;
+                                    if ($rowIndex > 0) {
+                                        foreach ($scaleRows[$rowIndex - 1] as $previous) {
+                                            if ($previous['type'] === $type) {
+                                                $previousDivision = $previous;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    if (
+                                        $previousDivision !== null &&
+                                        $previousDivision['id'] == $division['id']
+                                    ) {
+                                        continue;
+                                    }
+                                    $rowspan = 1;
+                                    for (
+                                        $nextIndex = $rowIndex + 1;
+                                        $nextIndex < count($scaleRows);
+                                        $nextIndex++
+                                    ) {
+                                        $nextDivision = null;
+                                        foreach ($scaleRows[$nextIndex] as $next) {
+                                            if ($next['type'] === $type) {
+                                                $nextDivision = $next;
+                                                break;
+                                            }
+                                        }
+                                        if (
+                                            $nextDivision !== null &&
+                                            $nextDivision['id'] == $division['id']
+                                        ) {
+                                            $rowspan++;
+                                        } else {
+                                            break;
+                                        }
+                                    }
+
+                                    $page = $scalePages[$type];
+                                    $slug = urlencode($division['slug']);
+                                    $name = htmlspecialchars(
+                                        $division['name'],
+                                        ENT_QUOTES,
+                                        'UTF-8'
+                                    );
+                                ?>
+
+                                <td
+                                    class="period-scale-cell period-scale-cell-<?= $type; ?>"
+                                    rowspan="<?= $rowspan; ?>"
+                                >
+                                    <a
+                                        href="index.php?page=<?= $page; ?>&slug=<?= $slug; ?>"
+                                        class="period-scale-link"
+                                    >
+                                        <?= $name; ?>
+                                    </a>
+                                </td>
+                            <?php } ?>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="period-scale-legend">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>
+                Selecione uma das divisões da tabela para explorar sua
+                página individual e consultar informações sobre sua
+                duração, características geológicas e acontecimentos.
+            </p>
+        </div>
+
+    <?php } else { ?>
+        <p class="period-empty-message">
+            Nenhuma divisão do tempo geológico foi cadastrada até o momento.
+        </p>
+    <?php } ?>
+</section>
 
     <!-- COMO OS CIENTISTAS DIVIDEM O TEMPO -->
 
