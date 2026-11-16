@@ -53,6 +53,35 @@ foreach ($scaleRoots as $root) {
     );
 }
 
+// Exibe uma linha por época e mantém as idades agrupadas no dropdown.
+$scaleTableRows = [];
+$scaleGroupedAges = [];
+
+foreach ($scaleRows as $path) {
+    $lastDivision = $path[count($path) - 1];
+
+    if ($lastDivision['type'] === 'idade' && count($path) > 1) {
+        $parentPath = array_slice($path, 0, -1);
+        $parentDivision = $parentPath[count($parentPath) - 1];
+        $groupKey = 'parent-' . $parentDivision['id'];
+
+        if (!isset($scaleGroupedAges[$groupKey])) {
+            $scaleGroupedAges[$groupKey] = count($scaleTableRows);
+            $scaleTableRows[] = [
+                'path' => $parentPath,
+                'ages' => []
+            ];
+        }
+
+        $scaleTableRows[$scaleGroupedAges[$groupKey]]['ages'][] = $lastDivision;
+    } else {
+        $scaleTableRows[] = [
+            'path' => $path,
+            'ages' => []
+        ];
+    }
+}
+
 $scaleColumns = [
     'eon' => 'Éon',
     'era' => 'Era',
@@ -251,7 +280,7 @@ $scalePages = [
             </p>
         </div>
 
-        <?php if (!empty($scaleRows)) { ?>
+        <?php if (!empty($scaleTableRows)) { ?>
             <div class="period-scale-table-wrapper">
                 <table class="period-scale-table">
                     <thead>
@@ -265,8 +294,10 @@ $scalePages = [
                     </thead>
 
                     <tbody>
-                        <?php foreach ($scaleRows as $rowIndex => $path) { ?>
+                        <?php foreach ($scaleTableRows as $rowIndex => $tableRow) { ?>
                             <?php
+                                $path = $tableRow['path'];
+                                $ages = $tableRow['ages'];
                                 $divisionsByType = array_fill_keys(
                                     array_keys($scaleColumns),
                                     null
@@ -279,6 +310,36 @@ $scalePages = [
                             <tr>
                                 <?php foreach ($scaleColumns as $type => $label) { ?>
 
+                                    <?php if ($type === 'idade' && !empty($ages)) { ?>
+                                        <?php
+                                            $ageCount = count($ages);
+                                            $parentName = htmlspecialchars(
+                                                $path[count($path) - 1]['name'],
+                                                ENT_QUOTES,
+                                                'UTF-8'
+                                            );
+                                        ?>
+                                        <td class="period-scale-cell period-scale-cell-idade">
+                                            <details class="period-scale-age-dropdown">
+                                                <summary aria-label="Mostrar ou ocultar as <?= $ageCount; ?> idades de <?= $parentName; ?>">
+                                                    <span><?= $ageCount; ?> <?= $ageCount === 1 ? 'idade' : 'idades'; ?></span>
+                                                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                                                </summary>
+                                                <div class="period-scale-age-items">
+                                                    <?php foreach ($ages as $age) { ?>
+                                                        <a
+                                                            href="index.php?page=<?= $scalePages['idade']; ?>&slug=<?= urlencode($age['slug']); ?>"
+                                                            class="period-scale-link period-scale-age-link"
+                                                        >
+                                                            <?= htmlspecialchars($age['name'], ENT_QUOTES, 'UTF-8'); ?>
+                                                        </a>
+                                                    <?php } ?>
+                                                </div>
+                                            </details>
+                                        </td>
+                                        <?php continue; ?>
+                                    <?php } ?>
+
                                     <?php
                                         $division = $divisionsByType[$type];
 
@@ -286,34 +347,41 @@ $scalePages = [
                                             echo '<td class="period-scale-empty">—</td>';
                                             continue;
                                         }
+
                                         $previousDivision = null;
+
                                         if ($rowIndex > 0) {
-                                            foreach ($scaleRows[$rowIndex - 1] as $previous) {
+                                            foreach ($scaleTableRows[$rowIndex - 1]['path'] as $previous) {
                                                 if ($previous['type'] === $type) {
                                                     $previousDivision = $previous;
                                                     break;
                                                 }
                                             }
                                         }
+
                                         if (
                                             $previousDivision !== null &&
                                             $previousDivision['id'] == $division['id']
                                         ) {
                                             continue;
                                         }
+
                                         $rowspan = 1;
+
                                         for (
                                             $nextIndex = $rowIndex + 1;
-                                            $nextIndex < count($scaleRows);
+                                            $nextIndex < count($scaleTableRows);
                                             $nextIndex++
                                         ) {
                                             $nextDivision = null;
-                                            foreach ($scaleRows[$nextIndex] as $next) {
+
+                                            foreach ($scaleTableRows[$nextIndex]['path'] as $next) {
                                                 if ($next['type'] === $type) {
                                                     $nextDivision = $next;
                                                     break;
                                                 }
                                             }
+
                                             if (
                                                 $nextDivision !== null &&
                                                 $nextDivision['id'] == $division['id']

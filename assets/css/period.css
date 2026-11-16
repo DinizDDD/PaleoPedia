@@ -357,12 +357,12 @@ html {
 /* ESCALA GEOLOGICA */
 
 .period-scale {
-    padding: 115px 8% 120px;
+    padding: 115px 4% 120px;
     background-color: var(--Bege);
 
     .period-scale-table-wrapper {
         width: 100%;
-        max-width: 1500px;
+        max-width: none;
         margin: 0 auto;
         overflow-x: auto;
         border: 1px solid var(--Cinza-Claro);
@@ -406,7 +406,7 @@ html {
             }
 
             td {
-                padding: 8px 20px;
+                padding: 5px 15px;
                 color: var(--Preto);
                 font-size: 0.88rem;
                 line-height: 1.5;
@@ -469,13 +469,71 @@ html {
             color: rgba(0, 0, 0, 0.3);
             text-align: center;
         }
+
+        .period-scale-age-dropdown {
+            width: 100%;
+
+            summary {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 4px 0;
+                color: var(--Marrom-Escuro);
+                font-family: var(--font-secondary);
+                font-size: 0.9rem;
+                font-weight: 600;
+                cursor: pointer;
+                list-style: none;
+                user-select: none;
+                transition: color 0.2s ease;
+
+                &::-webkit-details-marker {
+                    display: none;
+                }
+
+                &:hover {
+                    color: var(--Marrom-Claro);
+                }
+
+                &:focus-visible {
+                    outline: 2px solid var(--Marrom-Claro);
+                    outline-offset: 4px;
+                    border-radius: 2px;
+                }
+
+                i {
+                    color: var(--Marrom-Claro);
+                    font-size: 0.75rem;
+                    transition: transform 0.25s ease;
+                }
+            }
+
+            &[open] summary i {
+                transform: rotate(180deg);
+            }
+        }
+
+        .period-scale-age-items {
+            margin-top: 10px;
+            border-top: 1px solid rgba(59, 13, 13, 0.12);
+
+            .period-scale-age-link {
+                display: block;
+                padding: 10px 0;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid rgba(59, 13, 13, 0.12);
+                }
+            }
+        }
     }
 
     .period-scale-legend {
         display: flex;
         align-items: flex-start;
         gap: 13px;
-        max-width: 1500px;
+        max-width: none;
         margin: 25px auto 0;
         padding: 20px 0;
         border-top: 1px solid var(--Cinza-Claro);
@@ -789,6 +847,9 @@ html {
     }
 
     .period-scale {
+        padding-left: 4%;
+        padding-right: 4%;
+
         .period-scale-table-wrapper {
             border-radius: 8px;
         }
@@ -807,6 +868,10 @@ html {
             }
 
             .period-scale-link {
+                font-size: 0.82rem;
+            }
+
+            .period-scale-age-dropdown summary {
                 font-size: 0.82rem;
             }
         }
