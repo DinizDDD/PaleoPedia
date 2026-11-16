@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13/11/2026 às 21:24
+-- Tempo de geração: 16/11/2026 às 17:45
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -272,7 +272,7 @@ CREATE TABLE `tax` (
   `id` int(11) NOT NULL,
   `name` varchar(150) NOT NULL,
   `slug` varchar(150) DEFAULT NULL,
-  `rank` enum('reino','filo','classe','ordem','familia','genero') DEFAULT NULL,
+  `rank` enum('reino','filo','classe','ordem','familia','genero','clado') NOT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `descricao` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -285,18 +285,18 @@ INSERT INTO `tax` (`id`, `name`, `slug`, `rank`, `parent_id`, `descricao`) VALUE
 (1, 'Animalia', 'animalia', 'reino', NULL, 'Reino dos animais'),
 (2, 'Chordata', 'chordata', 'filo', 1, 'Filo dos animais com corda dorsal'),
 (3, 'Reptilia', 'reptilia', 'classe', 2, 'Classe dos répteis'),
-(4, 'Saurischia', 'saurischia', 'ordem', 3, 'Ordem dos dinossauros de quadril semelhante ao de lagartos'),
+(4, 'Saurischia', 'saurischia', 'clado', 7, 'Ordem dos dinossauros de quadril semelhante ao de lagartos'),
 (5, 'Tyrannosauridae', 'tyrannosauridae', 'familia', 8, 'Família dos grandes dinossauros carnívoros'),
 (6, 'Tyrannosaurus', 'tyrannosaurus', 'genero', 5, 'Gênero do Tyrannosaurus rex'),
-(7, 'Dinosauria', 'dinosauria', 'ordem', 3, 'Clado que reúne todos os dinossauros'),
-(8, 'Theropoda', 'theropoda', 'familia', 7, 'Grupo de dinossauros bípedes predominantemente carnívoros'),
-(9, 'Ornithischia', 'ornithischia', 'ordem', 7, 'Dinossauros com quadril semelhante ao das aves'),
-(10, 'Ceratopsia', 'ceratopsia', 'familia', 9, 'Grupo de dinossauros herbívoros com bicos e chifres'),
+(7, 'Dinosauria', 'dinosauria', 'clado', 3, 'Clado que reúne todos os dinossauros'),
+(8, 'Theropoda', 'theropoda', 'clado', 4, 'Grupo de dinossauros bípedes predominantemente carnívoros'),
+(9, 'Ornithischia', 'ornithischia', 'clado', 7, 'Dinossauros com quadril semelhante ao das aves'),
+(10, 'Ceratopsia', 'ceratopsia', 'clado', 9, 'Grupo de dinossauros herbívoros com bicos e chifres'),
 (11, 'Ceratopsidae', 'ceratopsidae', 'familia', 10, 'Família dos grandes dinossauros ceratopsianos'),
 (12, 'Triceratops', 'triceratops', 'genero', 11, 'Gênero dos Tricerátops'),
 (13, 'Dromaeosauridae', 'dromaeosauridae', 'familia', 8, 'Família dos dinossauros dromeossaurídeos, conhecidos por sua agilidade e garras especializadas'),
 (14, 'Velociraptor', 'velociraptor', 'genero', 13, 'Gênero dos Velociraptores'),
-(15, 'Ankylosauria', 'ankylosauria', 'familia', 9, 'Grupo de dinossauros blindados'),
+(15, 'Ankylosauria', 'ankylosauria', 'clado', 9, 'Grupo de dinossauros blindados'),
 (16, 'Ankylosauridae', 'ankylosauridae', 'familia', 15, 'Família dos anquilossaurídeos'),
 (17, 'Ankylosaurus', 'ankylosaurus', 'genero', 16, 'Gênero do Ankylosaurus'),
 (18, 'Mammalia', 'mammalia', 'classe', 2, 'Classe dos mamíferos'),
@@ -304,7 +304,7 @@ INSERT INTO `tax` (`id`, `name`, `slug`, `rank`, `parent_id`, `descricao`) VALUE
 (20, 'Elephantidae', 'elephantidae', 'familia', 19, 'Família que inclui os elefantes e mamutes'),
 (21, 'Mammuthus', 'mammuthus', 'genero', 20, 'Gênero que reúne diversas espécies de mamutes'),
 (22, 'Amphibia', 'amphibia', 'classe', 2, 'Classe dos anfíbios'),
-(23, 'Lepospondyli', 'lepospondyli', 'ordem', 22, 'Grupo de anfíbios paleozoicos'),
+(23, 'Lepospondyli', 'lepospondyli', 'clado', 22, 'Grupo de anfíbios paleozoicos'),
 (24, 'Diplocaulidae', 'diplocaulidae', 'familia', 23, 'Família de anfíbios lepospôndilos caracterizados por crânios alongados'),
 (25, 'Diplocaulus', 'diplocaulus', 'genero', 24, 'Gênero de anfíbios extintos do Permiano');
 
@@ -367,7 +367,7 @@ ALTER TABLE `tax`
 -- AUTO_INCREMENT de tabela `geo_time`
 --
 ALTER TABLE `geo_time`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de tabela `images`
