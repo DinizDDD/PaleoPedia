@@ -150,38 +150,6 @@ while (!empty($pendingIds)) {
     }
 }
 
-$bannerStmt = $conn->prepare("
-    SELECT images._path, images.legenda
-    FROM geotime_images
-    INNER JOIN images
-        ON images.id = geotime_images.image_id
-    WHERE geotime_images.geotime_id = :id
-      AND geotime_images.purpose = 'banner'
-    LIMIT 1
-");
-
-$bannerStmt->execute([
-    ':id' => $time['id']
-]);
-
-$bannerImage = $bannerStmt->fetch(PDO::FETCH_ASSOC);
-
-$environmentStmt = $conn->prepare("
-    SELECT images._path, images.legenda
-    FROM geotime_images
-    INNER JOIN images
-        ON images.id = geotime_images.image_id
-    WHERE geotime_images.geotime_id = :id
-      AND geotime_images.purpose = 'environment'
-    LIMIT 1
-");
-
-$environmentStmt->execute([
-    ':id' => $time['id']
-]);
-
-$environmentImage = $environmentStmt->fetch(PDO::FETCH_ASSOC);
-
 $species = [];
 
 if (!empty($descendantIds)) {
@@ -226,15 +194,25 @@ if (!empty($descendantIds)) {
     $species = $speciesStmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+$bannerStmt = $conn->prepare("
+    SELECT images._path, images.legenda
+    FROM geotime_images
+    INNER JOIN images
+        ON images.id = geotime_images.image_id
+    WHERE geotime_images.geotime_id = :id
+    LIMIT 1
+");
+
+$bannerStmt->execute([
+    ':id' => $time['id']
+]);
+
+$bannerImage = $bannerStmt->fetch(PDO::FETCH_ASSOC);
+
 $hasBannerImage = false;
-$hasEnvironmentImage = false;
 
 if ($bannerImage && !empty($bannerImage['_path'])) {
     $hasBannerImage = file_exists(__DIR__ . '/../' . $bannerImage['_path']);
-}
-
-if ($environmentImage && !empty($environmentImage['_path'])) {
-    $hasEnvironmentImage = file_exists(__DIR__ . '/../' . $environmentImage['_path']);
 }
 
 ?>
