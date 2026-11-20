@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/11/2026 às 22:19
+-- Tempo de geração: 21/11/2026 às 00:49
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -564,7 +564,43 @@ INSERT INTO `images` (`id`, `_path`, `legenda`) VALUES
 (193, 'assets/images/periods/viseano.png', 'Reconstrução artística dos ambientes e da biodiversidade durante o Viseano.'),
 (194, 'assets/images/periods/wordiano.png', 'Reconstrução artística dos ambientes e da biodiversidade durante o Wordiano.'),
 (195, 'assets/images/periods/wuchiapingiano.png', 'Reconstrução artística dos ambientes e da biodiversidade durante o Wuchiapingiano.'),
-(196, 'assets/images/periods/wuliuano.png', 'Reconstrução artística dos ambientes e da biodiversidade durante o Wuliuano.');
+(196, 'assets/images/periods/wuliuano.png', 'Reconstrução artística dos ambientes e da biodiversidade durante o Wuliuano.'),
+(213, 'assets/images/species/triceratops/card.png', 'Imagem para card do Tricerátops'),
+(214, 'assets/images/species/triceratops/behavior.png', 'Representação do comportamento do Tricerátops'),
+(215, 'assets/images/species/triceratops/ecology.png', 'Representação do ambiente e da ecologia do Tricerátops'),
+(216, 'assets/images/species/triceratops/curiosities.png', 'Representação das características do Tricerátops'),
+(217, 'assets/images/species/triceratops/discovery.png', 'Registro fóssil do Tricerátops'),
+(218, 'assets/images/species/velociraptor/card.png', 'Imagem para card do Velociraptor'),
+(219, 'assets/images/species/velociraptor/behavior.png', 'Representação do comportamento do Velociraptor'),
+(220, 'assets/images/species/velociraptor/ecology.png', 'Representação do ambiente e da ecologia do Velociraptor'),
+(221, 'assets/images/species/velociraptor/curiosities.png', 'Representação das características do Velociraptor'),
+(222, 'assets/images/species/velociraptor/discovery.png', 'Registro fóssil do Velociraptor'),
+(223, 'assets/images/species/ankylosaurus/card.png', 'Imagem para card do Anquilossauro'),
+(224, 'assets/images/species/ankylosaurus/behavior.png', 'Representação do comportamento do Anquilossauro'),
+(225, 'assets/images/species/ankylosaurus/ecology.png', 'Representação do ambiente e da ecologia do Anquilossauro'),
+(226, 'assets/images/species/ankylosaurus/curiosities.png', 'Representação das características do Anquilossauro'),
+(227, 'assets/images/species/ankylosaurus/discovery.png', 'Registro fóssil do Anquilossauro'),
+(228, 'assets/images/species/mamute/card.png', 'Imagem para card do Mamute-lanoso'),
+(229, 'assets/images/species/mamute/behavior.png', 'Representação do comportamento do Mamute-lanoso'),
+(230, 'assets/images/species/mamute/ecology.png', 'Representação do ambiente e da ecologia do Mamute-lanoso'),
+(231, 'assets/images/species/mamute/curiosities.png', 'Representação das características do Mamute-lanoso'),
+(232, 'assets/images/species/mamute/discovery.png', 'Registro fóssil do Mamute-lanoso'),
+(233, 'assets/images/species/diplocaulus/behavior.png', 'Representação do comportamento do Diplocaulus'),
+(234, 'assets/images/species/diplocaulus/ecology.png', 'Representação do ambiente e da ecologia do Diplocaulus'),
+(235, 'assets/images/species/diplocaulus/curiosities.png', 'Representação das características do Diplocaulus'),
+(236, 'assets/images/species/diplocaulus/discovery.png', 'Registro fóssil do Diplocaulus'),
+(237, 'assets/images/species/nigersaurus/principal.png', 'Reconstrução artística do Nigersaurus taqueti em vista lateral; autor: TotalDino (CC BY 4.0).'),
+(238, 'assets/images/species/nigersaurus/card.jpg', 'Reconstrução artística do Nigersaurus; autor: Nobu Tamura (CC BY 3.0).'),
+(239, 'assets/images/species/nigersaurus/behavior.jpg', 'Modelo museológico do Nigersaurus, com destaque para a região da cabeça e da boca; foto: Matt Martyniuk, modelo: Tyler Keillor (CC BY-SA 4.0).'),
+(240, 'assets/images/species/nigersaurus/ecology.jpg', 'Reconstrução do ambiente da Formação Elrhaz com Nigersaurus e Suchomimus; autor: Andrey Belov (CC BY 3.0).'),
+(241, 'assets/images/species/nigersaurus/curiosities.jpg', 'Figura científica da anatomia do crânio e das baterias dentárias do Nigersaurus; Sereno et al. (CC BY 2.5).'),
+(242, 'assets/images/species/nigersaurus/discovery.png', 'Fóssil parcial de Nigersaurus em Gadoufaoua durante escavações de 2000; foto: M. Hettwer (CC BY 2.5).'),
+(243, 'assets/images/species/dimetrodon/principal.png', 'Reconstrução tridimensional de Dimetrodon grandis. Autor: Max Bellomio (DerpyDuckAnimation), CC BY-SA 4.0. Fonte: commons.wikimedia.org/wiki/File:Dimetrodon_grandis_3D_Model_Reconstruction.png'),
+(244, 'assets/images/species/dimetrodon/card.png', 'Reconstrução artística de Dimetrodon grandis por Dmitry Bogdanov; adaptação por Artuller. CC BY-SA 3.0. Fonte: commons.wikimedia.org/wiki/File:Dimetrodon_grandis.png'),
+(245, 'assets/images/species/dimetrodon/behavior.jpg', 'Fotografia de crânio montado de Dimetrodon, destacando as presas e dentes de diferentes tamanhos. Foto: Jeff Kubina, CC BY-SA 2.0. Fonte: commons.wikimedia.org/wiki/File:Dimetrodon_skull.jpg'),
+(246, 'assets/images/species/dimetrodon/ecology.jpg', 'Diorama museológico representando um ambiente permiano e Dimetrodon (não um registro fotográfico da época). Foto: James St. John, CC BY 2.0. Fonte: commons.wikimedia.org/wiki/File:Diorama_of_a_Permian_forest_floor_-_Dimetrodon_1_(43884793680).jpg'),
+(247, 'assets/images/species/dimetrodon/curiosities.png', 'Representação artística de Dimetrodon grandis em postura de caminhada alta, uma hipótese biomecânica. Autor: PrehistoryByLiam, CC BY-SA 4.0. Fonte: commons.wikimedia.org/wiki/File:Dimetrodon_grandis_in_\"high_walk\"_pose.png'),
+(248, 'assets/images/species/dimetrodon/discovery.jpg', 'Esqueleto montado de Dimetrodon grandis no Museu Nacional de História Natural, Washington. Foto: Postdlf, CC BY-SA 3.0/GFDL. Fonte: commons.wikimedia.org/wiki/File:Dimetrodon.jpg');
 
 -- --------------------------------------------------------
 
@@ -609,7 +645,9 @@ INSERT INTO `species` (`id`, `taxon_id`, `scientific_name`, `name`, `slug`, `sum
 (3, 14, 'Velociraptor mongoliensis', 'Velociraptor', 'velociraptor', 'O Velociraptor foi um pequeno dinossauro carnívoro coberto por penas que viveu durante o final do Cretáceo. Apesar de sua fama nos filmes, era muito menor do que geralmente é retratado.', 'carnívoro', 2.00, 0.70, 15, 'O Velociraptor era um pequeno terópode bípede que provavelmente apresentava comportamento ágil e utilizava diferentes estratégias para capturar presas. Seus membros posteriores eram adaptados à locomoção terrestre, enquanto a grande garra curva presente no segundo dedo de cada pé auxiliava na captura de animais. Seus membros anteriores possuíam garras e eram cobertos por penas, podendo ajudar na manipulação de presas e no equilíbrio. Sua alimentação provavelmente incluía pequenos vertebrados, como lagartos e mamíferos. Não existem evidências conclusivas de que caçava em grandes grupos organizados, apesar de ser frequentemente representado dessa maneira no cinema.', 'O Velociraptor habitava regiões da Ásia Central durante o Cretáceo Superior, especialmente ambientes áridos e semiáridos com dunas, áreas arenosas e vegetação esparsa. Seus fósseis são conhecidos principalmente na Mongólia, incluindo depósitos da Formação Djadochta. Compartilhava esses ambientes com pequenos mamíferos, lagartos e diferentes dinossauros. Como predador de pequeno porte, provavelmente ocupava um nicho ecológico diferente daquele dos grandes terópodes, alimentando-se principalmente de animais menores. Sua garra especializada e seus dentes serrilhados auxiliavam na captura de presas. Sua presença demonstra que os antigos ambientes do Deserto de Gobi possuíam uma fauna bastante diversificada.', 'O Velociraptor ficou mundialmente famoso por suas representações no cinema, mas o animal real era consideravelmente menor do que costuma ser mostrado. Media aproximadamente dois metros de comprimento e possuía altura relativamente baixa. Uma descoberta importante foi o fóssil conhecido como \"Dinossauros Lutadores\", encontrado na Mongólia em 1971. Ele preserva um Velociraptor e um Protoceratops em uma posição que sugere um confronto ocorrido durante a vida. Outra característica marcante é a presença de penas, confirmada por evidências anatômicas. Apesar de pertencer aos dromeossaurídeos, não era um animal gigante, mas um predador relativamente pequeno.', 1923, 'Deserto de Gobi, Mongólia', 'Djadochta Formation', 'Peter Kaisen', 'Desertos e regiões semiáridas', 'Ásia Central', 'Desértico', 'Árido', 'Ásia', 7, 2),
 (4, 17, 'Ankylosaurus magniventris', 'Anquilossauro', 'ankylosaurus', 'O Ankylosaurus foi um grande dinossauro herbívoro blindado que viveu durante o final do período Cretáceo. Seu corpo era protegido por placas ósseas e possuía uma poderosa clava na ponta da cauda.', 'herbívoro', 8.00, 1.70, 6000, 'O Ankylosaurus era um dinossauro herbívoro quadrúpede que provavelmente passava grande parte do tempo procurando vegetação próxima ao solo. Seu corpo baixo e robusto, sustentado por membros fortes, permitia suportar seu grande peso. Seu bico córneo era adaptado para cortar plantas, enquanto seus dentes pequenos auxiliavam no processamento do alimento. Sua característica mais marcante era a armadura formada por placas ósseas incorporadas à pele, conhecidas como osteodermos. Na extremidade da cauda possuía uma poderosa clava óssea, provavelmente utilizada para defesa contra predadores. Ainda não existem evidências suficientes para determinar se vivia sozinho ou em grupos.', 'O Ankylosaurus habitava ambientes terrestres da América do Norte durante o final do Cretáceo, especialmente regiões que atualmente correspondem ao Canadá e aos Estados Unidos. Seus fósseis estão associados a planícies aluviais, sistemas fluviais, áreas úmidas e regiões florestais. Como herbívoro de baixa altura, provavelmente consumia plantas rasteiras, folhas e brotos. Sua presença representava uma importante participação na dinâmica da vegetação e na cadeia alimentar. Também poderia servir como presa para grandes terópodes, incluindo o Tyrannosaurus rex. Entretanto, sua armadura óssea e sua cauda defensiva tornavam qualquer tentativa de ataque potencialmente arriscada.', 'O nome Ankylosaurus pode ser interpretado como \"lagarto fundido\" ou \"lagarto rígido\", fazendo referência à sua estrutura corporal protegida por placas ósseas. Sua armadura era formada por diversos osteodermos distribuídos pelo corpo. A grande clava da cauda representava uma das adaptações defensivas mais impressionantes entre os dinossauros, podendo produzir impactos consideráveis. Seu crânio era largo e baixo, com um bico córneo adaptado à alimentação vegetal. Apesar das semelhanças com outros dinossauros blindados, como o Euoplocephalus, o Ankylosaurus possuía características anatômicas próprias. Seus fósseis são encontrados principalmente em depósitos do final do Cretáceo da América do Norte.', 1906, 'Montana, Estados Unidos', 'Hell Creek Formation', 'Barnum Brown', 'Planícies úmidas e florestas', 'América do Norte Ocidental', 'Florestal', 'Subtropical', 'América do Norte', 10, 7),
 (5, 21, 'Mammuthus primigenius', 'Mamute-lanoso', 'mammuthus-primigenius', 'O mamute-lanoso foi um grande mamífero herbívoro que viveu durante o Pleistoceno. Possuía uma espessa camada de pelos, grandes presas curvas e adaptações para sobreviver em ambientes extremamente frios.', 'herbívoro', 3.40, 3.40, 6000, 'O Mammuthus primigenius apresentava comportamento social semelhante ao dos elefantes atuais. Provavelmente vivia em grupos familiares liderados por fêmeas adultas, enquanto os machos maduros poderiam se afastar e viver de maneira mais solitária. Passava boa parte do dia procurando e consumindo vegetação. Utilizava sua tromba para recolher plantas e interagir com o ambiente, enquanto suas grandes presas também podiam auxiliar na defesa e na remoção de neve. Sua espessa camada de pelos e adaptações fisiológicas para conservar calor permitiam sobreviver em regiões extremamente frias. Também provavelmente apresentava comportamentos complexos de comunicação e cuidado com os filhotes.', 'O mamute-lanoso habitava principalmente a estepe-mamute, uma extensa formação ecológica que existiu em regiões da Europa, Ásia e América do Norte durante o Pleistoceno. Esses ambientes apresentavam grandes áreas abertas, vegetação rasteira e condições frias e relativamente secas. Sua alimentação incluía gramíneas, ervas e outras plantas adaptadas ao frio. Como grande herbívoro, contribuía para a dinâmica da vegetação e para a dispersão de sementes. Também fazia parte da cadeia alimentar de grandes predadores do Pleistoceno, embora seu tamanho e comportamento social oferecessem proteção. Sua distribuição variava conforme as mudanças climáticas e a disponibilidade de habitats adequados.', 'O Mammuthus primigenius é conhecido como mamute-lanoso devido à sua espessa cobertura de pelos, formada por uma camada externa longa e outra interna mais densa. Suas orelhas eram relativamente pequenas, reduzindo a perda de calor em ambientes frios. Suas presas curvas podiam alcançar grandes comprimentos e também eram utilizadas para remover neve. Alguns exemplares encontrados congelados no permafrost da Sibéria preservaram pele, pelos e outros tecidos, permitindo estudos detalhados sobre sua anatomia e genética. O mamute-lanoso também aparece frequentemente em pinturas e gravuras pré-históricas. Pequenas populações sobreviveram em ilhas do Ártico até aproximadamente 4 mil anos atrás.', 0, 'Sibéria, Rússia', 'Depósitos do Pleistoceno', 'Pesquisadores e habitantes locais da Sibéria', 'Estepes frias e tundras', 'Europa, Ásia e América do Norte', 'Estepe-tundra', 'Frio e glacial', 'Europa, Ásia e América do Norte', 13, 4),
-(10, 25, 'Diplocaulus magnicornis', 'Diplocaulus', 'diplocaulus', 'O Diplocaulus foi um anfíbio pré-histórico que viveu durante o período Permiano. Ficou conhecido por seu crânio extremamente largo e achatado, com prolongamentos laterais que formavam uma estrutura semelhante a um bumerangue. Possuía corpo alongado, cauda achatada e adaptações que indicam um estilo de vida predominantemente aquático.', 'carnívoro', 1.00, NULL, NULL, 'O Diplocaulus era um anfíbio pré-histórico de corpo alongado e hábitos predominantemente aquáticos. Provavelmente habitava rios, lagoas e regiões alagadas, utilizando sua cauda achatada para impulsionar o corpo durante a natação. Seus membros auxiliavam na estabilidade e na movimentação próxima ao fundo. Era carnívoro e possivelmente se alimentava de pequenos animais aquáticos, como peixes e outros vertebrados. Uma de suas características mais incomuns era o crânio largo e achatado, com projeções laterais semelhantes a um bumerangue. A função exata dessa estrutura ainda é discutida, mas pode estar relacionada à estabilidade durante a natação ou à proteção contra predadores.', 'O Diplocaulus viveu durante o Permiano, principalmente em regiões que atualmente correspondem à América do Norte. Seus fósseis são encontrados em depósitos associados a antigos ambientes continentais de água doce, incluindo rios, lagoas e planícies alagadas. Como pequeno predador, provavelmente se alimentava de animais menores disponíveis nesses ambientes. Compartilhava seu habitat com outros anfíbios, peixes e diferentes vertebrados primitivos, além de invertebrados aquáticos. Sua presença demonstra a diversidade de formas e estratégias ecológicas desenvolvidas pelos anfíbios paleozoicos. A dependência de ambientes de água doce também indica que mudanças na disponibilidade de água poderiam influenciar diretamente sua distribuição.', 'O Diplocaulus é conhecido pelo formato incomum de seu crânio, que apresentava duas grandes projeções laterais semelhantes a um bumerangue. Essa característica o torna um dos anfíbios pré-históricos mais facilmente reconhecíveis. Apesar da aparência peculiar, não era um dinossauro nem um réptil, mas um representante de um grupo extinto de anfíbios chamado lepospôndilos. Uma das questões mais interessantes sobre o animal envolve a função de seu crânio. Algumas hipóteses sugerem que o formato ajudava na estabilidade durante a natação, enquanto outras consideram a possibilidade de oferecer proteção contra predadores. Entretanto, nenhuma dessas explicações foi definitivamente comprovada. Seus fósseis são encontrados principalmente em depósitos do Permiano do Texas, nos Estados Unidos.', 1882, 'Baylor County, Texas, Estados Unidos', 'Arroyo Formation', 'Edward Drinker Cope', 'Rios, lagoas e ambientes de água doce', 'América do Norte', 'Aquático de água doce', 'Quente e sazonal, com períodos secos', 'América do Norte', 37, 3);
+(10, 25, 'Diplocaulus magnicornis', 'Diplocaulus', 'diplocaulus', 'O Diplocaulus foi um anfíbio pré-histórico que viveu durante o período Permiano. Ficou conhecido por seu crânio extremamente largo e achatado, com prolongamentos laterais que formavam uma estrutura semelhante a um bumerangue. Possuía corpo alongado, cauda achatada e adaptações que indicam um estilo de vida predominantemente aquático.', 'carnívoro', 1.00, NULL, NULL, 'O Diplocaulus era um anfíbio pré-histórico de corpo alongado e hábitos predominantemente aquáticos. Provavelmente habitava rios, lagoas e regiões alagadas, utilizando sua cauda achatada para impulsionar o corpo durante a natação. Seus membros auxiliavam na estabilidade e na movimentação próxima ao fundo. Era carnívoro e possivelmente se alimentava de pequenos animais aquáticos, como peixes e outros vertebrados. Uma de suas características mais incomuns era o crânio largo e achatado, com projeções laterais semelhantes a um bumerangue. A função exata dessa estrutura ainda é discutida, mas pode estar relacionada à estabilidade durante a natação ou à proteção contra predadores.', 'O Diplocaulus viveu durante o Permiano, principalmente em regiões que atualmente correspondem à América do Norte. Seus fósseis são encontrados em depósitos associados a antigos ambientes continentais de água doce, incluindo rios, lagoas e planícies alagadas. Como pequeno predador, provavelmente se alimentava de animais menores disponíveis nesses ambientes. Compartilhava seu habitat com outros anfíbios, peixes e diferentes vertebrados primitivos, além de invertebrados aquáticos. Sua presença demonstra a diversidade de formas e estratégias ecológicas desenvolvidas pelos anfíbios paleozoicos. A dependência de ambientes de água doce também indica que mudanças na disponibilidade de água poderiam influenciar diretamente sua distribuição.', 'O Diplocaulus é conhecido pelo formato incomum de seu crânio, que apresentava duas grandes projeções laterais semelhantes a um bumerangue. Essa característica o torna um dos anfíbios pré-históricos mais facilmente reconhecíveis. Apesar da aparência peculiar, não era um dinossauro nem um réptil, mas um representante de um grupo extinto de anfíbios chamado lepospôndilos. Uma das questões mais interessantes sobre o animal envolve a função de seu crânio. Algumas hipóteses sugerem que o formato ajudava na estabilidade durante a natação, enquanto outras consideram a possibilidade de oferecer proteção contra predadores. Entretanto, nenhuma dessas explicações foi definitivamente comprovada. Seus fósseis são encontrados principalmente em depósitos do Permiano do Texas, nos Estados Unidos.', 1882, 'Baylor County, Texas, Estados Unidos', 'Arroyo Formation', 'Edward Drinker Cope', 'Rios, lagoas e ambientes de água doce', 'América do Norte', 'Aquático de água doce', 'Quente e sazonal, com períodos secos', 'América do Norte', 37, 3),
+(11, 30, 'Nigersaurus taqueti', 'Nigersauro', 'nigersaurus-taqueti', 'O Nigersaurus taqueti foi um dinossauro saurópode herbívoro do Cretáceo Inferior que viveu no território do atual Níger, na África. Media aproximadamente 9 metros de comprimento e possuía um focinho largo, quase reto, com centenas de dentes ativos e de reposição. Sua anatomia indica adaptações para cortar vegetação baixa em ambientes próximos a rios.', 'herbívoro', 9.10, 2.40, 2000, 'O Nigersaurus era um herbívoro quadrúpede e provavelmente passava boa parte do tempo se alimentando de plantas de pequeno porte. Seu focinho amplo apresentava fileiras de dentes concentradas na extremidade das mandíbulas, uma estrutura adequada para cortar vegetação próxima ao solo. Os dentes finos trabalhavam em conjunto e eram substituídos rapidamente, o que ajudaria a compensar o desgaste provocado por plantas e partículas abrasivas. Em vez de mastigar como os mamíferos, o animal provavelmente arrancava ou cortava a vegetação e a engolia com processamento oral limitado. Seu pescoço, relativamente curto para um saurópode, e a orientação do crânio sustentam a hipótese de alimentação em alturas baixas. Estudos do ouvido interno sugeriram que o focinho podia ficar frequentemente direcionado para baixo, embora a postura habitual exata continue sendo debatida. Não há evidências suficientes para afirmar que vivia em grandes manadas, possuía cuidado parental específico ou seguia rotinas sociais conhecidas.', 'O Nigersaurus habitava planícies atravessadas por rios na região de Gadoufaoua, hoje situada no deserto do Ténéré, no Níger. Durante o Cretáceo Inferior, essa área apresentava cursos de água, depósitos arenosos, vegetação ribeirinha e ambientes continentais diferentes do deserto atual. Como herbívoro especializado em vegetação baixa, provavelmente explorava plantas macias que cresciam próximas ao solo, possivelmente incluindo samambaias e cavalinhas; a composição exata de sua dieta não é conhecida. Seus fósseis foram encontrados na Formação Elrhaz, uma unidade que também preserva animais como os dinossauros Lurdusaurus e Ouranosaurus, o terópode Suchomimus e o grande crocodiliforme Sarcosuchus. Esses organismos compunham comunidades diversas de herbívoros e predadores associadas aos ambientes fluviais regionais. As interações diretas entre Nigersaurus e cada um desses animais não foram observadas: sua coexistência é inferida com base no registro fóssil e na proveniência geológica. O relevo, a sazonalidade das chuvas e a disponibilidade de vegetação provavelmente influenciavam os locais utilizados para alimentação.', 'O Nigersaurus ficou conhecido por possuir mais de 500 dentes quando somados os dentes funcionais e os que estavam em formação para substituí-los. Suas fileiras dentárias ficavam concentradas na parte frontal de mandíbulas muito largas, produzindo um focinho com contorno quase quadrado. Análises microscópicas indicaram uma taxa de renovação dentária extraordinariamente alta, da ordem de um mês para determinados dentes. Apesar de ser um saurópode, seu pescoço era relativamente curto e seu corpo era menor que o dos saurópodes gigantes do Jurássico. Os ossos de seu crânio eram extremamente finos e frágeis, o que dificultou a montagem dos fósseis. Pesquisadores utilizaram tomografia computadorizada e modelagem digital para reconstruir a cabeça e estudar estruturas internas. O nome Nigersaurus significa lagarto do Níger; o epíteto taqueti homenageia o paleontólogo francês Philippe Taquet. A espécie foi formalmente descrita em 1999 por Paul Sereno e colaboradores. Embora sua dentição seja frequentemente comparada à de uma máquina de cortar grama, trata-se de uma analogia visual, não de uma descrição literal de como o animal se alimentava.', 1997, 'Gadoufaoua, deserto do Ténéré, Níger', 'Formação Elrhaz (Grupo Tegama)', 'Philippe Taquet; equipe de Paul Sereno (1997)', 'Planícies fluviais, margens de rios e áreas vegetadas', 'Gadoufaoua, atual Níger (África Ocidental)', 'Fluvial e vegetação ribeirinha', 'Quente, com sazonalidade das chuvas (estimado)', 'África', 237, 13),
+(12, 36, 'Dimetrodon grandis', 'Dimetrodon', 'dimetrodon-grandis', 'O Dimetrodon grandis foi um grande sinapsídeo carnívoro que viveu no Cisuraliano, início do período Permiano, em áreas correspondentes ao atual Texas, nos Estados Unidos. Possuía quatro membros robustos, mandíbula com dentes de tamanhos variados e uma alta estrutura dorsal sustentada por espinhas das vértebras. Embora seja frequentemente confundido com um dinossauro, viveu dezenas de milhões de anos antes do surgimento dos dinossauros e pertence à linhagem evolutiva relacionada aos mamíferos.', 'carnívoro', 3.10, 1.50, 200, 'O Dimetrodon grandis se deslocava sobre quatro membros e possuía crânio grande, musculatura mandibular bem desenvolvida e dentes de diferentes formatos e tamanhos. Os dentes mais longos ajudavam a segurar e perfurar presas, enquanto dentes menores participavam do corte dos tecidos. Essas adaptações indicam um predador capaz de capturar vertebrados de diferentes portes. Provavelmente procurava presas em ambientes terrestres e próximos à água, podendo incluir anfíbios, outros tetrápodes e possivelmente peixes em sua alimentação. A locomoção e a postura dos membros são investigadas por meio do esqueleto e de comparações com pegadas atribuídas a sinapsídeos; algumas reconstruções sugerem posturas menos espalhadas do que aquelas representadas no passado. A estrutura dorsal poderia participar da comunicação visual e da regulação térmica, mas sua função exata não está estabelecida. Não existem evidências diretas que permitam afirmar que caçava em bandos, mantinha territórios fixos ou apresentava comportamentos sociais específicos.', 'O Dimetrodon grandis é conhecido de depósitos do Permiano Inferior do centro-sul da América do Norte, especialmente dos antigos sedimentos avermelhados do Texas. Esses depósitos registram paisagens continentais com planícies fluviais, canais de rios, lagoas e áreas que variavam entre úmidas e sazonalmente secas. Na época, os continentes faziam parte de Pangeia e a configuração geográfica era muito diferente da atual. Como carnívoro de grande porte, esse sinapsídeo integrava as cadeias alimentares que incluíam anfíbios e outros vertebrados terrestres e aquáticos. Os mesmos conjuntos fossilíferos permianos também revelam animais como Edaphosaurus, um sinapsídeo herbívoro com vela dorsal, e Eryops, um grande anfíbio. A presença desses gêneros em depósitos relacionados permite reconstruir a diversidade regional, mas não comprova confrontos frequentes ou interações diretas entre indivíduos. A disponibilidade sazonal de água e de alimento provavelmente influenciava a distribuição dos organismos e as oportunidades de caça.', 'Apesar da aparência semelhante à de um grande lagarto, o Dimetrodon não era dinossauro nem um réptil no sentido filogenético moderno. Ele pertencia aos sinapsídeos, grupo que inclui os mamíferos e seus parentes evolutivos extintos. Sua vela dorsal era formada por espinhas neurais muito alongadas das vértebras, possivelmente conectadas por tecidos moles. Há hipóteses de que essa estrutura ajudasse a absorver ou liberar calor e de que funcionasse como sinal visual para outros animais, mas sua utilidade não foi comprovada de forma definitiva. O nome Dimetrodon significa aproximadamente dois tamanhos de dentes e destaca a diferença entre os dentes da mandíbula. O gênero foi estabelecido por Edward Drinker Cope no século XIX; a espécie grandis tem sua história taxonômica ligada aos trabalhos de Ermine Cowles Case em 1907 e a revisões posteriores. Seu porte era bastante inferior ao de muitos dinossauros gigantes, embora tenha sido um predador importante entre os vertebrados terrestres do início do Permiano. A cor da pele, a forma precisa dos tecidos da vela e vários aspectos de seu comportamento continuam desconhecidos.', 1907, 'Baylor County e outras localidades do Texas, Estados Unidos', 'Grupo Clear Fork (Permiano Inferior, Texas)', 'Ermine Cowles Case (1907; descrição da espécie); Edward Drinker Cope (1878; gênero)', 'Planícies fluviais, margens de rios, lagoas e áreas sazonais', 'Texas, centro-sul da América do Norte', 'Planícies fluviais e áreas úmidas', 'Quente e sazonal, com alternância de períodos úmidos e secos', 'América do Norte', 243, 154);
 
 -- --------------------------------------------------------
 
@@ -629,17 +667,61 @@ CREATE TABLE `species_images` (
 
 INSERT INTO `species_images` (`species_id`, `image_id`, `purpose`) VALUES
 (1, 1, 'principal'),
+(1, 1, 'spotlight'),
 (2, 4, 'principal'),
+(2, 4, 'spotlight'),
 (3, 7, 'principal'),
+(3, 7, 'spotlight'),
 (4, 10, 'principal'),
+(4, 10, 'spotlight'),
 (5, 13, 'principal'),
+(5, 13, 'spotlight'),
 (10, 15, 'card'),
 (10, 37, 'principal'),
+(10, 37, 'spotlight'),
 (1, 38, 'discovery'),
 (1, 39, 'behavior'),
 (1, 40, 'ecology'),
 (1, 41, 'curiosities'),
-(1, 42, 'card');
+(1, 42, 'card'),
+(2, 213, 'card'),
+(2, 214, 'behavior'),
+(2, 215, 'ecology'),
+(2, 216, 'curiosities'),
+(2, 217, 'discovery'),
+(3, 218, 'card'),
+(3, 219, 'behavior'),
+(3, 220, 'ecology'),
+(3, 221, 'curiosities'),
+(3, 222, 'discovery'),
+(4, 223, 'card'),
+(4, 224, 'behavior'),
+(4, 225, 'ecology'),
+(4, 226, 'curiosities'),
+(4, 227, 'discovery'),
+(5, 228, 'card'),
+(5, 229, 'behavior'),
+(5, 230, 'ecology'),
+(5, 231, 'curiosities'),
+(5, 232, 'discovery'),
+(10, 233, 'behavior'),
+(10, 234, 'ecology'),
+(10, 235, 'curiosities'),
+(10, 236, 'discovery'),
+(11, 237, 'principal'),
+(11, 237, 'spotlight'),
+(11, 238, 'card'),
+(11, 239, 'behavior'),
+(11, 240, 'ecology'),
+(11, 241, 'curiosities'),
+(11, 242, 'discovery'),
+(12, 243, 'principal'),
+(12, 243, 'spotlight'),
+(12, 244, 'card'),
+(12, 245, 'behavior'),
+(12, 246, 'ecology'),
+(12, 247, 'curiosities'),
+(12, 248, 'discovery');
 
 -- --------------------------------------------------------
 
@@ -685,7 +767,18 @@ INSERT INTO `tax` (`id`, `name`, `slug`, `rank`, `parent_id`, `descricao`) VALUE
 (22, 'Amphibia', 'amphibia', 'classe', 2, 'Classe dos anfíbios'),
 (23, 'Lepospondyli', 'lepospondyli', 'clado', 22, 'Grupo de anfíbios paleozoicos'),
 (24, 'Diplocaulidae', 'diplocaulidae', 'familia', 23, 'Família de anfíbios lepospôndilos caracterizados por crânios alongados'),
-(25, 'Diplocaulus', 'diplocaulus', 'genero', 24, 'Gênero de anfíbios extintos do Permiano');
+(25, 'Diplocaulus', 'diplocaulus', 'genero', 24, 'Gênero de anfíbios extintos do Permiano'),
+(26, 'Sauropodomorpha', 'sauropodomorpha', 'clado', 4, 'Clado de dinossauros saurísquios que inclui saurópodes e seus parentes próximos.'),
+(27, 'Sauropoda', 'sauropoda', 'clado', 26, 'Clado de dinossauros geralmente quadrúpedes e herbívoros, frequentemente com pescoço e cauda alongados.'),
+(28, 'Diplodocoidea', 'diplodocoidea', 'clado', 27, 'Grupo de saurópodes neossaurópodes que inclui diplodocídeos e rebaquissaurídeos.'),
+(29, 'Rebbachisauridae', 'rebbachisauridae', 'familia', 28, 'Família de saurópodes diplodocoides com diversas formas do Cretáceo, incluindo o Nigersaurus.'),
+(30, 'Nigersaurus', 'nigersaurus', 'genero', 29, 'Gênero de saurópode rebaquissaurídeo da Formação Elrhaz, no atual Níger, com focinho amplo e baterias dentárias.'),
+(31, 'Amniota', 'amniota', 'clado', 2, 'Clado de tetrápodes cujos ancestrais desenvolveram o ovo amniótico; inclui sinapsídeos e saurópsidos.'),
+(32, 'Synapsida', 'synapsida', 'clado', 31, 'Linhagem de amniotas que inclui mamíferos e diversos parentes extintos, como Dimetrodon; distinta dos répteis saurópsidos.'),
+(33, 'Eupelycosauria', 'eupelycosauria', 'clado', 32, 'Grande clado de sinapsídeos que abrange esfenacodontes, terápsidos e a linhagem dos mamíferos.'),
+(34, 'Sphenacodontia', 'sphenacodontia', 'clado', 33, 'Clado de sinapsídeos que inclui esfenacodontídeos e linhagens próximas aos terápsidos.'),
+(35, 'Sphenacodontidae', 'sphenacodontidae', 'familia', 34, 'Família extinta de sinapsídeos carnívoros do Permiano Inferior, conhecida por formas como Dimetrodon.'),
+(36, 'Dimetrodon', 'dimetrodon', 'genero', 35, 'Gênero de sinapsídeos carnívoros do Permiano Inferior, reconhecido pelas espinhas vertebrais altas que formavam uma vela dorsal.');
 
 --
 -- Índices para tabelas despejadas
@@ -752,19 +845,19 @@ ALTER TABLE `geo_time`
 -- AUTO_INCREMENT de tabela `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
 
 --
 -- AUTO_INCREMENT de tabela `species`
 --
 ALTER TABLE `species`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `tax`
 --
 ALTER TABLE `tax`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Restrições para tabelas despejadas

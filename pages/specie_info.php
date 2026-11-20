@@ -160,6 +160,12 @@ while ($geotimeId) {
 
 $geologicalTime = array_reverse($geologicalTime);
 
+// Indexa a hierarquia por nível para usar o período no banner e no quadro informativo.
+$geologicalTimeByType = [];
+foreach ($geologicalTime as $time) {
+    $geologicalTimeByType[$time['type']] = $time['name'];
+}
+
 $geologicalTimeNames = array_column($geologicalTime, 'name');
 
 $geologicalTimeText = implode(' → ', $geologicalTimeNames);
@@ -250,8 +256,8 @@ $relationStmt = $conn->prepare("
 
     WHERE current_species.id = :species_id
 
-        AND current_geo_time.begin_year >= related_time.end_year
-        AND related_time.begin_year >= current_geo_time.end_year
+        AND current_geo_time.begin_year > related_time.end_year
+        AND related_time.begin_year > current_geo_time.end_year
 
     ORDER BY related.name
 ");
@@ -266,7 +272,7 @@ $timeRelatedSpecies = $relationStmt->fetchAll(PDO::FETCH_ASSOC);
 /* CONTINENTES COMPARAÇÃO */
 
 $currentContinents = preg_split(
-    '/\s*,\s*|\s+e\s+/u',
+    '/\s*[,\/;]\s*|\s+e\s+/u',
     trim($species['continent'] ?? ''),
     -1,
     PREG_SPLIT_NO_EMPTY
@@ -282,7 +288,7 @@ $relatedSpecies = array_values(array_filter(
     function ($related) use ($currentContinents) {
 
         $relatedContinents = preg_split(
-            '/\s*,\s*|\s+e\s+/u',
+            '/\s*[,\/;]\s*|\s+e\s+/u',
             trim($related['continent'] ?? ''),
             -1,
             PREG_SPLIT_NO_EMPTY
@@ -324,7 +330,7 @@ $relatedSpecies = array_values(array_filter(
                 <h4>
                     <?= mb_strtoupper(formatValue(getDietName($species['diet'])), 'UTF-8'); ?>
                     |
-                    <?= mb_strtoupper(formatValue($geologicalTime[0]['name'] ?? ''), 'UTF-8'); ?>
+                    <?= mb_strtoupper(formatValue($geologicalTimeByType['periodo'] ?? null), 'UTF-8'); ?>
                     |
                     <?= mb_strtoupper(formatValue($species['continent']), 'UTF-8'); ?>
                 </h4>
@@ -417,13 +423,6 @@ $relatedSpecies = array_values(array_filter(
                     </div>
                 </div>
                 <div class="species-characteristics-list">
-                    <?php
-                    $geologicalTimeByType = [];
-
-                    foreach ($geologicalTime as $time) {
-                        $geologicalTimeByType[$time['type']] = $time['name'];
-                    }
-                    ?>
                     <div class="species-characteristics-row">
                         <span>Período geológico</span>
                         <strong>
@@ -611,7 +610,7 @@ $relatedSpecies = array_values(array_filter(
                 <span>COMPARTILHARAM O PASSADO</span>
                 <h2>Espécies relacionadas</h2>
                 <p>
-                    Conheça outros animais que viveram juntos dessa espécie.
+                    Conheça outras espécies que podem ter convivido com essa.
                 </p>
             </div>
             <?php if (!empty($relatedSpecies)) { ?>
@@ -685,7 +684,7 @@ $relatedSpecies = array_values(array_filter(
                 <div class="discovery-item">
                     <span>ANO DE DESCOBERTA</span>
                     <strong>
-                        <?= formatValue($species['discovery_year']); ?>
+                        <?= formatValue((isset($species['discovery_year']) && (int) $species['discovery_year'] > 0) ? $species['discovery_year'] : null); ?>
                     </strong>
                 </div>
 
