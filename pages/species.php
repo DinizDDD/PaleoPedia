@@ -45,16 +45,27 @@ if (in_array($diet, $validDiets, true)) {
     $diet = '';
 }
 
-if ($period !== '' && ctype_digit((string) $period)) {
-    $conditions[] = "(
-        species.geotime_id = :geotime
-        OR geo_time.parent_id = :geotime_parent
-        OR geo_parent.parent_id = :geotime_grandparent
-    )";
+// Define a consulta recursiva somente quando existe um filtro geológico válido.
+$geologicalCte = '';
 
-    $params['geotime'] = (int) $period;
-    $params['geotime_parent'] = (int) $period;
-    $params['geotime_grandparent'] = (int) $period;
+if ($period !== '' && ctype_digit((string) $period)) {
+    $geologicalCte = "
+        WITH RECURSIVE selected_geotime AS (
+            SELECT id
+            FROM geo_time
+            WHERE id = :selected_geotime_id
+
+            UNION ALL
+
+            SELECT child.id
+            FROM geo_time AS child
+            INNER JOIN selected_geotime AS parent
+                ON child.parent_id = parent.id
+        )
+    ";
+
+    $conditions[] = 'species.geotime_id IN (SELECT id FROM selected_geotime)';
+    $params['selected_geotime_id'] = (int) $period;
 } else {
     $period = '';
 }
@@ -84,6 +95,7 @@ if (!empty($conditions)) {
 }
 
 $sql = "
+$geologicalCte
 SELECT
     species.id,
     species.name,
