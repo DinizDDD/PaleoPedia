@@ -38,39 +38,59 @@ function timeInfoText($value) {
     return nl2br(timeInfoEscape($value));
 }
 
+// O banco armazena datas em milhões de anos (Ma).
+// Esta função escolhe a unidade adequada, preservando a precisão dos dados.
+function formatGeologicalAmount($millionYears) {
+    $millionYears = (float) $millionYears;
+
+    if ($millionYears >= 1000) {
+        $billions = $millionYears / 1000;
+        // 7 casas decimais permitem preservar as 4 casas em Ma do banco.
+        $formatted = number_format($billions, 7, ',', '.');
+        $formatted = rtrim(rtrim($formatted, '0'), ',');
+
+        return $formatted . ($billions == 1.0 ? ' bilhão de anos' : ' bilhões de anos');
+    }
+
+    if ($millionYears >= 1) {
+        $formatted = number_format($millionYears, 4, ',', '.');
+        $formatted = rtrim(rtrim($formatted, '0'), ',');
+
+        return $formatted . ($millionYears == 1.0 ? ' milhão de anos' : ' milhões de anos');
+    }
+
+    // Abaixo de 1 Ma, exibe em anos para evitar arredondamentos para 0,00 Ma.
+    $years = (int) round($millionYears * 1000000);
+
+    return number_format($years, 0, ',', '.') . ($years === 1 ? ' ano' : ' anos');
+}
+
 function formatGeologicalDate($value) {
-    if ($value === null) {
+    if ($value === null || $value === '') {
         return 'Não informado';
     }
 
     $value = (float) $value;
 
-    if ($value <= 0) {
+    if ($value < 0) {
+        return 'Não informado';
+    }
+
+    if ($value == 0.0) {
         return 'Presente';
     }
 
-    if ($value >= 1000) {
-        $formatted = number_format($value / 1000, 2, ',', '.');
-        return $formatted . ' bilhões de anos';
-    }
-
-    $formatted = number_format($value, 2, ',', '.');
-
-    return $formatted . ' milhões de anos';
+    return formatGeologicalAmount($value);
 }
 
 function formatGeologicalDuration($begin, $end) {
-    if ($begin === null || $end === null) {
+    if ($begin === null || $end === null || $begin === '' || $end === '') {
         return 'Não informado';
     }
 
     $duration = abs((float) $begin - (float) $end);
 
-    if ($duration >= 1000) {
-        return number_format($duration / 1000, 2, ',', '.') . ' bilhões de anos';
-    }
-
-    return number_format($duration, 2, ',', '.') . ' milhões de anos';
+    return formatGeologicalAmount($duration);
 }
 
 $typeNames = [
