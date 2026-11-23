@@ -1,11 +1,8 @@
-
 <?php
 
-$slug = $_GET['slug'] ?? '';
-
-if ($slug === '') {
-    header('Location: index.php?page=period');
-    exit;
+if (!isset($page, $slug) || $page !== 'time_info' || !is_string($slug) || $slug === '') {
+    http_response_code(404);
+    exit('Página não encontrada. Acesse pelo index.php.');
 }
 
 $stmt = $conn->prepare("
@@ -22,8 +19,12 @@ $stmt->execute([
 $time = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$time) {
-    header('Location: index.php?page=period');
-    exit;
+    if (!headers_sent()) {
+        http_response_code(404);
+    }
+    echo '<main class="time-info-page"><h1>Tempo geológico não encontrado</h1>';
+    echo '<p><a href="index.php?page=period">Voltar à escala geológica</a></p></main>';
+    return;
 }
 
 function timeInfoEscape($value) {
@@ -38,14 +39,11 @@ function timeInfoText($value) {
     return nl2br(timeInfoEscape($value));
 }
 
-// O banco armazena datas em milhões de anos (Ma).
-// Esta função escolhe a unidade adequada, preservando a precisão dos dados.
 function formatGeologicalAmount($millionYears) {
     $millionYears = (float) $millionYears;
 
     if ($millionYears >= 1000) {
         $billions = $millionYears / 1000;
-        // 7 casas decimais permitem preservar as 4 casas em Ma do banco.
         $formatted = number_format($billions, 7, ',', '.');
         $formatted = rtrim(rtrim($formatted, '0'), ',');
 
@@ -59,7 +57,6 @@ function formatGeologicalAmount($millionYears) {
         return $formatted . ($millionYears == 1.0 ? ' milhão de anos' : ' milhões de anos');
     }
 
-    // Abaixo de 1 Ma, exibe em anos para evitar arredondamentos para 0,00 Ma.
     $years = (int) round($millionYears * 1000000);
 
     return number_format($years, 0, ',', '.') . ($years === 1 ? ' ano' : ' anos');

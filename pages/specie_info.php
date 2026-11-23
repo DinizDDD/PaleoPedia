@@ -1,13 +1,11 @@
 <?php
 
-include(__DIR__ . '/../config/database.php');
-
-$slug = $_GET['slug'] ?? '';
-
-if ($slug === '') {
-    header('Location: index.php?page=species');
-    exit;
+if (!isset($page, $slug) || $page !== 'species_info' || !is_string($slug) || $slug === '') {
+    http_response_code(404);
+    exit('Página não encontrada. Acesse pelo index.php.');
 }
+
+require_once __DIR__ . '/../config/database.php';
 
 $stmt = $conn->prepare("
     SELECT
@@ -89,8 +87,12 @@ $stmt->execute([':slug' => $slug]);
 $species = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$species) {
-    header('Location: index.php?page=species');
-    exit;
+    if (!headers_sent()) {
+        http_response_code(404);
+    }
+    echo '<main class="species-page"><h1>Espécie não encontrada</h1>';
+    echo '<p><a href="index.php?page=species">Voltar à lista de espécies</a></p></main>';
+    return;
 }
 
 function formatValue($value)
@@ -160,7 +162,6 @@ while ($geotimeId) {
 
 $geologicalTime = array_reverse($geologicalTime);
 
-// Indexa a hierarquia por nível para usar o período no banner e no quadro informativo.
 $geologicalTimeByType = [];
 foreach ($geologicalTime as $time) {
     $geologicalTimeByType[$time['type']] = $time['name'];
