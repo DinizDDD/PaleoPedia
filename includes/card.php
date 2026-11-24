@@ -16,7 +16,7 @@
         <div class="species-content">
             <div class="species-title">
                 <h3 class="species-card-name">
-                    <?= htmlspecialchars(mb_strtoupper($species['name'] ?? '', 'UTF-8'), ENT_QUOTES, 'UTF-8'); ?>
+                    <?= htmlspecialchars($species['name'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
                 </h3>
                 <p class="species-card-scientific">
                     <?= htmlspecialchars(
@@ -29,7 +29,7 @@
 
             <dl class="species-info">
                 <div class="info-item">
-                    <dt>Dieta</dt>
+                    <dt class="sr-only">Dieta</dt>
                     <dd>
                         <?php
                         $dietNames = [
@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="info-item">
-                    <dt><?= !empty($species['epoch_name'])
+                    <dt class="sr-only"><?= !empty($species['epoch_name'])
                         ? 'Época'
                         : (!empty($species['period_name']) ? 'Período' : 'Tempo geológico'); ?></dt>
                     <dd>
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="info-item">
-                    <dt>Onde viveu</dt>
+                    <dt class="sr-only">Onde viveu</dt>
                     <dd>
                         <?= htmlspecialchars(
                             $species['continent'] ?? 'Não informado',
@@ -75,7 +75,6 @@
             </dl>
 
             <div class="species-card-cta" aria-hidden="true">
-                <span>Conhecer espécie</span>
                 <span class="species-card-arrow">&rarr;</span>
             </div>
         </div>

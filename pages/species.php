@@ -231,9 +231,8 @@ $geologicalTimes = $conn->query("
 <main class="species-section">
     <header class="catalog-header">
         <div class="catalog-container">
-            <span class="catalog-kicker">HISTÓRIA DA VIDA</span>
             <h1>Espécies</h1>
-            <p>Conheça os organismos que habitaram a Terra, suas características e os ambientes em que viveram.</p>
+            <p>Explore a diversidade da vida pré-histórica.</p>
         </div>
     </header>
 
@@ -245,17 +244,14 @@ $geologicalTimes = $conn->query("
                     name="page"
                     value="species"
                 >
-                <div class="filters">
-                    <div class="filter search-area">
-                        <label for="species-search-input">Nome da espécie</label>
-                        <input
-                            type="search"
-                            id="species-search-input"
-                            name="search"
-                            placeholder="Nome comum ou científico"
-                            value="<?= htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); ?>"
-                        >
+                <div class="search-area">
+                    <label class="sr-only" for="species-search-input">Nome da espécie</label>
+                    <div class="search-input">
+                        <input type="search" id="species-search-input" name="search" placeholder="Buscar espécie..." value="<?= htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); ?>">
                     </div>
+                    <button type="submit" class="filter-button">Buscar</button>
+                </div>
+                <div class="filters">
                     <div class="filter">
                         <label for="diet">
                             Dieta
@@ -330,7 +326,7 @@ $geologicalTimes = $conn->query("
 
                     <div class="filter">
                         <label for="continent">
-                            Onde viveu
+                            Continente
                         </label>
                         <select name="continent" id="continent">
                             <option value="">Todos</option>
@@ -347,7 +343,6 @@ $geologicalTimes = $conn->query("
 
                 </div>
                 <div class="catalog-actions">
-                    <button type="submit" class="filter-button">Buscar</button>
                     <a href="index.php?page=species" class="clear-button">Limpar filtros</a>
                 </div>
             </form>
@@ -357,7 +352,7 @@ $geologicalTimes = $conn->query("
             <?php $resultCount = count($speciesList); ?>
             <p><strong><?= $resultCount; ?></strong> <?= $resultCount === 1 ? 'espécie encontrada' : 'espécies encontradas'; ?></p>
             <?php if ($resultCount > 0) { ?>
-                <span>Organizadas por período geológico</span>
+                <span>Por período geológico</span>
             <?php } ?>
         </div>
 

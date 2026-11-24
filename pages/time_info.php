@@ -414,9 +414,9 @@ if ($bannerImage && !empty($bannerImage['_path'])) {
             <div class="time-info-events-content">
                 <div class="time-info-section-title time-info-section-title-dark">
                     <span>MARCOS HISTÓRICOS</span>
-                    <h2>Principais acontecimentos</h2>
+                    <h2>Principais acontecimentos e curiosidades</h2>
                     <p>
-                        Acontecimentos geológicos, ambientais e evolutivos
+                        Acontecimentos geológicos, ambientais, evolutivos e curiosidades 
                         marcantes durante este intervalo.
                     </p>
                 </div>

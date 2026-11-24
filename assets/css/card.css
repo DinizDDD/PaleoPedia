@@ -3,9 +3,9 @@
 .species-section {
     color-scheme: dark;
     --catalog-paper: var(--Cinza-Fundo);
-    --catalog-card: var(--Marrom-Escuro);
+    --catalog-card: var(--Cinza-Card);
     --catalog-line: var(--Borda-Cinza);
-    --catalog-muted: var(--Bege-Suave);
+    --catalog-muted: var(--Bege);
     background: var(--catalog-paper);
     color: var(--Branco);
     width: 100%;
@@ -17,27 +17,17 @@
 }
 
 .catalog-header {
-    background: var(--Marrom-Escuro);
+    background: var(--catalog-paper);
     color: var(--Branco);
-    padding: 130px 0 49px;
-    border-bottom: 3px solid var(--Laranja);
-}
-
-.catalog-kicker {
-    display: block;
-    margin-bottom: 13px;
-    color: var(--Laranja);
-    font-size: .75rem;
-    font-weight: 600;
-    letter-spacing: .16em;
+    padding: 120px 0 24px;
 }
 
 .catalog-header h1 {
     font-family: var(--font-secondary);
-    font-size: clamp(2.6rem, 5vw, 4.5rem);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
     font-weight: 700;
     line-height: 1.1;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 
 .catalog-header p {
@@ -48,17 +38,35 @@
 }
 
 .catalog-body {
-    padding: 32px 0 85px;
+    padding: 0 0 85px;
 }
 
 .species-search {
-    padding-bottom: 25px;
-    border-bottom: 1px solid var(--catalog-line);
+    padding: 20px;
+    background: var(--Marrom-Escuro);
+    border-radius: 10px;
+}
+
+.species-search .search-area {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.species-search .search-input {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+}
+
+.species-search .search-input input {
+    padding-left: 44px;
 }
 
 .species-search .filters {
     display: grid;
-    grid-template-columns: minmax(0, 1.45fr) minmax(0, .85fr) minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: end;
     gap: 16px;
 }
@@ -76,21 +84,22 @@
     font-weight: 600;
 }
 
-.species-search :is(input, select) {
+.species-search :is(input[type="search"], select) {
     display: block;
     width: 100%;
     min-width: 0;
     height: 46px;
     padding: 0 12px;
     border: 1px solid var(--Cinza-Claro);
-    border-radius: 5px;
-    background: var(--Cinza-Card);
+    border-radius: 7px;
+    background: var(--Cinza-Input);
     color: var(--Branco);
     font-size: .86rem;
 }
 
 .species-search input::placeholder {
     color: var(--catalog-muted); 
+    opacity: 1;
 }
 
 .species-search select { 
@@ -106,14 +115,15 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
-    margin-top: 16px;
+    margin-top: 8px;
+    justify-content: flex-end;
 }
 
 .species-search .filter-button {
     min-height: 44px;
     padding: 10px 30px;
     border: 1px solid var(--Laranja);
-    border-radius: 5px;
+    border-radius: 7px;
     background: var(--Laranja);
     color: var(--Preto);
     font-size: .86rem;
@@ -142,7 +152,7 @@
     align-items: baseline;
     flex-wrap: wrap;
     gap: 8px 20px;
-    padding: 24px 0 34px;
+    padding: 20px 0 26px;
     color: var(--catalog-muted);
     font-size: .83rem;
 }
@@ -152,7 +162,7 @@
 }
 
 .period-group + .period-group { 
-    margin-top: 54px; 
+    margin-top: 42px; 
 }
 
 .period-title {
@@ -161,18 +171,13 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 8px 18px;
-    padding: 5px 13px 14px;
-    margin-bottom: 20px;
-    border-left: 3px solid var(--Laranja);
-    border-bottom: 1px solid var(--catalog-line);
-    background-color: var(--Marrom-Escuro);
-    border-radius: 10px;
+    margin-bottom: 16px;
 }
 
 .period-title h2 {
-    color: var(--Laranja);
+    color: var(--Branco);
     font-family: var(--font-secondary);
-    font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
     font-weight: 700;
     line-height: 1.25;
     overflow-wrap: anywhere;
@@ -195,7 +200,7 @@
     height: 100%;
     color: inherit;
     text-decoration: none;
-    border-radius: 16px;
+    border-radius: 10px;
 }
 
 .species-card {
@@ -204,10 +209,10 @@
     min-width: 0;
     height: 100%;
     background: var(--catalog-card);
-    border: 1px solid var(--Borda-Marrom);
-    border-radius: 16px;
+    border: 1px solid var(--catalog-line);
+    border-radius: 10px;
     overflow: hidden;
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    transition: transform .25s ease, border-color .25s ease;
 }
 
 .species-image {
@@ -216,8 +221,8 @@
     place-items: center;
     width: 100%;
     aspect-ratio: 4 / 3;
-    padding: 18px;
-    background: transparent;
+    padding: 12px;
+    background: var(--catalog-card);
     overflow: hidden;
 }
 
@@ -227,6 +232,7 @@
     height: 100%;
     min-width: 0;
     min-height: 0;
+    border-radius: 10%;
     object-fit: contain;
     transition: transform .3s ease;
 }
@@ -242,22 +248,22 @@
     flex-direction: column;
     flex: 1;
     min-width: 0;
-    padding: 4px 20px 20px;
+    padding: 4px 16px 16px;
 }
 
-.species-title { margin-bottom: 18px; }
+.species-title { margin-bottom: 12px; }
 
 .species-card-name {
     color: var(--Branco);
     font-family: var(--font-secondary);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     line-height: 1.2;
     overflow-wrap: anywhere;
 }
 
 .species-card-scientific {
-    margin-top: 6px;
+    margin-top: 4px;
     color: var(--Bege);
     font-size: .9rem;
     font-style: italic;
@@ -268,24 +274,15 @@
 .species-info {
     display: flex;
     flex-direction: column;
-    gap: 11px;
+    gap: 5px;
     margin-top: auto;
-    padding-top: 14px;
-    border-top: 1px solid color-mix(in srgb, var(--Branco-Puro) 13%, transparent);
+    padding-top: 12px;
+    border-top: 1px solid var(--catalog-line);
 }
 
 .species-card .info-item {
     min-width: 0;
     overflow-wrap: anywhere;
-}
-
-.species-card .info-item dt {
-    margin-bottom: 3px;
-    color: var(--Laranja);
-    font-size: .72rem;
-    font-weight: 600;
-    letter-spacing: .06em;
-    text-transform: uppercase;
 }
 
 .species-card .info-item dd {
@@ -295,11 +292,20 @@
     line-height: 1.5;
 }
 
+.species-card .info-item:first-child dd {
+    color: var(--Laranja);
+    font-weight: 600;
+}
+
+.species-card .info-item:last-child dd {
+    color: var(--Bege);
+}
+
 .species-card-cta {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 20px;
+    justify-content: flex-end;
+    margin-top: 12px;
     color: var(--Laranja);
     font-size: .85rem;
     font-weight: 600;
@@ -312,24 +318,38 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+
     .species-link:hover .species-card {
         transform: translateY(-6px);
-        box-shadow: 0 14px 30px color-mix(in srgb, var(--Preto) 36%, transparent);
         border-color: var(--Laranja);
     }
-    .species-link:hover .species-image img { transform: scale(1.03); }
-    .species-link:hover .species-card-arrow { transform: translateX(4px); }
+    .species-link:hover .species-image img {
+        transform: scale(1.03); 
+    }
+
+    .species-link:hover .species-card-arrow { 
+        transform: translateX(4px); 
+    }
 }
 
 .species-link:focus-visible {
     outline: 3px solid var(--Laranja);
     outline-offset: 4px;
 }
-.species-link:focus-visible .species-card { border-color: var(--Laranja); }
+
+.species-link:focus-visible .species-card { 
+    border-color: var(--Laranja); 
+}
 
 @media (max-width: 700px) {
-    .species-content { padding: 4px 16px 18px; }
-    .species-card-name { font-size: 1.1rem; }
+
+    .species-content { 
+        padding: 4px 14px 16px; 
+    }
+
+    .species-card-name { 
+        font-size: 1.1rem; 
+    }
 }
 
 .species-section :is(a, button, input, select):focus-visible {
@@ -340,29 +360,85 @@
     border-block: 1px solid var(--catalog-line);
     padding: 35px 0 40px;
 }
-.no-results h2 { font-family: var(--font-secondary); font-size: 1.4rem; margin-bottom: 10px; }
-.no-results p { color: var(--catalog-muted); font-size: .9rem; line-height: 1.7; }
-.no-results a { display: inline-block; margin-top: 15px; color: var(--Laranja); font-size: .85rem; font-weight: 600; text-underline-offset: 4px; }
+.no-results h2 {
+    font-family: var(--font-secondary); 
+    font-size: 1.4rem; margin-bottom: 10px; 
+}
+
+.no-results p {
+    color: var(--catalog-muted); 
+    font-size: .9rem; line-height: 1.7; 
+}
+
+.no-results a {
+    display: inline-block;
+    margin-top: 15px; 
+    color: var(--Laranja); 
+    font-size: .85rem; 
+    font-weight: 600; 
+    text-underline-offset: 4px; 
+}
 
 @media (max-width: 900px) {
-    .species-search .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .species-search .filters { gap: 12px; }
     .species-grid { gap: 18px; }
 }
 
 @media (max-width: 600px) {
-    .catalog-container { width: calc(100% - 36px); }
-    .catalog-header { padding: 108px 0 36px; }
-    .catalog-header p { font-size: .89rem; }
-    .catalog-body { padding: 24px 0 60px; }
-    .species-search .filters { grid-template-columns: 1fr; gap: 14px; }
-    .catalog-results-summary { padding: 20px 0 26px; }
-    .period-group + .period-group { margin-top: 38px; }
-    .species-grid { gap: 18px; }
+    .catalog-container {
+        width: calc(100% - 36px); 
+    }
+
+    .catalog-header { 
+        padding: 96px 0 20px; 
+    }
+
+    .catalog-header p { 
+        font-size: .89rem; 
+    }
+
+    .catalog-body { 
+        padding: 0 0 60px; 
+    }
+
+    .species-search { 
+        padding: 14px; 
+    }
+
+    .species-search .search-area { 
+        gap: 8px; 
+    }
+
+    .species-search .filter-button { 
+        padding: 10px 16px; 
+    }
+
+    .species-search .filters { 
+        grid-template-columns: 1fr; gap: 14px; 
+    }
+
+    .catalog-results-summary { 
+        padding: 20px 0 26px; 
+    }
+
+    .period-group + .period-group { 
+        margin-top: 38px; 
+    }
+
+    .species-grid { 
+        gap: 18px; 
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .species-link:hover .species-card,
     .species-link:hover .species-image img,
-    .species-link:hover .species-card-arrow { transform: none; }
-    .species-card, .species-image img, .species-card-arrow { transition: none; }
+    .species-link:hover .species-card-arrow {
+         transform: none; 
+        }
+
+    .species-card, .species-image img, .species-card-arrow {
+         transition: none; 
+        }
 }
