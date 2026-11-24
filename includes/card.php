@@ -27,10 +27,10 @@
                 </p>
             </div>
 
-            <div class="species-info">
+            <dl class="species-info">
                 <div class="info-item">
-                    <span>Dieta</span>
-                    <p>
+                    <dt>Dieta</dt>
+                    <dd>
                         <?php
                         $dietNames = [
                             'carnívoro' => 'Carnívoro',
@@ -46,30 +46,37 @@
                             'UTF-8'
                         );
                         ?>
-                    </p>
+                    </dd>
                 </div>
 
                 <div class="info-item">
-                    <span>Época</span>
-                    <p>
+                    <dt><?= !empty($species['epoch_name'])
+                        ? 'Época'
+                        : (!empty($species['period_name']) ? 'Período' : 'Tempo geológico'); ?></dt>
+                    <dd>
                         <?= htmlspecialchars(
-                            $species['epoch_name'] ?? $species['period_name'] ?? 'Não informada',
+                            ($species['epoch_name'] ?? '') ?: (($species['period_name'] ?? '') ?: 'Não informado'),
                             ENT_QUOTES,
                             'UTF-8'
                         ); ?>
-                    </p>
+                    </dd>
                 </div>
 
                 <div class="info-item">
-                    <span>Onde viveu</span>
-                    <p>
+                    <dt>Onde viveu</dt>
+                    <dd>
                         <?= htmlspecialchars(
                             $species['continent'] ?? 'Não informado',
                             ENT_QUOTES,
                             'UTF-8'
                         ); ?>
-                    </p>
+                    </dd>
                 </div>
+            </dl>
+
+            <div class="species-card-cta" aria-hidden="true">
+                <span>Conhecer espécie</span>
+                <span class="species-card-arrow">&rarr;</span>
             </div>
         </div>
     </div>

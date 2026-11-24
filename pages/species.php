@@ -29,11 +29,12 @@ $validContinents = [
 
 if ($search !== '') {
     $conditions[] = "(
-        species.name LIKE :search
-        OR species.scientific_name LIKE :search
+        species.name LIKE :search_name
+        OR species.scientific_name LIKE :search_scientific
     )";
 
-    $params['search'] = '%' . $search . '%';
+    $params['search_name'] = '%' . $search . '%';
+    $params['search_scientific'] = $params['search_name'];
 }
 
 $validDiets = [
@@ -229,151 +230,164 @@ $geologicalTimes = $conn->query("
 ?>
 
 <main class="species-section">
-    <h1 class="sr-only">Explore as espécies do Paleopedia</h1>
-    <div class="species-search">
-        <form method="GET" action="index.php">
-            <input
-                type="hidden"
-                name="page"
-                value="species"
-            >
-            <div class="search-area">
-                <label class="sr-only" for="species-search-input">Buscar espécie pelo nome</label>
+    <header class="catalog-header">
+        <div class="catalog-container">
+            <span class="catalog-kicker">HISTÓRIA DA VIDA</span>
+            <h1>Espécies</h1>
+            <p>Conheça os organismos que habitaram a Terra, suas características e os ambientes em que viveram.</p>
+        </div>
+    </header>
+
+    <div class="catalog-container catalog-body">
+        <div class="species-search">
+            <form method="GET" action="index.php" aria-label="Pesquisar e filtrar espécies">
                 <input
-                    type="search"
-                    id="species-search-input"
-                    name="search"
-                    placeholder="Buscar espécie..."
-                    value="<?= htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); ?>"
+                    type="hidden"
+                    name="page"
+                    value="species"
                 >
-                <button type="submit">
-                    Buscar
-                </button>
-            </div>
+                <div class="filters">
+                    <div class="filter search-area">
+                        <label for="species-search-input">Nome da espécie</label>
+                        <input
+                            type="search"
+                            id="species-search-input"
+                            name="search"
+                            placeholder="Nome comum ou científico"
+                            value="<?= htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); ?>"
+                        >
+                    </div>
+                    <div class="filter">
+                        <label for="diet">
+                            Dieta
+                        </label>
+                        <select name="diet" id="diet">
+                            <option value="">Todas</option>
 
-            <div class="filters">
-                <div class="filter">
-                    <label for="diet">
-                        Dieta
-                    </label>
-                    <select name="diet" id="diet">
-                        <option value="">Todas</option>
-
-                        <?php
-                        $dietOptions = [
-                            'carnívoro' => 'Carnívoro',
-                            'herbívoro' => 'Herbívoro',
-                            'onívoro' => 'Onívoro',
-                            'piscívoro' => 'Piscívoro',
-                            'insetívoro' => 'Insetívoro'
-                        ];
-
-                        foreach ($dietOptions as $value => $label) {
-                        ?>
-                            <option
-                                value="<?= htmlspecialchars($value, ENT_QUOTES, 'UTF-8'); ?>"
-                                <?= $diet === $value ? 'selected' : ''; ?>
-                            >
-                                <?= $label; ?>
-                            </option>
-                        <?php } ?>
-                    </select>
-                </div>
-
-                <div class="filter">
-                    <label for="period">
-                        Tempo geológico
-                    </label>
-
-                    <select name="period" id="period">
-                        <option value="">Todos</option>
-
-                        <?php foreach ($geologicalTimes as $time) { ?>
                             <?php
-                            $timeLabel = $time['name'];
+                            $dietOptions = [
+                                'carnívoro' => 'Carnívoro',
+                                'herbívoro' => 'Herbívoro',
+                                'onívoro' => 'Onívoro',
+                                'piscívoro' => 'Piscívoro',
+                                'insetívoro' => 'Insetívoro'
+                            ];
 
-                            if ($time['type'] === 'epoca' && $time['parent_name']) {
-                                $timeLabel = $time['parent_name'] . ' → ' . $time['name'];
-                            }
+                            foreach ($dietOptions as $value => $label) {
+                            ?>
+                                <option
+                                    value="<?= htmlspecialchars($value, ENT_QUOTES, 'UTF-8'); ?>"
+                                    <?= $diet === $value ? 'selected' : ''; ?>
+                                >
+                                    <?= $label; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </div>
 
-                            if ($time['type'] === 'idade') {
-                                if ($time['parent_name']) {
+                    <div class="filter">
+                        <label for="period">
+                            Tempo geológico
+                        </label>
+
+                        <select name="period" id="period">
+                            <option value="">Todos</option>
+
+                            <?php foreach ($geologicalTimes as $time) { ?>
+                                <?php
+                                $timeLabel = $time['name'];
+
+                                if ($time['type'] === 'epoca' && $time['parent_name']) {
                                     $timeLabel = $time['parent_name'] . ' → ' . $time['name'];
                                 }
 
-                                if (
-                                    $time['grandparent_name']
-                                    && $time['grandparent_type'] === 'periodo'
-                                ) {
-                                    $timeLabel = $time['grandparent_name']
-                                        . ' → '
-                                        . $time['parent_name']
-                                        . ' → '
-                                        . $time['name'];
+                                if ($time['type'] === 'idade') {
+                                    if ($time['parent_name']) {
+                                        $timeLabel = $time['parent_name'] . ' → ' . $time['name'];
+                                    }
+
+                                    if (
+                                        $time['grandparent_name']
+                                        && $time['grandparent_type'] === 'periodo'
+                                    ) {
+                                        $timeLabel = $time['grandparent_name']
+                                            . ' → '
+                                            . $time['parent_name']
+                                            . ' → '
+                                            . $time['name'];
+                                    }
                                 }
-                            }
-                            ?>
+                                ?>
 
-                            <option
-                                value="<?= (int) $time['id']; ?>"
-                                <?= (string) $period === (string) $time['id'] ? 'selected' : ''; ?>
-                            >
-                                <?= htmlspecialchars($timeLabel, ENT_QUOTES, 'UTF-8'); ?>
-                            </option>
-                        <?php } ?>
-                    </select>
+                                <option
+                                    value="<?= (int) $time['id']; ?>"
+                                    <?= (string) $period === (string) $time['id'] ? 'selected' : ''; ?>
+                                >
+                                    <?= htmlspecialchars($timeLabel, ENT_QUOTES, 'UTF-8'); ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+
+                    <div class="filter">
+                        <label for="continent">
+                            Onde viveu
+                        </label>
+                        <select name="continent" id="continent">
+                            <option value="">Todos</option>
+                            <?php foreach ($validContinents as $continentOption) { ?>
+                                <option
+                                    value="<?= htmlspecialchars($continentOption, ENT_QUOTES, 'UTF-8'); ?>"
+                                    <?= $continent === $continentOption ? 'selected' : ''; ?>
+                                >
+                                    <?= htmlspecialchars($continentOption, ENT_QUOTES, 'UTF-8'); ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+
                 </div>
-
-                <div class="filter">
-                    <label for="continent">
-                        Onde viveu
-                    </label>
-                    <select name="continent" id="continent">
-                        <option value="">Todos</option>
-                        <?php foreach ($validContinents as $continentOption) { ?>
-                            <option
-                                value="<?= htmlspecialchars($continentOption, ENT_QUOTES, 'UTF-8'); ?>"
-                                <?= $continent === $continentOption ? 'selected' : ''; ?>
-                            >
-                                <?= htmlspecialchars($continentOption, ENT_QUOTES, 'UTF-8'); ?>
-                            </option>
-                        <?php } ?>
-                    </select>
+                <div class="catalog-actions">
+                    <button type="submit" class="filter-button">Buscar</button>
+                    <a href="index.php?page=species" class="clear-button">Limpar filtros</a>
                 </div>
-
-                <button type="submit" class="filter-button">
-                    Filtrar
-                </button>
-                <a href="index.php?page=species" class="clear-button">
-                    Limpar
-                </a>
-            </div>
-        </form>
-    </div>
-
-    <?php if (empty($speciesList)) { ?>
-        <div class="no-results">
-            <h2>Nenhuma espécie encontrada</h2>
-            <p>
-                Tente alterar os filtros ou o termo pesquisado.
-            </p>
+            </form>
         </div>
 
-    <?php } ?>
-    <div class="species-results">
-        <?php foreach ($groupedSpecies as $periodName => $speciesGroup) { ?>
-            <div class="period-group">
-                <div class="period-title">
-                    <h2>
-                        <?= htmlspecialchars($periodName, ENT_QUOTES, 'UTF-8'); ?>
-                    </h2>
-                </div>
-                <div class="species-grid">
-                    <?php foreach ($speciesGroup as $species) { ?>
-                        <?php include __DIR__ . '/../includes/card.php'; ?>
-                    <?php } ?>
-                </div>
+        <div class="catalog-results-summary">
+            <?php $resultCount = count($speciesList); ?>
+            <p><strong><?= $resultCount; ?></strong> <?= $resultCount === 1 ? 'espécie encontrada' : 'espécies encontradas'; ?></p>
+            <?php if ($resultCount > 0) { ?>
+                <span>Organizadas por período geológico</span>
+            <?php } ?>
+        </div>
+
+        <?php if (empty($speciesList)) { ?>
+            <div class="no-results">
+                <h2>Nenhuma espécie encontrada</h2>
+                <p>
+                    Tente alterar os filtros ou o termo pesquisado.
+                </p>
+                <a href="index.php?page=species">Ver todas as espécies &rarr;</a>
             </div>
+
         <?php } ?>
+        <div class="species-results">
+            <?php foreach ($groupedSpecies as $periodName => $speciesGroup) { ?>
+                <section class="period-group">
+                    <div class="period-title">
+                        <h2>
+                            <?= htmlspecialchars($periodName, ENT_QUOTES, 'UTF-8'); ?>
+                        </h2>
+                        <span class="period-count"><?= count($speciesGroup); ?> <?= count($speciesGroup) === 1 ? 'espécie' : 'espécies'; ?></span>
+                    </div>
+                    <div class="species-grid">
+                        <?php foreach ($speciesGroup as $species) { ?>
+                            <?php include __DIR__ . '/../includes/card.php'; ?>
+                        <?php } ?>
+                    </div>
+                </section>
+            <?php } ?>
+        </div>
     </div>
 </main>
