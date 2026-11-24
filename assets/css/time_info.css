@@ -29,7 +29,7 @@
     align-items: flex-end;
     overflow: hidden;
     background:
-        linear-gradient(120deg, #25130f, #583324 55%, #2b1b16);
+        linear-gradient(120deg, var(--Cinza-Input), var(--Marrom-Escuro) 55%, var(--Cinza-Fundo));
 }
 
 .time-info-hero-banner > img {
@@ -47,10 +47,10 @@
     z-index: 1;
     background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.10) 10%,
-        rgba(0, 0, 0, 0.20) 35%,
-        rgba(35, 15, 10, 0.75) 70%,
-        rgba(35, 15, 10, 0.96) 100%
+        color-mix(in srgb, var(--Preto) 10%, transparent) 10%,
+        color-mix(in srgb, var(--Preto) 20%, transparent) 35%,
+        color-mix(in srgb, var(--Cinza-Input) 75%, transparent) 70%,
+        color-mix(in srgb, var(--Cinza-Input) 96%, transparent) 100%
     );
 }
 
@@ -69,7 +69,7 @@
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 45px;
-    color: rgba(255, 255, 255, 0.65);
+    color: color-mix(in srgb, var(--Branco-Puro) 65%, transparent);
     font-family: var(--font-primary);
     font-size: 11px;
     line-height: 1.8;
@@ -91,7 +91,7 @@
 }
 
 .time-info-breadcrumb > a:not(:first-child) {
-    color: rgba(255, 255, 255, 0.75);
+    color: color-mix(in srgb, var(--Branco-Puro) 75%, transparent);
 }
 
 .time-info-breadcrumb > a:not(:first-child):hover {
@@ -134,13 +134,13 @@
 }
 
 .time-info-date span {
-    color: rgba(255, 255, 255, 0.55);
+    color: color-mix(in srgb, var(--Branco-Puro) 55%, transparent);
 }
 
 .time-info-hero-content > p {
     max-width: 780px;
     margin: 25px 0 0;
-    color: #e7ddd7;
+    color: var(--Bege);
     font-family: var(--font-secondary);
     font-size: 15px;
     line-height: 1.9;
@@ -174,7 +174,7 @@
 .time-info-section-title > p {
     max-width: 680px;
     margin: 17px 0 0;
-    color: #77716c;
+    color: var(--Cinza-Texto);
     font-family: var(--font-primary);
     font-size: 14px;
     line-height: 1.9;
@@ -189,7 +189,7 @@
 }
 
 .time-info-section-title-dark > p {
-    color: #c5b4a8;
+    color: var(--Bege-Suave);
 }
 
 /* INFORMACOES GERAIS */
@@ -213,10 +213,10 @@
     flex-direction: column;
     justify-content: center;
     gap: 17px;
-    border: 1px solid #e5ded8;
+    border: 1px solid var(--Bege-Borda);
     border-radius: 12px;
-    background: #ffffff;
-    box-shadow: 0 5px 20px rgba(59, 13, 13, 0.035);
+    background: var(--Branco-Puro);
+    box-shadow: 0 5px 20px color-mix(in srgb, var(--Marrom-Escuro) 3.5%, transparent);
 }
 
 .time-info-fact > span {
@@ -262,15 +262,15 @@
 .time-info-editorial-card {
     min-width: 0;
     padding: 35px;
-    border: 1px solid rgba(255, 255, 255, 0.13);
+    border: 1px solid color-mix(in srgb, var(--Branco-Puro) 13%, transparent);
     border-radius: 14px;
-    background: rgba(255, 255, 255, 0.045);
+    background: color-mix(in srgb, var(--Branco-Puro) 4.5%, transparent);
     transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .time-info-editorial-card:hover {
     transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.075);
+    background: color-mix(in srgb, var(--Branco-Puro) 7.5%, transparent);
 }
 
 .time-info-editorial-card > span {
@@ -294,7 +294,7 @@
 
 .time-info-editorial-card p {
     margin: 0;
-    color: #c9bbb2;
+    color: var(--Bege-Suave);
     font-family: var(--font-secondary);
     font-size: 14px;
     line-height: 1.9;
@@ -345,7 +345,7 @@
 .time-info-environment-text > p,
 .time-info-biodiversity-text {
     margin: 0;
-    color: #6f6862;
+    color: var(--Cinza-Texto);
     font-family: var(--font-secondary);
     font-size: 15px;
     line-height: 2;
@@ -376,12 +376,12 @@
 .time-info-events-text {
     padding: 35px 40px;
     border-left: 3px solid var(--Laranja);
-    background: rgba(255, 255, 255, 0.045);
+    background: color-mix(in srgb, var(--Branco-Puro) 4.5%, transparent);
 }
 
 .time-info-events-text p {
     margin: 0;
-    color: #e0d5ce;
+    color: var(--Bege);
     font-family: var(--font-secondary);
     font-size: 15px;
     line-height: 2;
@@ -411,23 +411,23 @@
     flex-direction: column;
     min-width: 0;
     overflow: hidden;
-    border: 1px solid #e5ded8;
+    border: 1px solid var(--Bege-Borda);
     border-radius: 14px;
-    background: #ffffff;
+    background: var(--Branco-Puro);
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .time-info-species-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(59, 13, 13, 0.10);
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--Marrom-Escuro) 10%, transparent);
 }
 
 .time-info-species-image {
     width: 100%;
     height: 210px;
     overflow: hidden;
-    background: #e5ded8;
+    background: var(--Bege-Borda);
 }
 
 .time-info-species-image img {
@@ -448,7 +448,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #897d74;
+    color: var(--Borda-Cinza);
     font-family: var(--font-primary);
     font-size: 11px;
     font-weight: 600;
@@ -473,7 +473,7 @@
 
 .time-info-species-card-content > span {
     margin-top: 7px;
-    color: #8a7b71;
+    color: var(--Cinza-Texto);
     font-family: var(--font-secondary);
     font-size: 13px;
     font-style: italic;
@@ -503,9 +503,9 @@
     justify-content: center;
     gap: 18px;
     padding: 35px;
-    border: 1px dashed #d7cbc2;
+    border: 1px dashed var(--Bege-Borda);
     border-radius: 14px;
-    color: #8a7b71;
+    color: var(--Cinza-Texto);
     text-align: center;
 }
 
@@ -536,7 +536,7 @@
 }
 
 .time-info-divisions-list {
-    border-top: 1px solid rgba(255, 255, 255, 0.20);
+    border-top: 1px solid color-mix(in srgb, var(--Branco-Puro) 20%, transparent);
 }
 
 .time-info-division-item {
@@ -546,7 +546,7 @@
     justify-content: space-between;
     gap: 25px;
     padding: 22px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+    border-bottom: 1px solid color-mix(in srgb, var(--Branco-Puro) 20%, transparent);
     color: var(--Branco);
     text-decoration: none;
     transition: padding 0.3s ease, background 0.3s ease;
@@ -555,7 +555,7 @@
 .time-info-division-item:hover {
     padding-right: 25px;
     padding-left: 25px;
-    background: rgba(255, 255, 255, 0.045);
+    background: color-mix(in srgb, var(--Branco-Puro) 4.5%, transparent);
 }
 
 .time-info-division-main > span {
@@ -581,7 +581,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    color: #c9bbb2;
+    color: var(--Bege-Suave);
     font-family: var(--font-primary);
     font-size: 12px;
     text-align: right;
@@ -602,7 +602,7 @@
     display: flex;
     justify-content: center;
     padding: 55px 25px;
-    background: #f4f0ec;
+    background: var(--Bege-Borda);
 }
 
 .time-info-back-section a {

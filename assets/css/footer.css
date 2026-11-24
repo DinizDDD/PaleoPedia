@@ -39,7 +39,7 @@
 
         p {
             max-width: 400px;
-            color: rgba(255, 255, 255, 0.7);
+            color: color-mix(in srgb, var(--Branco-Puro) 70%, transparent);
             font-size: 0.95rem;
             line-height: 1.8;
         }
@@ -62,7 +62,7 @@
         gap: 15px;
 
         a {
-            color: rgba(255, 255, 255, 0.75);
+            color: color-mix(in srgb, var(--Branco-Puro) 75%, transparent);
             font-size: 0.95rem;
             text-decoration: none;
             transition: color 0.3s ease,
@@ -77,7 +77,7 @@
 
     .footer-about {
         p {
-            color: rgba(255, 255, 255, 0.7);
+            color: color-mix(in srgb, var(--Branco-Puro) 70%, transparent);
             font-size: 0.95rem;
             line-height: 1.8;
         }
@@ -90,11 +90,11 @@
         justify-content: space-between;
         gap: 15px;
         padding-top: 25px;
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        border-top: 1px solid color-mix(in srgb, var(--Branco-Puro) 15%, transparent);
 
         p,
         span {
-            color: rgba(255, 255, 255, 0.55);
+            color: color-mix(in srgb, var(--Branco-Puro) 55%, transparent);
             font-size: 0.8rem;
             line-height: 1.6;
         }

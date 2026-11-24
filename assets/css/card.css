@@ -4,8 +4,8 @@
     color-scheme: dark;
     --catalog-paper: var(--Cinza-Fundo);
     --catalog-card: var(--Marrom-Escuro);
-    --catalog-line: #514743;
-    --catalog-muted: #c8b9af;
+    --catalog-line: var(--Borda-Cinza);
+    --catalog-muted: var(--Bege-Suave);
     background: var(--catalog-paper);
     color: var(--Branco);
     width: 100%;
@@ -82,7 +82,7 @@
     min-width: 0;
     height: 46px;
     padding: 0 12px;
-    border: 1px solid #827269;
+    border: 1px solid var(--Cinza-Claro);
     border-radius: 5px;
     background: var(--Cinza-Card);
     color: var(--Branco);
@@ -204,13 +204,12 @@
     min-width: 0;
     height: 100%;
     background: var(--catalog-card);
-    border: 1px solid #78504a;
+    border: 1px solid var(--Borda-Marrom);
     border-radius: 16px;
     overflow: hidden;
     transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 
-/* A área da imagem utiliza o mesmo fundo do restante do card. */
 .species-image {
     display: grid;
     grid-template: minmax(0, 1fr) / minmax(0, 1fr);
@@ -272,7 +271,7 @@
     gap: 11px;
     margin-top: auto;
     padding-top: 14px;
-    border-top: 1px solid rgba(255, 255, 255, .13);
+    border-top: 1px solid color-mix(in srgb, var(--Branco-Puro) 13%, transparent);
 }
 
 .species-card .info-item {
@@ -315,7 +314,7 @@
 @media (hover: hover) and (pointer: fine) {
     .species-link:hover .species-card {
         transform: translateY(-6px);
-        box-shadow: 0 14px 30px rgba(0, 0, 0, .36);
+        box-shadow: 0 14px 30px color-mix(in srgb, var(--Preto) 36%, transparent);
         border-color: var(--Laranja);
     }
     .species-link:hover .species-image img { transform: scale(1.03); }
@@ -333,12 +332,10 @@
     .species-card-name { font-size: 1.1rem; }
 }
 
-/* Foco visível sobre superfícies escuras */
 .species-section :is(a, button, input, select):focus-visible {
     outline-color: var(--Laranja);
 }
 
-/* Estado vazio */
 .no-results {
     border-block: 1px solid var(--catalog-line);
     padding: 35px 0 40px;

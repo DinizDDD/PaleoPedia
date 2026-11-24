@@ -44,12 +44,12 @@
     align-items: flex-end;
     min-height: clamp(410px, 68svh, 720px);
     padding: clamp(26px, 4vw, 48px);
-    background-color: #30211c;
+    background-color: var(--Marrom-Escuro);
     background-size: cover;
     background-position: center;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,.2);
+    box-shadow: 0 4px 15px color-mix(in srgb, var(--Preto) 20%, transparent);
     transition: transform .3s ease, box-shadow .3s ease;
 }
 .spotlight_banner .spotlight-div::before {
@@ -57,12 +57,12 @@
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: linear-gradient(to top, rgba(0,0,0,.96) 0%, rgba(0,0,0,.78) 31%, rgba(0,0,0,.25) 76%, transparent 100%);
+    background: linear-gradient(to top, color-mix(in srgb, var(--Preto) 96%, transparent) 0%, color-mix(in srgb, var(--Preto) 78%, transparent) 31%, color-mix(in srgb, var(--Preto) 25%, transparent) 76%, transparent 100%);
     pointer-events: none;
 }
 .spotlight_banner .slide > a:hover .spotlight-div {
     transform: translateY(-5px);
-    box-shadow: 0 16px 30px rgba(0,0,0,.28);
+    box-shadow: 0 16px 30px color-mix(in srgb, var(--Preto) 28%, transparent);
 }
 .spotlight_banner .slide > a:focus-visible {
     outline: 3px solid var(--Marrom-Claro); 
@@ -114,7 +114,7 @@
     height: 48px;
     border: none;
     border-radius: 50%;
-    background: rgba(0,0,0,.78);
+    background: color-mix(in srgb, var(--Preto) 78%, transparent);
     color: var(--Branco);
     font-size: 24px;
     cursor: pointer;

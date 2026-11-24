@@ -37,13 +37,13 @@
         background:
             linear-gradient(
                 90deg,
-                rgba(0, 0, 0, 0.88) 0%,
-                rgba(0, 0, 0, 0.65) 48%,
-                rgba(0, 0, 0, 0.15) 100%
+                color-mix(in srgb, var(--Preto) 88%, transparent) 0%,
+                color-mix(in srgb, var(--Preto) 65%, transparent) 48%,
+                color-mix(in srgb, var(--Preto) 15%, transparent) 100%
             ),
             linear-gradient(
                 0deg,
-                rgba(0, 0, 0, 0.5),
+                color-mix(in srgb, var(--Preto) 50%, transparent),
                 transparent 65%
             );
     }
@@ -174,7 +174,7 @@
         padding: 35px;
         border-radius: 20px;
         background: var(--Branco);
-        box-shadow: 0 15px 40px rgba(197, 7, 7, 0.07);
+        box-shadow: 0 15px 40px color-mix(in srgb, var(--Marrom) 7%, transparent);
         text-align: center;
 
         span {
@@ -274,7 +274,7 @@
                 transition: background-color 0.25s ease;
 
                 &:hover {
-                    background-color: rgba(0, 0, 0, 0.025);
+                    background-color: color-mix(in srgb, var(--Preto) 2.5%, transparent);
                 }
             }
 
@@ -356,7 +356,7 @@
         border: 1px solid var(--Cinza-Claro);
         border-radius: 12px;
         background-color: var(--Branco);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.07);
+        box-shadow: 0 12px 35px color-mix(in srgb, var(--Preto) 7%, transparent);
         -webkit-overflow-scrolling: touch;
     }
 
@@ -385,10 +385,10 @@
 
         tbody {
             tr {
-                transition: background-color 0.2s ease; &:hover {background-color: rgba(255, 166, 43, 0.09);} &:not(:last-child) {
+                transition: background-color 0.2s ease; &:hover {background-color: color-mix(in srgb, var(--Laranja) 9%, transparent);} &:not(:last-child) {
                     
                     td {
-                        border-bottom: 1px solid rgba(59, 13, 13, 0.12);
+                        border-bottom: 1px solid color-mix(in srgb, var(--Marrom-Escuro) 12%, transparent);
                     }
                 }
             }
@@ -407,23 +407,23 @@
         }
 
         .period-scale-cell-eon {
-            background-color: rgba(59, 13, 13, 0.09);
+            background-color: color-mix(in srgb, var(--Marrom-Escuro) 9%, transparent);
         }
 
         .period-scale-cell-era {
-            background-color: rgba(149, 59, 0, 0.075);
+            background-color: color-mix(in srgb, var(--Marrom-Claro) 7.5%, transparent);
         }
 
         .period-scale-cell-periodo {
-            background-color: rgba(255, 166, 43, 0.09);
+            background-color: color-mix(in srgb, var(--Laranja) 9%, transparent);
         }
 
         .period-scale-cell-epoca {
-            background-color: rgba(0, 0, 0, 0.025);
+            background-color: color-mix(in srgb, var(--Preto) 2.5%, transparent);
         }
 
         .period-scale-cell-idade {
-            background-color: rgba(0, 0, 0, 0.012);
+            background-color: color-mix(in srgb, var(--Preto) 1.2%, transparent);
         }
 
         .period-scale-link {
@@ -454,7 +454,7 @@
         }
 
         .period-scale-empty {
-            color: rgba(0, 0, 0, 0.3);
+            color: color-mix(in srgb, var(--Preto) 30%, transparent);
             text-align: center;
         }
 
@@ -504,14 +504,14 @@
 
         .period-scale-age-items {
             margin-top: 10px;
-            border-top: 1px solid rgba(59, 13, 13, 0.12);
+            border-top: 1px solid color-mix(in srgb, var(--Marrom-Escuro) 12%, transparent);
 
             .period-scale-age-link {
                 display: block;
                 padding: 10px 0;
 
                 &:not(:last-child) {
-                    border-bottom: 1px solid rgba(59, 13, 13, 0.12);
+                    border-bottom: 1px solid color-mix(in srgb, var(--Marrom-Escuro) 12%, transparent);
                 }
             }
         }
@@ -545,7 +545,7 @@
         padding: 35px;
         border-radius: 12px;
         background-color: var(--Branco);
-        color: rgba(0, 0, 0, 0.65);
+        color: color-mix(in srgb, var(--Preto) 65%, transparent);
         text-align: center;
     }
 }
@@ -569,7 +569,7 @@
         }
 
         p {
-            color: rgba(255, 255, 255, 0.68);
+            color: color-mix(in srgb, var(--Branco-Puro) 68%, transparent);
         }
     }
 
@@ -581,16 +581,16 @@
 
     .period-science-card {
         padding: 35px 28px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid color-mix(in srgb, var(--Branco-Puro) 10%, transparent);
         border-radius: 14px;
-        background-color: rgba(255, 255, 255, 0.045);
+        background-color: color-mix(in srgb, var(--Branco-Puro) 4.5%, transparent);
         transition:
             transform 0.3s ease,
             background 0.3s ease;
 
         &:hover {
             transform: translateY(-6px);
-            background-color: rgba(255, 255, 255, 0.08);
+            background-color: color-mix(in srgb, var(--Branco-Puro) 8%, transparent);
         }
 
         .period-science-icon {
@@ -614,7 +614,7 @@
         }
 
         p {
-            color: rgba(255, 255, 255, 0.68);
+            color: color-mix(in srgb, var(--Branco-Puro) 68%, transparent);
             font-size: 0.9rem;
             line-height: 1.85;
         }
@@ -637,7 +637,7 @@
 
     .period-event-card {
         overflow: hidden;
-        border: 1px solid rgba(0, 0, 0, 0.08);
+        border: 1px solid color-mix(in srgb, var(--Preto) 8%, transparent);
         border-radius: 16px;
         background-color: var(--Bege);
         transition:
@@ -646,7 +646,7 @@
 
         &:hover {
             transform: translateY(-6px);
-            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 18px 35px color-mix(in srgb, var(--Preto) 12%, transparent);
         }
     }
 
@@ -662,7 +662,7 @@
             inset: 0;
             background: linear-gradient(
                 0deg,
-                rgba(0, 0, 0, 0.65),
+                color-mix(in srgb, var(--Preto) 65%, transparent),
                 transparent 65%
             );
         }
@@ -710,7 +710,7 @@
         }
 
         p {
-            color: rgba(0, 0, 0, 0.68);
+            color: color-mix(in srgb, var(--Preto) 68%, transparent);
             font-size: 0.92rem;
             line-height: 1.85;
         }
