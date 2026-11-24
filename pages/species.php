@@ -1,12 +1,18 @@
-
 <?php
 
 require_once __DIR__ . '/../config/database.php';
 
-$search = trim($_GET['search'] ?? '');
+$search = $_GET['search'] ?? '';
+$search = is_string($search) ? trim($search) : '';
+
 $diet = $_GET['diet'] ?? '';
+$diet = is_string($diet) ? $diet : '';
+
 $period = $_GET['period'] ?? '';
+$period = is_string($period) ? $period : '';
+
 $continent = $_GET['continent'] ?? '';
+$continent = is_string($continent) ? $continent : '';
 
 $conditions = [];
 $params = [];
@@ -222,7 +228,8 @@ $geologicalTimes = $conn->query("
 ")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<section class="species-section">
+<main class="species-section">
+    <h1 class="sr-only">Explore as espécies do Paleopedia</h1>
     <div class="species-search">
         <form method="GET" action="index.php">
             <input
@@ -231,8 +238,10 @@ $geologicalTimes = $conn->query("
                 value="species"
             >
             <div class="search-area">
+                <label class="sr-only" for="species-search-input">Buscar espécie pelo nome</label>
                 <input
-                    type="text"
+                    type="search"
+                    id="species-search-input"
                     name="search"
                     placeholder="Buscar espécie..."
                     value="<?= htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); ?>"
@@ -367,4 +376,4 @@ $geologicalTimes = $conn->query("
             </div>
         <?php } ?>
     </div>
-</section>
+</main>

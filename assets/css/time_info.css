@@ -1,4 +1,3 @@
-
 @import url('./variables.css');
 
 .time-info-page {
@@ -16,15 +15,16 @@
 
 .time-info-hero {
     width: 100%;
-    height: 98vh;
-    min-height: 650px;
+    height: auto;
+    min-height: 0;
 }
 
 .time-info-hero-banner {
     position: relative;
     width: 100%;
-    height: 100%;
-    min-height: 650px;
+    height: auto;
+    min-height: 96svh;
+    padding-top: clamp(230px, 43svh, 610px);
     display: flex;
     align-items: flex-end;
     overflow: hidden;
@@ -647,12 +647,13 @@
 @media (max-width: 700px) {
 
     .time-info-hero {
-        height: 90vh;
-        min-height: 620px;
+        height: auto;
+        min-height: 0;
     }
 
     .time-info-hero-banner {
-        min-height: 620px;
+        min-height: 0;
+        padding-top: clamp(220px, 35svh, 410px);
     }
 
     .time-info-hero-content {
@@ -663,7 +664,7 @@
     .time-info-breadcrumb {
         gap: 7px;
         margin-bottom: 30px;
-        font-size: 9px;
+        font-size: 12px;
     }
 
     .time-info-hero-content h1 {
@@ -745,10 +746,6 @@
         text-align: left;
     }
 
-    .time-info-environment-image {
-        height: 310px;
-    }
-
     .time-info-topics-section {
         width: calc(100% - 40px);
         padding: 75px 0;
@@ -815,12 +812,11 @@
 
 @media (max-width: 450px) {
 
-    .time-info-hero {
-        min-height: 650px;
-    }
+    .time-info-hero { min-height: 0; }
 
     .time-info-hero-banner {
-        min-height: 650px;
+        min-height: 0;
+        padding-top: clamp(170px, 29svh, 330px);
     }
 
     .time-info-hero-content {
@@ -833,7 +829,7 @@
     }
 
     .time-info-breadcrumb {
-        font-size: 8px;
+        font-size: 12px;
     }
 
     .time-info-facts-grid {
@@ -858,4 +854,23 @@
         text-align: left;
     }
 
+}
+
+.time-info-breadcrumb a {
+    min-height: 28px; 
+    display: inline-flex; 
+    align-items: center; 
+}
+
+.time-info-hero-content :is(h1, p) {
+    overflow-wrap: anywhere; 
+}
+
+.time-info-hero :is(a, button):focus-visible,
+.time-info-divisions-section :is(a, button):focus-visible {
+    outline-color: var(--Laranja); 
+}
+
+.time-info-species-card-content > span {
+    color: var(--Marrom-Claro); 
 }

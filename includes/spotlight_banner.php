@@ -1,6 +1,6 @@
 <?php 
 
-include('config/database.php');
+require_once __DIR__ . '/../config/database.php';
 
 $sql = "
 SELECT
@@ -46,23 +46,37 @@ $result = $conn->query($sql);
 ?>
 
 <section class="spotlight_banner">
-    <h1>ESPÉCIES EM DESTAQUE</h1>
+    <h2 class="spotlight-title" id="spotlight-heading">ESPÉCIES EM DESTAQUE</h2>
 
-    <div class="carousel-container">
+    <div class="carousel-container" role="region" aria-roledescription="carrossel" aria-labelledby="spotlight-heading">
 
-        <button class="carousel-btn prev-btn">&#10094;</button>
-        <button class="carousel-btn next-btn">&#10095;</button>
+        <button type="button" class="carousel-btn prev-btn" aria-label="Espécie anterior">&#10094;</button>
+        <button type="button" class="carousel-btn next-btn" aria-label="Próxima espécie">&#10095;</button>
 
         <div class="carousel">
-            <?php while($species = $result->fetch(PDO::FETCH_ASSOC)) { ?>
-                <div class="slide">
+            <?php while ($species = $result->fetch(PDO::FETCH_ASSOC)) { ?>
+                <?php
+
+                $imagePath = $species['image_path'] ?? '';
+                if (
+                    !is_string($imagePath) ||
+                    preg_match('~\Aassets/images/[a-zA-Z0-9_/-]+\.(?:png|jpe?g|webp|gif)\z~i', $imagePath) !== 1
+                ) {
+                    $imagePath = '';
+                }
+
+                $backgroundStyle = $imagePath !== ''
+                    ? 'background-image: url("' . $imagePath . '");'
+                    : '';
+                ?>
+                <div class="slide" role="group" aria-roledescription="slide">
                     <a href="index.php?page=species_info&slug=<?= urlencode($species['slug']); ?>">
-                        <div class="spotlight-div" style="background-image:url('<?= htmlspecialchars($species['image_path'] ?? '', ENT_QUOTES, 'UTF-8'); ?>')">
+                        <div class="spotlight-div"<?php if ($backgroundStyle !== '') { ?> style="<?= htmlspecialchars($backgroundStyle, ENT_QUOTES, 'UTF-8'); ?>"<?php } ?>>
                             <div class="text">
-                                <h2><?= mb_strtoupper($species['name']); ?></h2>
-                                <h2 class="scientific-h2"><?= mb_strtoupper($species['scientific_name']); ?></h2>
-                                <h4><?= mb_strtoupper($species['diet'] ?? ''); ?> | <?= mb_strtoupper($species['period_name'] ?? 'Não informado'); ?> | <?= mb_strtoupper($species['continent'] ?? ''); ?></h4>
-                                <p><?= htmlspecialchars($species['summary'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
+                                <h3><?= htmlspecialchars(mb_strtoupper($species['name'] ?? '', 'UTF-8'), ENT_QUOTES, 'UTF-8'); ?></h3>
+                                <p class="scientific-h2"><?= htmlspecialchars($species['scientific_name'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
+                                <h4><?= htmlspecialchars(mb_strtoupper($species['diet'] ?? '', 'UTF-8'), ENT_QUOTES, 'UTF-8'); ?> | <?= htmlspecialchars(mb_strtoupper($species['period_name'] ?? 'Não informado', 'UTF-8'), ENT_QUOTES, 'UTF-8'); ?> | <?= htmlspecialchars(mb_strtoupper($species['continent'] ?? '', 'UTF-8'), ENT_QUOTES, 'UTF-8'); ?></h4>
+                                <p class="spotlight-summary"><?= htmlspecialchars($species['summary'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
                             </div>
                         </div>
                     </a>

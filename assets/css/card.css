@@ -266,7 +266,7 @@
     flex: 1;
 }
 
-.species-title h2 {
+.species-title .species-card-name {
     color: var(--Branco);
     font-family: var(--font-secondary);
     font-size: 1.4rem;
@@ -275,7 +275,7 @@
     overflow-wrap: anywhere;
 }
 
-.species-title h3 {
+.species-title .species-card-scientific {
     color: var(--Bege); 
     font-size: 0.85rem;
     font-style: italic;
@@ -364,3 +364,5 @@
         grid-template-columns: 1fr;
     }
 }
+.species-image-missing { color: var(--Bege); font-size: .85rem; text-align: center; }
+.species-link:focus-visible { outline-color: var(--Marrom-Claro); outline-offset: 4px; border-radius: 20px; }

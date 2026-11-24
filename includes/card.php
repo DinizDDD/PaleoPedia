@@ -1,30 +1,30 @@
-
 <a
     href="index.php?page=species_info&slug=<?= urlencode($species['slug']); ?>"
     class="species-link"
 >
     <div class="species-card">
         <div class="species-image">
-            <img
-                src="<?= htmlspecialchars($species['image_path'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
-                alt="<?= htmlspecialchars($species['name'], ENT_QUOTES, 'UTF-8'); ?>"
-            >
+            <?php if (!empty($species['image_path'])): ?>
+                <img src="<?= htmlspecialchars($species['image_path'], ENT_QUOTES, 'UTF-8'); ?>"
+                     alt="Representação de <?= htmlspecialchars($species['name'], ENT_QUOTES, 'UTF-8'); ?>"
+                     loading="lazy" decoding="async">
+            <?php else: ?>
+                <span class="species-image-missing">Imagem indisponível</span>
+            <?php endif; ?>
         </div>
 
         <div class="species-content">
             <div class="species-title">
-                <h2>
-                    <?= strtoupper(
-                        htmlspecialchars($species['name'], ENT_QUOTES, 'UTF-8')
-                    ); ?>
-                </h2>
-                <h3>
+                <h3 class="species-card-name">
+                    <?= htmlspecialchars(mb_strtoupper($species['name'] ?? '', 'UTF-8'), ENT_QUOTES, 'UTF-8'); ?>
+                </h3>
+                <p class="species-card-scientific">
                     <?= htmlspecialchars(
                         $species['scientific_name'] ?? '',
                         ENT_QUOTES,
                         'UTF-8'
                     ); ?>
-                </h3>
+                </p>
             </div>
 
             <div class="species-info">

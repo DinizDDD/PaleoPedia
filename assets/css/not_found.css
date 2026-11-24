@@ -1,0 +1,69 @@
+@import url('./variables.css');
+
+.not-found-page {
+    min-height: min(86svh, 850px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    padding: 140px 24px 100px;
+    background: var(--Marrom-Escuro);
+    color: var(--Branco);
+    text-align: center;
+}
+
+.not-found-page h1 {
+    font-family: var(--font-secondary); 
+    font-size: clamp(32px, 6vw, 58px); 
+    line-height: 1.2; 
+}
+
+.not-found-page p {
+    max-width: 660px; 
+    color: var(--Bege); 
+    line-height: 1.8; 
+}
+
+.not-found-links {
+    display: flex; 
+    flex-wrap: wrap; 
+    align-items: center; 
+    justify-content: center;
+    gap: 12px;
+}
+
+.not-found-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 20px;
+    border: 1px solid var(--Laranja);
+    border-radius: 9px;
+    color: var(--Branco);
+    text-decoration: none;
+    font-weight: 700;
+    transition: background .2s ease, color .2s ease;
+}
+
+.not-found-links a:hover {
+    background: var(--Laranja); 
+    color: var(--Preto); 
+}
+
+.not-found-links a:focus-visible {
+    outline-color: var(--Laranja); 
+}
+
+@media (max-width: 550px) {
+     .not-found-links {
+        flex-direction: column; 
+        width: 100%; 
+    }
+    
+    .not-found-links a {
+        width: 100%; 
+        max-width: 320px; 
+    } 
+}

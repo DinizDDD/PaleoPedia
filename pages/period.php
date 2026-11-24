@@ -53,7 +53,6 @@ foreach ($scaleRoots as $root) {
     );
 }
 
-// Exibe uma linha por época e mantém as idades agrupadas no dropdown.
 $scaleTableRows = [];
 $scaleGroupedAges = [];
 
@@ -281,15 +280,16 @@ $scalePages = [
         </div>
 
         <?php if (!empty($scaleTableRows)) { ?>
-            <div class="period-scale-table-wrapper">
+            <p class="period-scroll-hint" id="period-scroll-hint">↔ Deslize a tabela para os lados para explorar todas as divisões.</p>
+            <div class="period-scale-table-wrapper" role="region" tabindex="0" aria-label="Tabela da escala geológica" aria-describedby="period-scroll-hint">
                 <table class="period-scale-table">
                     <thead>
                         <tr>
-                            <th>Éon</th>
-                            <th>Era</th>
-                            <th>Período</th>
-                            <th>Época</th>
-                            <th>Idade</th>
+                            <th scope="col">Éon</th>
+                            <th scope="col">Era</th>
+                            <th scope="col">Período</th>
+                            <th scope="col">Época</th>
+                            <th scope="col">Idade</th>
                         </tr>
                     </thead>
 

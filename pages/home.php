@@ -1,3 +1,4 @@
+<main class="home-page">
 <div class="banner">
     <img class="banner-image" src="assets/images/home/banner_image.png" alt="Imagem Banner">
 
@@ -7,11 +8,11 @@
                 <img src="assets/images/logo.png" alt="Logo">
             </div>
             <div class="text-div">
-                <h2>PALEOPEDIA</h2>
+                <h1>PALEOPEDIA</h1>
                 <h3>TRANSFORMANDO CONHECIMENTO CIENTÍFICO EM UMA JORNADA PELO PASSADO</h3>
             </div>
         </div>
-        <p>Explore milhões de anos de história de forma simples, organizada e envolvente, e descubra como a vida evoluiu em nosso planeta ao longo de diferentes eras e transformações naturais. Conheça espécies extintas, os ambientes em que viveram, fósseis raros preservados ao longo do tempo, curiosidades científicas fascinantes e os períodos geológicos que marcaram profundamente a formação, a biodiversidade e a história da Terra.
+        <p>Explore milhões de anos de história de forma simples, organizada e envolvente, e descubra como a vida evoluiu em nosso planeta ao longo de diferentes eras e transformações naturais. Conheça espécies extintas, os ambientes em que viveram, fósseis raros preservados ao longo do tempo, curiosidades científicas fascinantes e os períodos geológicos que marcaram profundamente a formação, a biodiversidade e a história da Terra.</p>
     </div>
 </div>
 
@@ -88,3 +89,4 @@
         </div>
     </a>
 </section>
+</main>
