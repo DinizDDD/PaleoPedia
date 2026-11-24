@@ -1,12 +1,13 @@
 @import url('./variables.css');
 
 .species-section {
-    --catalog-paper: #f7f4ef;
-    --catalog-card: #fffdf9;
-    --catalog-line: #d9cec4;
-    --catalog-muted: #69584e;
+    color-scheme: dark;
+    --catalog-paper: var(--Cinza-Fundo);
+    --catalog-card: var(--Marrom-Escuro);
+    --catalog-line: #514743;
+    --catalog-muted: #c8b9af;
     background: var(--catalog-paper);
-    color: var(--Marrom-Escuro);
+    color: var(--Branco);
     width: 100%;
 }
 
@@ -70,7 +71,7 @@
 }
 
 .species-search .filter label {
-    color: var(--Marrom-Escuro);
+    color: var(--Bege);
     font-size: .82rem;
     font-weight: 600;
 }
@@ -81,10 +82,10 @@
     min-width: 0;
     height: 46px;
     padding: 0 12px;
-    border: 1px solid #b9a99a;
+    border: 1px solid #827269;
     border-radius: 5px;
-    background: var(--catalog-card);
-    color: var(--Marrom-Escuro);
+    background: var(--Cinza-Card);
+    color: var(--Branco);
     font-size: .86rem;
 }
 
@@ -97,7 +98,7 @@
 }
 
 .species-search :is(input, select):hover { 
-    border-color: var(--Marrom-Claro); 
+    border-color: var(--Laranja); 
 }
 
 .catalog-actions {
@@ -111,10 +112,10 @@
 .species-search .filter-button {
     min-height: 44px;
     padding: 10px 30px;
-    border: 1px solid var(--Marrom-Escuro);
+    border: 1px solid var(--Laranja);
     border-radius: 5px;
-    background: var(--Marrom-Escuro);
-    color: var(--Branco);
+    background: var(--Laranja);
+    color: var(--Preto);
     font-size: .86rem;
     font-weight: 600;
     cursor: pointer;
@@ -122,14 +123,14 @@
 }
 
 .species-search .filter-button:hover { 
-    background: var(--Marrom-Claro); 
+    background: var(--Bege); 
 }
 
 .species-search .clear-button {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
-    color: var(--Marrom-Claro);
+    color: var(--Laranja);
     font-size: .83rem;
     font-weight: 600;
     text-underline-offset: 4px;
@@ -147,7 +148,7 @@
 }
 
 .catalog-results-summary strong { 
-    color: var(--Marrom-Escuro); font-weight: 700; 
+    color: var(--Branco); font-weight: 700; 
 }
 
 .period-group + .period-group { 
@@ -178,7 +179,7 @@
 }
 
 .period-count { 
-    color: var(--Cinza-Claro); 
+    color: var(--Bege); 
     font-size: .8rem; 
 }
 
@@ -202,8 +203,8 @@
     flex-direction: column;
     min-width: 0;
     height: 100%;
-    background: var(--Marrom-Escuro);
-    border: 1px solid rgba(255, 255, 255, .08);
+    background: var(--catalog-card);
+    border: 1px solid #78504a;
     border-radius: 16px;
     overflow: hidden;
     transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
@@ -314,7 +315,7 @@
 @media (hover: hover) and (pointer: fine) {
     .species-link:hover .species-card {
         transform: translateY(-6px);
-        box-shadow: 0 14px 30px rgba(59, 13, 13, .18);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, .36);
         border-color: var(--Laranja);
     }
     .species-link:hover .species-image img { transform: scale(1.03); }
@@ -322,7 +323,7 @@
 }
 
 .species-link:focus-visible {
-    outline: 3px solid var(--Marrom-Claro);
+    outline: 3px solid var(--Laranja);
     outline-offset: 4px;
 }
 .species-link:focus-visible .species-card { border-color: var(--Laranja); }
@@ -332,6 +333,11 @@
     .species-card-name { font-size: 1.1rem; }
 }
 
+/* Foco visível sobre superfícies escuras */
+.species-section :is(a, button, input, select):focus-visible {
+    outline-color: var(--Laranja);
+}
+
 /* Estado vazio */
 .no-results {
     border-block: 1px solid var(--catalog-line);
@@ -339,7 +345,7 @@
 }
 .no-results h2 { font-family: var(--font-secondary); font-size: 1.4rem; margin-bottom: 10px; }
 .no-results p { color: var(--catalog-muted); font-size: .9rem; line-height: 1.7; }
-.no-results a { display: inline-block; margin-top: 15px; color: var(--Marrom-Claro); font-size: .85rem; font-weight: 600; text-underline-offset: 4px; }
+.no-results a { display: inline-block; margin-top: 15px; color: var(--Laranja); font-size: .85rem; font-weight: 600; text-underline-offset: 4px; }
 
 @media (max-width: 900px) {
     .species-search .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }

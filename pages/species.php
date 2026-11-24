@@ -52,7 +52,6 @@ if (in_array($diet, $validDiets, true)) {
     $diet = '';
 }
 
-// Define a consulta recursiva somente quando existe um filtro geológico válido.
 $geologicalCte = '';
 
 if ($period !== '' && ctype_digit((string) $period)) {
